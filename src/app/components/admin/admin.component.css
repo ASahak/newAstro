@@ -1,0 +1,9 @@
+.flash-messages{
+    position: absolute;
+    right: 0;
+    width: 290px;
+    text-align: center;
+    font-size: 13px;
+    top: 35px;
+    z-index: 22222;
+}

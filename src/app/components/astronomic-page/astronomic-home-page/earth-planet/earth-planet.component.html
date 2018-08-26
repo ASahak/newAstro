@@ -1,0 +1,72 @@
+<div class="" *ngIf="isLogin">
+  <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+  
+  <form  [ngStyle]="styleForm" class="formAdded" #formModificarEarthPlanet="ngForm" (ngSubmit)="onChangeAddEarthPlanet(formModificarEarthPlanet); formModificarEarthPlanet.reset()">
+    <div class="insideForm">
+      <span class="lnr lnr-cross" (click)="closeForm()"></span>   
+      <div class="form-group">
+           <label for="ing">Վերնագիր</label>
+           <input type="text" class="form-control" id="ing" name="title"  [(ngModel)]="earthPlanet.title" required>
+       </div>
+       <div class="form-group">
+           <label for="cap">Արժեք</label>
+           <input type="text" class="form-control" id="cap" name="value"  [(ngModel)]="earthPlanet.value"required>
+       </div>
+     
+       <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarEarthPlanet.valid">
+      </div>
+   </form>
+</div>
+
+
+<div class="topBlock topBlockEarth" style="background-image: url(/assets/img/topImageEarth.jpg)" [ngStyle]="{'background-position': '0px ' + positionTop + 'px'}">
+  <div class="highwayTop">
+    <p>
+      <a routerLink="/astronomic">Գլխավոր</a>
+      <span>Երկիր</span>
+    </p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="planet_desc">
+          <a href="/assets/img/planetEarth.jpg" data-fancybox="images" data-caption="">
+            <img src="/assets/img/planetEarth.jpg" class="img-fluid">
+            <h4 class="nameObject">Երկիր</h4>
+          </a>
+          <div class="descText">
+             <p> <b>Երկիր</b> (Նաև Տեռա, լատ․ Terra - երկիր բառից), Արեգակնային համակարգի մոլորակ, ըստ Արեգակից ունեցած հեռավորության երրորդն է, ըստ մեծության՝ հինգերորդը։ Արեգակից ունեցած հեռավորությունը կազմում է 149,8 միլիոն կմ, տրամագիծը 12.700 կմ։ Երկիր մոլորակն առաջացել է մոտավորապես 4,6 միլիարդ տարի առաջ։ Երկրի բնական արբանյակ Լուսինը երկրագնդի շուրջը պտտվում է էլիպսային ուղեծրով, երկրից 384400 կմ միջին հեռավորության վրա։</p>
+
+              <p>Երկիր մոլորակը մարդկության և միլիոնավոր այլ կենդանատեսակների և բուսատեսակների հայրենիքն է։ Մինչև հիմա մարդկությանը հայտնի միակ տիեզերական մարմինն է, որի վրա բնակվում են կենդանի օրգանիզմներ։ Երկիր մոլորակը երբեմն կոչում են նաև կապույտ մոլորակ։</p>
+              <p>Երկիր մոլորակը ձևավորվել է մոտավորապես 4.54 միլիարդ տարի առաջ, իսկ կյանքն առաջացել է նրա առաջին միլիարդ տարիների ընթացքում։ Երկրի կենսոլորտն այնուհետև նշանակալիորեն փոփոխության ենթարկեց նրա մթնոլորտային և այլ հիմնական ֆիզիկական կառուցվածքները։</p>
+
+              <p>Երկիրը՝ ընդարձակ Արեգակնային համակարգի փոքր մոլորակներից մեկը, մի շարք առումներով եզակի է։ Նրա վրա կյանք կա, ջուր կա, իսկ մակերևույթը մշտապես նորանում է։</p>
+              
+              <p>Երկրագունդն, ըստ ներքին կառուցվածքի, բաժանվում է երեք հիմնական մասի։ Կենտրոնում միջուկն է, նրանից վերև՝ միջնապատյանը, ապա՝ երկրակեղևը։ Երկրակեղևը և միջնապատյանի վերին մասը միասին կազմում են քարոլորտը։ Միջուկի կենտրոնում ջերմաստիճանը հասնում է մինչև 6000 ցելսուսի։ Միջուկում նյութերը հրահեղուկ վիճակում են։ Ենթադրվում է, որ այն կազմված է հիմնականում երկաթից և նիկելից։</p> 
+              <h4>Մագնիսական դաշտ</h4>
+              <p>Երկրի հեղուկ մետաղական արտաքին միջուկը հոսում և ալեկոծվում է՝ առաջացնելով մագնիսական դաշտ։ Ժամանակ առ ժամանակ, գուցե հազարավոր կամ տասնյակ հազարավոր տարիների ընթացքում, մագնիսական դաշտի ուղղությունը շրջվում է, որի պատճառը անհայտ է։ Մագնիսական դաշտի ուժագծերը կարելի է մոտավորապես պատկերացնել որպես երկրագունդը պարուրող հսկայական «կանթեր»՝ նրա հյուսիսային և հարավային բևեռների միջև, որոնք վահանի պես պաշտպանում են Երկրի մակերևույթը Արեգակից եկող՝ էլեկտրական լիցք կրող մասնիկների հեղեղից (արեգակնային քամի)։ Այդ վահանը գոյացնում է մի մագնիսական խոռոչ, որը կոչվում է մագնիսոլորտ։ Երբ Երկրի մագնիսական դաշտը հանդիպում է արեգակնային քամուն, ապա դաշտի՝ Արեգակին ուղղված մասը սեղմվում է, իսկ հակառակ կողմում առաջանում է պոչանման եզր։ Լարերից պատրաստված այս մոդելը պատկերում է արեգակնային քամու հետ Երկրի մագնիսական դաշտի փոխազդեցությունը։</p>
+
+              <p>Երկրի տարբեր կետերում կողմնացույցի սլաքի որոշակի ուղղությամբ կողմնորոշվելու փաստը հնարավորություն է տալիս կատարելու հետևյալ կարևոր եզրակացությանը։ Առաջին՝ Երկիրը մի հսկայական մագնիս է, որի մագնիսական դաշտի գծերի ուղղությամբ էլ դասավորվում է կողմնացույցի սլաքը տարածության տվյալ կետում։ Երկրորդ՝ Երկրի հյուսիսային աշխարհագրական բևեռի մոտ՝ նրա մագնիսական դաշտի հարավային բևեռն է, իսկ հարավային աշխարհագրական բևեռի մոտ՝ հյուսիսային մագնիսկան բևեռը։ Դա Է պատճառը, որ կողմնացույցի սլաքի հյուսիսային բևեռը, ձգվելով Երկրի մագնիսական հարավային բևեռից, ուղղվում է դեպի հյուսիս։</p>
+          </div> 
+      </div>
+      
+    </div>
+    <div class="col-12 col-md-10 col-lg-8 mx-auto">
+        <h4 class="text-center tableHeader">Թվական տվյալներ Երկրի մասին</h4>
+        <table class="table table-sm  table-hover table-striped   table-responsive-lg tableEarth">
+          <tbody>
+            <tr *ngFor="let earthPlanet of earthPlanets; let i = index" class="tool_tip_parents">
+              
+              <td>{{earthPlanet.title}}</td>
+              <td class="tool_tip_parent">{{earthPlanet.value}}
+                <span class="tool_tip badge bagde-pill badge-success" *ngIf="isLogin">{{earthPlanet.publication | date}}</span>
+                <a  routerLink="/astronomic/earth-planet/edit/{{earthPlanet.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(earthPlanet)" *ngIf="isLogin"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div> 

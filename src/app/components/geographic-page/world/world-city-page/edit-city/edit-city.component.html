@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row">
+     <div class="col-12 col-sm-10 col-md-8 mx-auto mt-4 mb-4 " *ngIf="isLogin"  style="padding: 15px; background: #e2e0e0;">
+      <form  #formModificarWorldCity="ngForm" (ngSubmit)="onModificarRecetWorldCity(formModificarWorldCity); formModificarWorldCity.reset()">
+        <div class="form-group">
+            <label for="ing">Քաղաք</label>
+            <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="wcity.name" required>
+        </div>
+        <div class="form-group">
+            <label for="cap">Գտնվում է՝</label>
+            <input type="text" class="form-control" id="cap" name="in_the"  [(ngModel)]="wcity.in_the"required>
+        </div>
+        <div class="form-group">
+            <label for="pop">Բնակչություն</label>
+            <input type="text" class="form-control" id="pop" name="population"  [(ngModel)]="wcity.population" required>
+        </div>
+        <div class="form-group">
+            <label for="ar">Տարածք</label>
+            <input type="text" class="form-control" id="ar" name="area"  [(ngModel)]="wcity.area" required>
+        </div>
+        <div class="form-group">
+            <label for="den">Խտություն</label>
+            <input type="text" class="form-control" id="den" name="density"  [(ngModel)]="wcity.density" required>
+        </div>
+        <div class="form-group">
+            <label for="imageState">Նկար</label>
+            <div class="changedImage" *ngIf="!isImage">
+                <img src="{{wcity.url}}" alt="" class="img-fluid">
+              </div>
+            <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="url" (change)="upload($event)" required>
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fa fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      choses Image...
+                    </span>
+                  </span>
+                </label>
+              </div>
+
+            <div  class="row">
+              <div class="col-12">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+                <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                  <span class="d-block">File uploaded:</span>
+                  <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                </div>
+              </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="desc">Նկարագրություն</label>
+            <textarea type="text" rows="6" class="form-control" id="desc" name="description"  [(ngModel)]="wcity.description" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="cap">Աշխարհամաս</label>
+            <select class="form-control" name="in_continent" [(ngModel)]="wcity.in_continent" required>
+              <option value="asia">Ասիա</option>
+              <option value="europa">Եվրոպա</option>
+              <option value="north-america">Հս Ամերիկա</option>
+              <option value="south-america">Հվ Ամերիկա</option>
+              <option value="africa">Աֆրիկա</option>
+              <option value="australia">Ավստրալիա</option>
+            </select>
+        </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarWorldCity.valid">
+      </form>
+    </div>
+  </div>
+  </div>

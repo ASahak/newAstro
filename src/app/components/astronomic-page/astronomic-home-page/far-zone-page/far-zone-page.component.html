@@ -1,0 +1,83 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+    <form [ngStyle]="styleForm"  class="formAdded"  #formModificarFarZone="ngForm" (ngSubmit)="onChangeAddFarZone(formModificarFarZone); formModificarFarZone.reset()">
+        <div class="insideForm">   
+          <span class="lnr lnr-cross" (click)="closeForm()"></span>  
+          <div class="form-group" >
+              <label for="name">Անվանում</label>
+              <input type="text" class="form-control" id="name" name="name"  [(ngModel)]="farZone.name" required>
+          </div>
+          <div class="form-group" >
+            <label for="desc">Նկարագրություն</label>
+            <textarea class="form-control" rows="6" id="desc" name="desc"  [(ngModel)]="farZone.desc" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="imageState">Նկար</label>
+            <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="img"  [(ngModel)]="farZone.img" required (change)="upload($event)">
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fa fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      choses Image...
+                    </span>
+                  </span>
+                </label>
+              </div>
+
+            <div  class="row" [hidden]="!isImage">
+              <div class="col-12">
+                <div class="progress">
+                  <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                  </div>
+                </div>
+                <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc" >
+                  <span class="d-block">File uploaded:</span>
+                  <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                </div>
+              </div>
+            </div>
+        </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarFarZone.valid">
+      </div>
+    </form> 
+</div>
+<div class="flash-messages">
+    <flash-messages></flash-messages>
+</div>
+<div class="topBlock topBlockEarth" style="background-image: url(/assets/img/topImageFar.jpg)" [ngStyle]="{'background-position': '0px ' + positionTop + 'px'}">
+  <div class="highwayTop">
+    <p>
+      <a routerLink="/astronomic">Գլխավոր</a>
+      <span>Հեռավոր գոտիներ</span>
+    </p>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-sm-12 col-md-10 col-lg-8 m-auto" *ngFor="let zone of ArrayData" >
+      <div class="itemZone d-flex  flex-sm-row flex-column">
+          <span class="editIcons">
+              <a  routerLink="/astronomic/far-zone/edit/{{zone.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+              <i class="fa fa-trash"  (click)="onClickDelete(zone)" *ngIf="isLogin"></i>
+          </span>
+        <a href="{{zone.img}}" data-fancybox="images" data-caption="" class="">
+            <img class="mr-3" src='{{zone.img}}' alt="" class="img-fluid">
+        </a>
+        <div class="media_body ">
+          <h5 class="mt-0">{{zone.name}}</h5>
+          <p class="descItem">
+            {{zone.desc}}
+          </p>
+          <p class="mb-0 d-flex align-items-center justify-content-between">
+              <span class="datePublic">{{zone.publication | date}}</span>
+              <a class="btnMore" routerLink="/astronomic/far-zone/more/{{zone.id}}">Ավելին</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <div #pageNumbers class="col-12 text_center_page"></div> 
+  </div>
+</div>

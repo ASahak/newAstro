@@ -1,0 +1,87 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>
+    <form [ngStyle]="styleForm" class="formAdded" #formAsia="ngForm" (ngSubmit)="onChangeAddAsia(formAsia); formAsia.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="asia.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="asia.name">
+            </div>
+            <div class="form-group">
+                <label for="val">Արժեք</label>
+                <input type="text" class="form-control" id="val" name="value"  [(ngModel)]="asia.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formAsia.valid">
+        </div>
+    </form>
+</div>
+   
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world">Գլխավոր</a>
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a>Ասիա</a>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-8 col-md-9 p-0 mb-4">
+            <div class="description_asia">
+                <b>Ասիա</b>
+                <hr>
+                <p>Ասիա, երկրագնդի ամենամեծ աշխարհամասը, Եվրոպայի հետ կազմում է Եվրասիա մայրցամաքը։ Հիմնականում գտնվում է արևելյան և հյուսիսային կիսագնդում։ Այն զբաղեցնում է երկրագնդի 8.7%-ը և ցամաքի 30%-ը։ Ասիաում է բնակվում մոտ 4.3 միլիարդ մարդ որը աշխարհի բնակչության 60%-ն է, Ասիաի բնակչությունը աճում է բավականին արագ, օրինակ՝ 20-րդ դարի ընթացքում բնակչությունը քառապատկվել է։ Տարածքը մոտ 43 միլիոն կմ² է, իսկ կղզիների հետ միասին՝ 44 միլիոն 363 հազար կմ²։ Ափագծերի երկարությունը 62 հազար կմ է, ամենաբարձր կետը Ջոմոլունգմա (Էվերեստ) գագաթն է (8848 մ), ամենացածրը Մեռյալ ծովի մակերևույթն է՝ 405 մ։</p>
+            </div>
+        </div>
+    
+        <div class="col-12 col-sm-4 col-md-3 pr-0">
+            <div class="card_thumb_right card">
+                <div class="asia_image_wrap">
+                    <div *ngIf="(asiaphotos | json) == '[]'" >
+                        <img src="/assets/img/noImage.png" class="img-fluid">
+                        <button *ngIf="isLogin"  (click)="AddDrop()" class="plusDrop"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                    </div>
+                    <div *ngFor="let asPhoto of asiaphotos">
+                        <a *ngIf="(asiaphotos | json) != '[]'" href="{{ asPhoto.url }}" data-fancybox="images" data-caption="">
+                            <img src="{{ asPhoto.url }}" class="img-fluid">
+                        </a>
+                        <button *ngIf="isLogin" (click)="onClickDeletePhoto(asPhoto)" class="plusDrop"><i class="fa fa-pencil"></i></button>
+                    </div>
+                </div>
+                <div *ngFor="let desc of asias">
+                    <div *ngIf="!desc.name"  class="tool_tip_parent">
+                        <b>{{desc.description}} -</b>
+                        <em>{{desc.value}}</em>
+                        
+                        <a  routerLink="/geographic/world/continential/asia/edit/{{desc.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(desc)" *ngIf="isLogin"></i>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div  class="col-12 uploadDrop" [ngStyle]="styleDrop" *ngIf="(asiaphotos | json) == '[]' && isLogin">
+            <file-upload-asia></file-upload-asia>
+        </div>
+        <table class="table table-sm  table-hover table-striped   table-responsive-lg w-100 d-sm-table tablecontinents mt-4">
+            <thead  class="">  
+                <tr>
+                <th scope="col">Նկարագրություն</th>
+                <th scope="col">Անվանում</th>
+                <th scope="col">Արժեք</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let asia of asias; let i = index " class="tool_tip_parents">
+                <td [hidden]="asia.name == '' || asia.name == null">{{asia.description}}</td>
+                <td [hidden]="asia.name == '' || asia.name == null">{{asia.name}}</td>
+                <td [hidden]="asia.name == '' || asia.name == null"  class="tool_tip_parent">{{asia.value}}
+                    <span class="tool_tip badge bagde-pill badge-success">{{asia.publication | date}}</span>
+                    <a  routerLink="/geographic/world/continential/asia/edit/{{asia.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                    <i class="fa fa-trash"  (click)="onClickDelete(asia)" *ngIf="isLogin"></i>  
+                </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

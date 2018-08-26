@@ -1,0 +1,72 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 ">
+      
+      <div class="descAglo">
+          <h1>Քաղաքային ագլոմերացիա</h1>
+          <hr>
+        <div class="card_thumb_right p-2 border">
+            <div class="asia_image_wrap mt-4">
+                <a href="/assets/img/aglomeracia.jpg" class="d-block text-center" data-fancybox="images" data-caption="">
+                    <img src="/assets/img/aglomeracia.jpg" class="img-fluid">
+                </a>
+                <span>Մեծ Տոկիոի (ագլոմերացիա 35 միլիոն բնակչությամբ)</span>
+            </div>
+        </div>
+        <p>Քաղաքային ագլոմերացիա, քաղաքային և գյուղական բնակավայրեր մեծ քաղաքի կամ քաղաքների շուրջ, որոնք իրար հետ միացած են արտադրական, տրանսպորտային, կրթական, մշակութային սերտ կապերով։ Քաղաքային ագլոմերացիաների առաջացումը ուրբանիզացման աստիճաններից մեկն է։ Քաղաքային ագլոմերացիաների տարածքային կառուցվածքը սովորաբար ընդգրկում է գլխավոր քաղաքը (ագլոմերացիայի միջուկը) և նրան շրջապատող բնակավայրերն ու արդյունաբերական, ռեկրեացիոն, գյուղատնտեսական և այլ գոտիներ։
+        </p>
+        <p>Տարբերում են միակենտրոն (ձևավորվել են մեկ խոշոր քաղաք֊միջուկի շուրջը, օրինակ, Նյու Յորքի ագլոմերացիա) և բազմակենտրոն ագլոմերացիաներ (ունեն մի քանի քաղաք֊միջուկներ, օրինակ, քաղաքների կուտակումը Ռուրի ավազան՝ Գերմանիայի)։ Քաղաքային ագլոմերացիաների մեծ մասը միակենտրոն է, ձևավորվում է խոշոր քաղաքների տարածական և գործառուտթային զարգացման հետևանքով։ Դրանց շուրջը կարող են ստեղծվել նոր քաղաքային բնակավայրեր և կենտրոններ, որոնք տնտեսական, աշխատանքային, մշակութային, կրթական սերտ կապեր ունեն ագլոմերացիայի միջուկի (կենտրոնի) հետ։ Միակենտրոն ագլոմերացիաների սահմանները սովորաբար չեն անցնում կենտրոնական քաղաքից 1.5 ժամյա տրանսպորտային մատչելիության սահմանները, որը մերձքաղաքային տրանսպորտի ժամանակակից զարգացման պայմաններում կազմումէ 60֊80 կմ հեռավորություն։ Հանքաարդյունաբերական և առողջարանային տարածաշրջաններում։</p>
+      </div>
+      <div class="">
+      <table class="table table-sm  table-hover table-striped  table-responsive-lg w-100 d-sm-table tablePools">
+          <thead  class="">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Անվանում</th>
+              <th scope="col">Պետություն</th>
+              <th scope="col">Բնակչություն</th>
+              <th scope="col">Ներառում է՝</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let aglomeration of aglomerations; let i = index" class="tool_tip_parents">
+              <th scope="row">{{i+1}}</th>
+              <td>{{aglomeration.name}}</td>
+              <td>{{aglomeration.country}}</td>
+              <td>{{aglomeration.population}}</td>
+              <td class="tool_tip_parent">{{aglomeration.includes}}
+                <span class="tool_tip badge bagde-pill badge-success">{{aglomeration.publication | date}}</span>
+                <a  routerLink="/geographic/world/aglomeration/edit/{{aglomeration.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(aglomeration)" *ngIf="isLogin"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </div>
+</div>
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded"  #formModificarAglomeration="ngForm" (ngSubmit)="onChangeAddAglomeration(formModificarAglomeration); formModificarAglomeration.reset()">
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+            <div class="form-group">
+                <label for="ing">Անվանում</label>
+                <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="aglomeration.name" required>
+            </div>
+            <div class="form-group">
+                <label for="cap">Պետություն</label>
+                <input type="text" class="form-control" id="cap" name="country"  [(ngModel)]="aglomeration.country"required>
+            </div>
+            <div class="form-group">
+              <label for="pop1">Բնակչություն</label>
+              <input type="text" class="form-control" id="pop1" name="population"  [(ngModel)]="aglomeration.population" required>
+            </div>
+            <div class="form-group">
+                <label for="pop">Ներառում է՝</label>
+                <input type="text" class="form-control" id="pop" name="includes"  [(ngModel)]="aglomeration.includes" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarAglomeration.valid">
+        </div>
+     </form>
+  </div>

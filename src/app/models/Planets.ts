@@ -1,0 +1,20 @@
+export interface Planets {
+    id?:string;
+    name?:string;
+    diameter?:string;
+    weight?:any;
+    farEarth?:any;
+    rotOs?:any;
+    temperature?:number;
+    stoogeCount?:number;
+    discoverYear?:number;
+    inSort?:string;
+    periheli?:string;
+    apoheli?:string;
+    bigAnomalia?:string;
+    speed?:any;
+    image?:any;
+    description?:any;
+    type?:string;
+    publication?:any;
+}

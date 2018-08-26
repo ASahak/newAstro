@@ -1,0 +1,224 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+    <form  [ngStyle]="styleForm"  class="formAdded" #formModificarPlanets="ngForm" (ngSubmit)="onChangeAddPlanets(formModificarPlanets); formModificarPlanets.reset()">
+        <div class="insideForm">   
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>   
+            <div class="form-group">
+                <label for="tyype">Տեսակը</label>
+                <select class="form-control" name="type" [(ngModel)]="planet.type" required>
+                <option *ngFor="let typ of typArray" [value]="typ.value">{{typ.name}}</option>
+                </select>
+            </div>
+            <div class="form-group" >
+                <label for="name">Անվանում</label>
+                <input type="text" class="form-control" id="name" name="name"  [(ngModel)]="planet.name" required>
+            </div>
+            <div class="form-group">
+                <label for="diameter">Հասրակածային տրամագիծ</label>
+                <input type="text" class="form-control" id="diameter" name="diameter"  [(ngModel)]="planet.diameter"required>
+            </div>
+            <div class="form-group">
+                <label for="weight">Զանգված</label>
+                <input type="text" class="form-control" id="weight" name="weight"  [(ngModel)]="planet.weight"required>
+            </div>
+            <div class="form-group">
+                <label for="periheli">Պերիհելի</label>
+                <input type="text" class="form-control" id="periheli" name="periheli"  [(ngModel)]="planet.periheli"required>
+            </div>
+            <div class="form-group">
+                <label for="apoheli">Ապոհելի</label>
+                <input type="text" class="form-control" id="apoheli" name="apoheli"  [(ngModel)]="planet.apoheli"required>
+            </div>
+            <div class="form-group">
+                <label for="bigAnomalia">Մեծ Կիսաառանցք</label>
+                <input type="text" class="form-control" id="bigAnomalia" name="bigAnomalia"  [(ngModel)]="planet.bigAnomalia"required>
+            </div>
+            <div class="form-group">
+                <label for="farEarth">Հեռավորությունը Երկրից</label>
+                <input type="text" class="form-control" id="farEarth" name="farEarth"  [(ngModel)]="planet.farEarth"required>
+            </div>
+            <div class="form-group">
+                <label for="rotOs">Առանցքի շուրջ պտտման պարբերությունը</label>
+                <input type="text" class="form-control" id="rotOs" name="rotOs"  [(ngModel)]="planet.rotOs"required>
+            </div>
+            <div class="form-group">
+                <label for="temperature">Մակերևույթի ջերմաստիճանը</label>
+                <input type="text" class="form-control" id="temperature" name="temperature"  [(ngModel)]="planet.temperature" required>
+            </div>
+            <div class="form-group">
+                <label for="stoogeCount">Արբանյակների թիվը</label>
+                <input type="text" class="form-control" id="stoogeCount" name="stoogeCount"  [(ngModel)]="planet.stoogeCount"required>
+            </div>
+            <div class="form-group">
+                <label for="discoverYear">Հայտնաբերման տարեթիվը</label>
+                <input type="text" class="form-control" id="discoverYear" name="discoverYear"  [(ngModel)]="planet.discoverYear"required>
+            </div>
+            <div class="form-group" *ngIf="planet.type == 'smallPlanet' || planet.type == 'anotherAplicante'">
+                <label for="inSort">Դասակարգումը</label>
+                <select class="form-control" name="inSort" [(ngModel)]="planet.inSort" required>
+                    <option *ngFor="let sorting of sortingArray" [value]="sorting.value">{{sorting.name}}</option>
+                </select>
+            </div>
+    
+            <div class="form-group">
+                <label for="speed">Արագություն</label>
+                <input type="text" class="form-control" id="speed" name="speed"  [(ngModel)]="planet.speed"required>
+            </div>
+            <div class="form-group">
+                <label for="imageState">Նկար</label>
+                <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="url"  [(ngModel)]="planet.url"  (change)="upload($event)">
+                    <span class="file-cta">
+                        <span class="file-icon">
+                        <i class="fa fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                        choses Image...
+                        </span>
+                    </span>
+                    </label>
+                </div>
+    
+                <div  class="row" [hidden]="!isImage">
+                <div class="col-12">
+                    <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    </div>
+                    <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc" >
+                    <span class="d-block">File uploaded:</span>
+                    <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Նկարագրություն</label>
+                <textarea  class="form-control" id="description" name="description"  [(ngModel)]="planet.description"required></textarea>
+            </div>
+            
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarPlanets.valid">
+        </div>
+    </form>
+</div>
+<div class="flash-messages">
+    <flash-messages></flash-messages>
+</div>
+<div class="topBlock topBlockEarth">
+    <img src="/assets/img/topImagePlanet.jpg" alt="" class="img-fluid">
+    <div class="highwayTop">
+        <p>
+        <a routerLink="/astronomic">Գլխավոր</a>
+        <span>Մոլորակներ</span>
+        <span class="subPlanet" *ngIf="(contentObject | json) != ({} | json)">{{contentObject.name}}</span>
+        <span class="subPlanet" *ngIf="(contentObject | json) == ({} | json)">{{planets && planets[indexReload]?.name}}</span>
+        </p>
+    </div>
+</div>
+<div class="container  mb-4">
+    <div class="row">
+        <div class="col-12 col-sm-5 col-md-3 leftSectionPlanets">
+            <div class="planetEach">
+                <h5>Մոլորակներ</h5>
+                <ul>
+                    <li *ngFor="let plan of planets" [hidden]="plan.type  != 'planet'" (click)="bindYourContent(plan)"  class="forEachActive tool_tip_parent justify-content-between align-items-center">
+                        <a #tref (click)="toggleClassActive()"  class="d-block w-100" routerLink="/astronomic/planets/{{plan.name}}/{{plan.id}}">{{plan.name}}</a>
+                        <span class="editIcons">
+                            <a  routerLink="/astronomic/planets//{{plan.name}}/edit/{{plan.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                            <i class="fa fa-trash"  (click)="onClickDelete(plan, planets)" *ngIf="isLogin"></i>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="smallplanetEach">
+                <h5>Գաճաճ մոլորակներ</h5>
+                <ul>
+                    <li *ngFor="let plan of planets" [hidden]="plan.type  != 'smallPlanet'"  (click)="bindYourContent(plan)"  class="forEachActive tool_tip_parent justify-content-between align-items-center">
+                        <a #tref (click)="toggleClassActive()"  class="d-block w-100" routerLink="/astronomic/planets/{{plan.name}}/{{plan.id}}">{{plan.name}}</a>
+                        <span class="editIcons">
+                            <a  routerLink="/astronomic/planets//{{plan.name}}/edit/{{plan.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                            <i class="fa fa-trash"  (click)="onClickDelete(plan, planets)" *ngIf="isLogin"></i>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <div class="smallplanetEach">
+                <h5>Այլ թեկնածուներ</h5>
+                <ul >
+                    <li *ngFor="let plan of planets" [hidden]="plan.type  != 'anotherAplicante'"  (click)="bindYourContent(plan)"  class="forEachActive tool_tip_parent justify-content-between align-items-center">
+                        <a #tref (click)="toggleClassActive()"  class="d-block w-100" routerLink="/astronomic/planets/{{plan.name}}/{{plan.id}}">{{plan.name}}</a>
+                        <span class="editIcons">
+                            <a  routerLink="/astronomic/planets//{{plan.name}}/edit/{{plan.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                            <i class="fa fa-trash"  (click)="onClickDelete(plan, planets)" *ngIf="isLogin"></i>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-sm-7 col-md-9 " >
+            <div class="row" *ngIf="(contentObject | json) == ({} | json)">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="cardPlanetMore">
+                        <a href="{{planets && planets[indexReload]?.image}}" data-fancybox="images" data-caption="" class="">
+                            <img src="{{planets && planets[indexReload]?.image}}" class="img-fluid">
+                        </a>
+                        <div class="shortDesc">
+                            <h4>{{planets && planets[indexReload]?.name}}</h4>
+                            <ul class="descUlPLanets" type="none">
+                                <li><b>Հասրակածային տրամագիծ</b> {{planets && planets[indexReload]?.diameter + ' կմ'}}</li> 
+                                <li><b>Զանգված</b> {{planets && planets[indexReload]?.weight  + 'կգ'}}</li>
+                                <li><b>Պերիհելի</b> {{planets && planets[indexReload]?.periheli  + ' ամ'}}</li>
+                                <li><b>Ապոհելի</b> {{planets && planets[indexReload]?.apoheli  + ' ամ'}}</li>
+                                <li><b>Մեծ Կիսաառանցք</b> {{planets && planets[indexReload]?.bigAnomalia  + 'մլն կմ'}}</li>
+                                <li><b>Առանցքի շուրջ պտտման պարբերությունը</b> {{planets && planets[indexReload]?.rotOs}}</li>
+                                <li><b>Մակերևույթի ջերմաստիճանը</b> {{planets && planets[indexReload]?.temperature + '° C'}}</li>
+                                <li><b>Արբանյակների թիվը</b> {{planets && planets[indexReload]?.stoogeCount}}</li>
+                                <li><b>Հայտնաբերման տարեթիվը</b> {{planets && planets[indexReload]?.discoverYear}}</li>
+                                <li *ngIf="planets && planets[indexReload]?.type == 'smallPlanet' || planets && planets[indexReload]?.type == 'anotherAplicante'"><b>Դասակարգը</b> {{planets && planets[indexReload]?.inSort}}</li>
+                                <li><b>Արագություն</b> {{planets && planets[indexReload]?.speed + ' կմ/վ'}}</li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-12 col-md-6 col-lg-8">
+                    <div class="shortDescPlanets">
+                        {{planets && planets[indexReload]?.description}} 
+                        <p class="date_public">{{planets && planets[indexReload]?.publication | date}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row" *ngIf="(contentObject | json) != ({} | json)">
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="cardPlanetMore">
+                        <a [href]="contentObject.image" data-fancybox="images" data-caption="" class="">
+                            <img [src]="contentObject.image" class="img-fluid">
+                        </a>
+                        <div class="shortDesc">
+                            <h4>{{contentObject.name}}</h4>
+                            <ul class="descUlPLanets" type="none">
+                                <li><b>Հասրակածային տրամագիծ</b> {{contentObject.diameter + ' կմ'}}</li>
+                                <li><b>Զանգված</b> {{contentObject.weight  + 'կգ'}}</li>
+                                <li><b>Պերիհելի</b> {{contentObject.periheli  + ' ամ'}}</li>
+                                <li><b>Ապոհելի</b> {{contentObject.apoheli  + ' ամ'}}</li>
+                                <li><b>Մեծ Կիսաառանցք</b> {{contentObject.bigAnomalia  + 'մլն կմ'}}</li>
+                                <li><b>Առանցքի շուրջ պտտման պարբերությունը</b> {{contentObject.rotOs}}</li>
+                                <li><b>Մակերևույթի ջերմաստիճանը</b> {{contentObject.temperature}}</li>
+                                <li><b>Արբանյակների թիվը</b> {{contentObject.stoogeCount + '° C'}}</li>
+                                <li><b>Հայտնաբերման տարեթիվը</b> {{contentObject.discoverYear}}</li>
+                                <li *ngIf="contentObject.type == 'smallPlanet' || contentObject.type == 'anotherAplicante'"><b>Դասակարգը</b> {{contentObject.inSort}}</li>
+                                <li><b>Արագություն</b> {{contentObject.speed+ ' կմ/վ'}}</li>
+                            </ul>
+                        </div>
+                    </div> 
+                </div>
+                <div class="col-12 col-md-6 col-lg-8">
+                    <div class="shortDescPlanets">
+                            {{contentObject.description}}
+                            <p class="date_public">{{contentObject.publication | date}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

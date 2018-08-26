@@ -1,0 +1,92 @@
+<div class="flash-messages">
+    <flash-messages></flash-messages>
+</div>
+<div class="topBlock topBlockEarth" style="background-image: url(/assets/img/topImageFar.jpg)" [ngStyle]="{'background-position': '0px ' + positionTop + 'px'}">
+    <div class="highwayTop">
+    <p>
+        <a routerLink="/astronomic">Գլխավոր</a>
+        <a routerLink="/astronomic/far-zone">Հեռավոր գոտիներ</a>
+        <span class="subPlanet" *ngIf="indexReload != undefined">{{farZones[indexReload].name}}</span>
+    </p>
+    </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-12 col-md-10 mx-auto">
+        <div class="shortDescMore">
+            <a href="{{farZone.img}}" data-fancybox="images" data-caption="" class="">
+                <img src="{{farZone.img}}" alt="" class="img-fluid">
+            </a>
+            <h4 class="moreZoneName">{{farZone.name}}</h4>
+            <p class="moreZoneDesc">{{farZone.desc}}</p>
+        </div>
+        <table class="table table-sm  table-hover table-striped   table-responsive-lg tableFarZone">
+                <!-- [hidden]="farZoneMores[i].type !== farZone.name &&  i > 0 " -->
+            <thead  class="thead-dark">
+                <tr *ngFor="let more of farZoneMores; let i = index"  [hidden]="i > 0 ">
+                    <th scope="col">Անվանում</th>
+                    <th scope="col" >Պերիհելի</th>
+                    <th scope="col" >Ապոհելի</th>
+                    <th scope="col" >Արեգակի շուրջ պտ. պրբ.</th>
+                    <th scope="col" >Հայտնաբերող</th>
+                    <th scope="col" >Արբանյակ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let more of farZoneMores; let i = index" class="tool_tip_parents" [hidden]="farZoneMores[i].type !== farZone.name">        
+                    <td  scope="row" class="tool_tip_parent">
+                        <a routerLink="/astronomic/far-zone/more/{{farZone.id}}/edit/{{more.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(more)" *ngIf="isLogin"></i>
+                        <span>{{more.name}}</span>
+                    </td>
+                    <td *ngIf="more.periheli">{{more.periheli}}</td>
+                    <td *ngIf="more.apoheli">{{more.apoheli}}</td>
+                    <td *ngIf="more.rotSun">{{more.rotSun}}</td>
+                    <td *ngIf="more.discover">{{more.discover}}</td>
+                    <td *ngIf="more.stooge">{{more.stooge}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div> 
+  </div>
+</div>
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+    <form [ngStyle]="styleForm"  class="formAdded"  #formModificarFarZone="ngForm" (ngSubmit)="onChangeAddFarZoneItems(formModificarFarZone); formModificarFarZone.reset()">
+        <div class="insideForm">   
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>  
+            <div class="form-group">
+                <label for="tyype">Տեսակը</label>
+                <select class="form-control" name="type" [(ngModel)]="farZoneMore.type" required>
+                <option *ngFor="let typ of farZones" [value]="typ.name">{{typ.name}}</option>
+                </select>
+            </div> 
+            <div class="form-group" >
+                <label for="name">Անվանում</label>
+                <input type="text" class="form-control" id="name" name="name"  [(ngModel)]="farZoneMore.name" required>
+            </div>
+            <div class="form-group">
+                <label for="periheli">Պերիհելի</label>
+                <input type="text" class="form-control" id="periheli" name="periheli"  [(ngModel)]="farZoneMore.periheli" required>
+            </div>
+            <div class="form-group" >
+                <label for="apoheli">Ապոհելի</label>
+                <input type="text" class="form-control" id="apoheli" name="apoheli"  [(ngModel)]="farZoneMore.apoheli" required>
+            </div>
+            <div class="form-group" >
+                <label for="rotSun">Արեգակի շուրջ պտտ. պրբ.</label>
+                <input type="text" class="form-control" id="rotSun" name="rotSun"  [(ngModel)]="farZoneMore.rotSun" required>
+            </div>
+            <div class="form-group" >
+                <label for="discover">Հայտնաբերող</label>
+                <input type="text" class="form-control" id="discover" name="discover"  [(ngModel)]="farZoneMore.discover" required>
+            </div>
+            <div class="form-group" >
+                <label for="stooge">Արբանյակ</label>
+                <input type="text" class="form-control" id="stooge" name="stooge"  [(ngModel)]="farZoneMore.stooge" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarFarZone.valid">
+        </div>
+    </form>
+  </div>

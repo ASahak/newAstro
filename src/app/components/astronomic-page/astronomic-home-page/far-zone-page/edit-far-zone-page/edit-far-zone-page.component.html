@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+     <div class="col-12 col-sm-10 col-md-8 mx-auto mt-4 mb-4 formEdit" *ngIf="isLogin">
+      <form #formModificarFarZone="ngForm" (ngSubmit)="onModificarRecetFarZone(formModificarFarZone); formModificarFarZone.reset()">
+          <div class="form-group" >
+              <label for="name">Անվանում</label>
+              <input type="text" class="form-control" id="name" name="name"  [(ngModel)]="farZone.name" required>
+          </div>
+          <div class="form-group" >
+            <label for="desc">Նկարագրություն</label>
+            <textarea class="form-control" rows="7" id="desc" name="desc"  [(ngModel)]="farZone.desc" required></textarea>
+        </div>
+        <div class="form-group">
+            <label for="imageState">Նկար</label>
+            <div class="changedImage" *ngIf="!isImage">
+                <img src="{{farZone.img}}" alt="" class="img-fluid">
+              </div>
+              <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="img" (change)="upload($event)">
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fa fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      choses Image...
+                    </span>
+                  </span>
+                </label>
+              </div>
+
+              <div  class="row">
+                <div class="col-12">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                  <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                    <span class="d-block">File uploaded:</span>
+                    <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+        </div>
+          <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarFarZone.valid">
+      </form>
+    </div>
+    </div>
+    </div>

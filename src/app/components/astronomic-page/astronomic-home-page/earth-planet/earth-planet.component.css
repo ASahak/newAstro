@@ -1,0 +1,226 @@
+
+.planet_desc a{ 
+    position: relative;
+    display: block;
+    max-width: 250px;
+    float: left;
+    margin-right: 30px;
+    border: 1px solid #999;
+    padding: 15px;    
+}
+.highwayTop {
+    background-color: #2497e3;
+    width: 350px;
+    padding: 10px;
+    transform: skew(-45deg);
+    background-size: contain;
+    margin-left: -50px;
+    padding-left: 100px;
+    margin-bottom: 25px;
+    bottom: 0;
+    position: absolute;
+}
+.highwayTop p {
+    transform: skew(45deg);
+    color: #fff;
+    margin-bottom: 0;
+    font-size: 13px;
+}
+.highwayTop a {
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+}
+.highwayTop a:after {
+    content: "\00bb";
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: #ddd;
+    font-weight: 300;
+    padding: 0 10px;
+}
+.highwayTop span {
+    opacity: .8;
+}
+.topBlock{
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) .4s;
+    background-size: 100%;
+    height: 350px;
+    width: 100%;
+    position: relative;
+    margin-bottom:25px;
+}
+.descText p {
+    font-size: 13px;
+}
+.nameObject{
+    font-size: 20px;
+    margin: 10px 0 0;
+}
+.tableHeader{
+    margin-bottom: 45px;
+    position: relative;
+    font-size: 21px;
+}
+.tableHeader:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    background: #2497e3;
+    height: 1px;
+    bottom: -22px;
+    width: 120px;
+}
+.tableHeader:after {
+    content: "\f28e";
+    position: absolute;
+    bottom: -29px;
+    font-family: 'FontAwesome';
+    left: 0;
+    right: 0;
+    color: #2497e3;
+    width: 20px;
+    font-size: 14px;
+    margin: auto;
+    background: #f0f1f2;
+    height: 15px;
+    text-align: center;
+}
+/* Add Form */
+.buttonForma{
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 2222;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    background: #2497e3;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    
+}
+.formAdded span.lnr-cross{
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 222;
+    
+}
+.formAdded div, .formAdded input[type=submit]{
+    position: relative;
+    z-index: 22;
+}
+.formAdded::before{
+    content:"";
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1;
+}
+.formAdded:after{
+    content:"";
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
+.insideForm{
+    padding: 25px;
+}
+.formAdded{
+    transition: all .4s;
+    position: fixed;
+    z-index: 222;
+    width: 650px;
+    background: #fff;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top:0px;
+    visibility:hidden;
+    z-index:-1;
+}
+/* Add Form */
+.flash-messages p{
+    margin-bottom: 0 !important
+}
+.flash-messages{
+    position: absolute;
+    right: 0;
+    width: 290px;
+    text-align: center;
+    font-size: 13px;
+    z-index: 22222;
+}
+@media screen and (min-width: 1200px){
+   
+}
+@media screen and (max-width: 1200px) and (min-width: 991px){
+    
+}
+@media screen and (max-width: 991px){
+    .tableEarth tbody tr > td:first-child{
+        width: 65%;
+        display: block;
+    }
+    .tableEarth tbody tr > td:last-child{
+        width: 35%;
+        display: block;
+    }
+    .tableEarth tbody tr{
+        display: flex;
+    }
+    .tableEarth tbody{
+        display: flex;
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 991px) and (min-width: 767px){
+    .formAdded{
+        width: 450px;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 576px){
+    .highwayTop {
+        width: 50%;
+    }
+    .topBlock{
+        background-size: 150%;
+    }
+    .formAdded{
+        width: 400px;
+    }
+}
+@media screen and (max-width: 576px){
+    .highwayTop {
+        width: 100%;
+        padding: 5px 0 5px 100px;
+    }
+    .topBlock{
+        background-size: 200%;
+        background-position: center !important;
+    }
+    .planet_desc a{
+        max-width: 100%;
+        float: inherit;
+        margin-bottom: 15px;
+    }
+    .formAdded{
+        width: 300px;
+    }
+}

@@ -1,0 +1,121 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded"  #formSee="ngForm" (ngSubmit)="onChangeAddOceanSee(formSee); formSee.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>
+            <div class="form-group">
+              <label for="tit">Անվանում</label>
+              <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="see.name" required>
+            </div>
+            <div class="form-group">
+                <label for="tit">Մակերես</label>
+                <input type="text" class="form-control" id="pre" name="area"  [(ngModel)]="see.area" required>
+            </div>
+            <div class="form-group">
+                <label for="ing">Միջին խորություն</label>
+                <input type="text" class="form-control" id="ing" name="deep"  [(ngModel)]="see.deep" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Առավելագույն խորություն</label>
+                <input type="text" class="form-control" id="pre" name="veryDeep"  [(ngModel)]="see.veryDeep" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Աղիություն</label>
+                <input type="text" class="form-control" id="pre" name="solty"  [(ngModel)]="see.solty" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Նկարագրություն</label>
+                <textarea rows="10" class="form-control" id="pre" name="description"  [(ngModel)]="see.description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cap">Հանդիսանում է (****)-ի ծովը</label>
+                <select class="form-control" name="in_area" [(ngModel)]="see.in_area" required>
+                  <option value="xaxax">Խաղաղ Օվկիանոսի</option>
+                  <option value="india">Հնդկական Օվկիանոսի</option>
+                  <option value="atlantic">Ատլանտյան Օվկիանոսի</option>
+                  <option value="north-ice">Հս. սառուցյալ Օվկիանոսի</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="imageState">Նկար</label>
+                <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                    <label class="file-label">
+                      <input class="file-input" type="file" name="url"  [(ngModel)]="see.url"  (change)="upload($event)" required>
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fa fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          choses Image...
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+                <div  class="row" [hidden]="!isImage">
+                  <div class="col-12">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                      </div>
+                    </div>
+                    <div class="uploadedImage alert alert-info" role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                      <span class="d-block">File uploaded:</span>
+                      <div class="editimgUploadedPool">
+                        <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formSee.valid">
+        </div>
+    </form>
+</div>
+
+<div class="row">
+
+    <div class="col-12">
+        <div class="description_asia">
+            <div class="card_thumb_right">
+                <div class="asia_image_wrap">
+                    <a href="/assets/img/ocean.jpg" data-fancybox="images" data-caption="">
+                        <img src="/assets/img/ocean.jpg" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+            <h1>Ծով</h1>
+            <hr class="img_among_hr">
+            <p class="">
+              Ծով, Համաշխարհային օվկիանոսի մաս, որը քիչ թե շատ մեկուսացած է ցամաքով (թերակղզիներով, կղզիներով) կամ ստորջրյա բարձունքներով: Օվկիանոսի բաց մասերից գլխավորապես տարբերվում է ջրաբանական, օդերևութաբանական և կլիմայական ռեժիմով: Որոշ ծովեր հանդիսանում են այլ ծովերի մասեր (օրինակ՝ Էգեյան ծովը Միջերկրական ծովի մասն է)։ Մի քանի տիպիկ ծովեր ավանդաբար կրում են «ծոց» սխալ անվանումը (Մեքսիկական, Հուդզոնի, Պարսից): Դրան հակառակ ծով են կոչվում մի քանի լճեր (Կասպից, Արալյան, Մեռյալ), օվկիանոսային բաց տարածություններ (Սարգասյան, Ֆիլիպինյան):</p>
+            <p>Ըստ մեկուսացման աստիճանի և ջրաբանական ռեժիմի առանձնահատկությունների ծովերը բաժանվում են հետևյալ խմբերի՝ ներքին ծովեր, միջերկրական ծովեր, կիսամեկուսի ծովեր, ծայրամասային ծովեր, միջկղզային ծովեր։ Ըստ աշխարհագրական դիրքի միջերկրական ծովերը երբեմն բաժանում են միջմայրցամաքային և ներմայրցամաքային ծովերի։</p>
+            <p>Ծովերը երկրաբանական առումով երիտասարդ են: Դրանք առաջացել են պալեոգեն-նեոգենում և վերջնականապես ձևավորվել անթրոպոգենում: Կլիման և ջրի ջերմաստիճանը կախված են ծովի աշխարհագրական լայնությունից, ջրային զանգվածի ծավալից ու խորությունից, հարակից ցամաքների կլիմայից: Դրանցից շատերի (Միջերկրական ծով, Կարմիր ծով, Ավստրալա-Ասիական ծով, Պարսից ծոց) ջուրը թե՛ մակերեսին և թե՛ խորքում ավելի տաք է, քան օվկիանոսի հարևան տարածություններինը, իսկ մյուսներինը (Օխոտի, Բերինգի ծովեր, Ա. Լավրենտիոսի, Հուդզոնի ծոցեր)՝ ավելի սառը: Աշխարհում ջրոլորտի մակերևութային առավելագույն ջերմաստիճանները գրանցված են ոչ թե օվկիանոսներում (32°C), այլ՝ ծովերում (Կարմիր ծովում, Պարսից ծոցում՝ մինչև 35°C): Ծովի ջրի աղիությունը, ի տարբերություն օվկիանոսի, խիստ տատանվում է: Սև ծովի մակերեսին աղիությունը 18‰ է, իսկ հյուսիսային ափերի մոտ, թափվող գետերի շնորհիվ, հասնում է 5-6‰-ի: Խոնավ ու ցուրտ շրջանում գտնվող Բալթիկ ծովի աղիությունը 6-8‰ է: Չորային կլիմա ունեցող երկրներով շրջապատված ծովերի աղիությունը բարձր է, Միջերկրական ծովինը 38-39‰ է, Կարմիր ծովինը՝ մինչև 41,5‰: Ծովի և օվկիանոսի միջև տեղի է ունենում ջրափոխանակություն (նեղուցներով): Սառցակալումն ինտենսիվ է Հյուսիսային սառուցյալ օվկիանոսի ծայրամասային ծովերում, որտեղ սառույցները պահպանվում են նաև ամռանը: Բարեխառն գոտու հյուսիսային մասի ծովերում սառցապատումն ավելի վաղ է սկսվում (հոկտեմբեր-նոյեմբեր)՝ ջրի նվազ աղիության և ցամաքի շուտ սառչելու հետևանքով: Ամռանը, ցամաքի տաքացման և գետային տաք ջրերի ներհոսքի շնորհիվ, սառցապատումը շուտ է վերանում, քան օվկիանոսում: Ծովի ջրի գույնը բարձր ջերմաստիճանի և զգալի աղիության պայմաններում կապույտ է, մերձբևեռային սառը և նվազ աղիության դեպքում՝ կանաչավուն:</p>
+            </div>
+        <div class="table_asia">
+           
+            <table class="table table-sm  table-hover table-striped  table-responsive-lg w-100 d-sm-table tablePools">
+                <thead  class="">
+                <tr>
+                  <th scope="col">Անվանում</th>
+                  <th scope="col">Մակերես</th>
+                  <th scope="col">Միջ. խորություն</th>
+                  <th scope="col">Առավելագույն խորություն</th>
+                  <th scope="col">Մակ. ջերմաստիճան</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let see of sees; let i = index" class="tool_tip_parents" [hidden]="see.in_area !== isValue">
+                  <td><a  routerLink="/geographic/world/ocean/{{OceanArm}}/ծովեր/more/{{see.id}}">{{see.name}}</a></td>
+                  <td>{{see.area  + ' հզ.կմ'}}</td>
+                  <td>{{see.deep + ' մ'}}</td>
+                  <td>{{see.veryDeep  + ' մ'}}</td>
+                  <td class="tool_tip_parent">{{see.solty  + ' ‰'}}
+                      <span class="tool_tip badge bagde-pill badge-success">{{see.publication | date}}</span>
+                      <a  routerLink="/geographic/world/ocean/{{OceanArm}}/ծովեր/edit/{{see.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                      <i class="fa fa-trash"  (click)="onClickDelete(see)" *ngIf="isLogin"></i>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>

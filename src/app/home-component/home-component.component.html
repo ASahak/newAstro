@@ -1,0 +1,165 @@
+<router-outlet></router-outlet>
+
+<div class="flash-messages">
+    <flash-messages></flash-messages>
+</div> 
+<div class="buttApreciate">
+  <img src="/assets/img/like.png" class="img-fluid">
+  <span class="yourOpinion" (click)="yourOpinion()">
+      Ձեր Կարծիքը
+  </span>
+</div>
+<div class="formApreciate" #formAppreciated>
+  <div class="leftBar" #leftBar [ngStyle]="{'transform': 'rotateY(' + rotateLeft + 'deg)'}">
+      <span class="lnr lnr-cross closeOpinion" (click)="closeOpinion()"></span>
+      <div class="headerBar pt-3 pb-3 border-bottom d-flex justify-content-between">
+          <b>Ձեր կարծիքը</b>
+          <b (click)="commonOpinion()">Ընդհանուր կարծիքներ</b>
+      </div>
+      <div class="appreciatedBlock">
+          <div class="d-flex align-items-center border-bottom">
+              <img src="/assets/img/opinion1.png" class="img-fluid" alt="">
+              <div class="rightTexture">
+                  <b>Կայքի դիզայնը</b>
+                  <p class="startsEach" data-model="design">
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                  </p>
+              </div>
+          </div>
+          <div class="d-flex align-items-center border-bottom">
+              <img src="/assets/img/opinion2.png" class="img-fluid" alt="">
+              <div class="rightTexture">
+                  <b>Բովանդակության որակը</b>
+                  <p class="startsEach" data-model="textQuality">
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                  </p>
+              </div>
+          </div>
+          <div class="d-flex align-items-center border-bottom">
+              <img src="/assets/img/opinion3.png" class="img-fluid" alt="">
+              <div class="rightTexture">
+                  <b>Հարմարավետությունը</b>
+                  <p class="startsEach" data-model="suitable">
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                  </p>
+              </div>
+          </div>
+          <div class="d-flex align-items-center border-bottom">
+              <img src="/assets/img/opinion4.png" class="img-fluid" alt="">
+              <div class="rightTexture">
+                  <b>Ընդհանուր գնահատականը</b>
+                  <p class="startsEach" data-model="commonAppreciated">
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                      <span class="lnr lnr-star"></span>
+                  </p>
+              </div>
+          </div>
+          <input type="email" class="form-control  mt-2 mb-2" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" id="emailTrue" [(ngModel)]="emailTrue" name="email" ngModel #emailref="ngModel"  placeholder="Էլ-հասցե *" (keypress)="borderNone()">
+          <div *ngIf="emailref.errors &&(emailref.touched || emailref.dirty)" class ="aler alert-danger">
+           <div [hidden]="!emailref.errors?.pattern" class="pl-2 pt-2 pb-2 mb-2" style="font-size:12px">
+             Սխալ Էլեկտրոնային հասցե
+           </div> 
+          </div> 
+          <!-- <input type="email" id="emailTrue" name="email" class="form-control mt-2 mb-2" [(ngModel)]="emailTrue" placeholder="Էլ-հասցե *" (keypress)="borderNone()"> -->
+          <textarea id="comment" class="form-control" rows="5" [(ngModel)]="comment" placeholder="Մեկնաբանություն" (keypress)="borderNoneText()"></textarea>
+          <p class="mb-0 textsignin" *ngIf="UserTrue">
+                Մեկնաբանություն թողնելու համար մուտք գործեք:
+            </p>
+          <div class="authProfile d-flex justify-content-center align-items-center">
+              <button (click)="withinFacebook()" class="ml-1 mr-1">Facebook</button>
+              <button (click)="withinGoogle()" class="ml-1 mr-1">Google</button>
+              <button (click)="withinGithub()" class="ml-1 mr-1">GitHub</button>
+          </div>
+          
+          <button class="btn btn_success mt-3" (click)="onChangeAppreciated()" [disabled]="emailref.errors">Ուղարկել</button>
+      </div>
+  </div>  
+  <div class="rightBar" #rightBar  [ngStyle]="{'transform': 'rotateY(' + rotateRight + 'deg)'}">
+    <span class="lnr lnr-chevron-left backOpinion" (click)="backOpinion()"></span>
+    <div class="headerBar pt-3 pb-3 border-bottom d-flex justify-content-center">
+        <b>Ընդհանուր կարծիքներ</b>
+    </div>
+    <div class="appreciatedBlock" #resStar>
+        <div class="d-flex align-items-center border-bottom">
+            <img src="/assets/img/opinion1.png" class="img-fluid" alt="">
+            <div class="rightTexture">
+                <b>Կայքի դիզայնը</b>
+                <p class="startsEach" data-model="design">
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                </p>
+            </div>
+        </div>
+        <div class="d-flex align-items-center border-bottom">
+            <img src="/assets/img/opinion2.png" class="img-fluid" alt="">
+            <div class="rightTexture">
+                <b>Բովանդակության որակը</b>
+                <p class="startsEach" data-model="textQuality">
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                </p>
+            </div>
+        </div>
+        <div class="d-flex align-items-center border-bottom">
+            <img src="/assets/img/opinion3.png" class="img-fluid" alt="">
+            <div class="rightTexture">
+                <b>Հարմարավետությունը</b>
+                <p class="startsEach" data-model="suitable">
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                </p>
+            </div>
+        </div>
+        <div class="d-flex align-items-center border-bottom">
+            <img src="/assets/img/opinion4.png" class="img-fluid" alt="">
+            <div class="rightTexture">
+                <b>Ընդհանուր գնահատականը</b>
+                <p class="startsEach" data-model="commonAppreciated">
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                    <span class="lnr lnr-star"></span>
+                </p>
+            </div>
+        </div>
+        <h5 class="commentHeader">Մեկնաբանություներ</h5>
+        <div class="border p-3 cardComment">
+           
+            <div *ngFor="let apper of appreciteds" [hidden]="apper.authProfile.image == '' || apper.authProfile.name == ''" class="border-bottom mb-3">
+                <img src="{{apper.authProfile.image}}" alt="" class="img-fluid rounded-circle">
+                <div class="descProfile">
+                    <span class="d-block ">{{apper.authProfile.name}}</span>
+                    <p class="mb-1">{{apper.authProfile.comment}}</p>
+                    <span >{{apper.publication | date}}</span>    
+                </div>
+            </div>
+        </div>
+  </div>
+</div>
+  
+

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a routerLink="/geographic/world/continential/{{mountain.in_area}}">{{isValueArm}}</a>
+        <a routerLink="/geographic/world/continential/{{mountain.in_area}}/mountains">Լեռներ</a>
+        <a>{{mountain.pic}}</a>
+    </div>
+  <div  class="row">
+    <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="card_image_more">
+          <a href="{{ mountain.url }}" class="states_img d-block text-center" data-fancybox="images" data-caption="">
+              <img class="mr-3" src="{{mountain.url}}" class="img-fluid">
+          </a>
+          <div class="desc_states">
+            <h4>{{mountain.pic}}</h4>
+            <p><span>Բարձրություն </span> {{mountain.high + ' մ'}}</p>
+            <p><span>Լեռնաշղթա </span> {{mountain.ridge}}</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+        <div class="descMoreState">
+          <b class="mt-0">{{mountain.pic}}</b>
+          <p>{{mountain.description}}</p>
+        </div>
+    </div>
+  </div>
+</div>

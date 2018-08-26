@@ -1,0 +1,63 @@
+
+<div class="row">
+  <div class="col-12">
+    <div class="descMountains">
+      <h1>Լեռներ</h1>
+      <hr>
+      <p>
+        <a href="/assets/img/frtmount.jpg" data-fancybox="images" data-caption="" class="d-block text-center p-3 float-none w-25 mb-4 float-sm-right">
+            <img src="/assets/img/frtmount.jpg" class="img-fluid">
+        </a>
+        Լեռները Երկրի վրա բնական ճանապարհով են առաջանում: Լեռը մեծ չափի վեր խոյացած բարձրություն է,  այն առանձնացված է հարթ մակերևույթից: Լեռները տարբեր ծագում ունեն, կան տեկտոնիկ լեռներ, դրանք ձևավորվել են Երկրի ապարների շարժման հետևանքով, հայտնի են նաև  հրաբխային ծագման լեռներ, որոնք առաջա-նում են հրաբուխների ժայթքման հետևանքով: </p>
+        <p>Ամեն լեռ տարբեր ձև ունի և յուրովի   գեղեցիկ է: Սակայն, բոլոր լեռներն ունեն երեք հիմնական մաս. գագաթ` գագաթը լեռան բարձրագույն կետն է, ստորոտ`  այն տեղը, որտեղից  սկսվում է լեռը և լանջեր` լեռնագագաթից մինչև ստորոտը իջնող փեշերը:   </p>
+        <p>Լեռները երեք տեսակի են`բարձր (դրանք անվանում են նաև ալպիական լեռներ), միջին և ցածր բարձրության լեռներ: Բարձր լեռներն ավելի նեղ և սրածայր գագաթներ ունեն, այդպիսի   լեռների վրա բույսեր չեն կարող աճել, և ոչ էլ կենդանիներ են բնակվում: Միջին և ցածր բարձրության լեռներն ավելի կլորացված գագաթներ ունեն, այսպիսի լեռների վրա և՛ բույսեր են աճում, և՛ կենդանիներ բնակվում, քանի որ հողն այստեղ ավելի արգասաբեր է:   </p>
+        <p>Երբեմն հանդիպում ենք մեկ  մեծ լեռան` առանձին կանգնած, երբեմն մեկ կամ երկու լեռ է միասին կանգնած: Սակայն  կան լեռներ, ուր   շատ   լեռներ են կանգնած իրար կողք-կողքի, և դրանք շղթայված են իրար: Այսպիսի լեռները կոչվում են լեռնաշղթաներ:   </p>
+    </div>
+    <div class="">
+      <table class="table table-sm  table-hover table-striped  table-responsive-lg w-100 d-sm-table tablePools">
+        <thead  class="">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Անվանում</th>
+            <th scope="col">Գտնվում է՝</th>
+            <th scope="col">Բարձրություն</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let frtmount of frtmounts  | reverse; let i = index  " class="tool_tip_parents" >
+            <td>{{i+1}}</td>
+            <td>{{frtmount.name}}</td>
+            <td>{{frtmount.in_the}}</td>
+            <td class="tool_tip_parent">{{frtmount.high + ' մ'}}
+                <span class="tool_tip badge bagde-pill badge-success">{{frtmount.publication | date}}</span>
+                <a  routerLink="/geographic/world/the-first-one/mountains/edit/{{frtmount.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(frtmount)" *ngIf="isLogin"></i>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="" *ngIf="isLogin">
+  <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+  <form [ngStyle]="styleForm" class="formAdded"  #formFrtArea="ngForm" (ngSubmit)="onChangeAddFirstMountain(formFrtArea); formFrtArea.reset()" >
+    <div class="insideForm">
+      <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+      <div class="form-group">
+        <label for="tit">Անվանում</label>
+        <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="frtmount.name" required>
+      </div>
+      <div class="form-group">
+        <label for="tit">Գտնվում է՝</label>
+        <input type="text" class="form-control" id="pre" name="in_the"  [(ngModel)]="frtmount.in_the" required>
+      </div>
+      <div class="form-group">
+        <label for="tit">Բարձրություն</label>
+        <input type="text" class="form-control" id="pre" name="high"  [(ngModel)]="frtmount.high" required>
+      </div>
+      <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formFrtArea.valid">
+    </div>
+  </form>
+</div>

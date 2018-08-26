@@ -1,0 +1,21 @@
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 col-md-3">
+            <div class="content_ng_filters">
+                <h4 class="mb-0"><a  routerLink="/geographic/world/ocean" class="text-white">Օվկիանոսներ</a>  </h4>
+                <ul class="ocean_ul " #mapOcean>
+                  <li class="" *ngFor='let oceanSel of oceans_select; let i = index'><a routerLink="/geographic/world/ocean/{{oceanSel.name}}/{{oceans && oceans[i]?.id}}" routerLinkActive="ocean-active" >{{oceanSel.name}} <span class="lnr lnr-plus-circle" (click)="slideDown($event)"></span></a>
+                    <ul class="ocean_sub_ul" type="none">
+                        <li class=""><a routerLink="/geographic/world/ocean/{{oceanSel.name}}/ծովեր" routerLinkActive="ocean-active-sub">Ծովեր</a></li>
+                        <li class=""><a routerLink="/geographic/world/ocean/{{oceanSel.name}}/ծովածոցեր" routerLinkActive="ocean-active-sub">Ծովածոցեր</a></li>
+                    </ul>
+                  </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-9">
+           <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

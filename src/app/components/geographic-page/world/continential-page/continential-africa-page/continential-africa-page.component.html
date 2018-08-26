@@ -1,0 +1,96 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded" #formAfrica="ngForm" (ngSubmit)="onChangeAddAfrica(formAfrica); formAfrica.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="africa.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="africa.name">
+            </div>
+            <div class="form-group">
+                <label for="val">Արժեք</label>
+                <input type="text" class="form-control" id="val" name="value"  [(ngModel)]="africa.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formAfrica.valid">
+        </div>
+    </form>
+</div>
+   
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world">Գլխավոր</a>
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a>Աֆրիկա</a>
+    </div>
+    <div class="row">
+        
+        <div class="col-12 col-sm-8 col-md-9 p-0 mb-4">
+            <div class="description_asia">
+                <b>Աֆրիկա</b>
+                <hr>
+                <p>
+                Աֆրիկան տարածքի մեծությամբ (30,3 միլիոն կմ²) և բնակչության թվով (1,033 մլրդ) երկրորդ մայրցամաքն է՝ Եվրասիայից հետո։ Աֆրիկան կազմում է երկրագնդի տարածքի վեց տոկոսը և ցամաքային տարածքի 20,4 տոկոսը[1]: Բնակչությունը կազմում է Երկիր մոլորակի բնակչության 15%-ը[2]: Մայրցամաքը Եվրասիայից բաժանվում է հյուսիսում Միջերկրական ծովով, Սուեզի ջրանցքով և Կարմիր ծովով, հյուսիս-արևելքում՝ Կարմիր ծովով, Բաբ էլ-Մանդեբի նեղուցով, Սուեզի ջրանցքով, Ադենի ծոցով։ Մայրցամաքի արևելքում Մադագասկար կղզին է, որը բաժանվում է մայրցամաքից Մոզամբիկի նեղուցով։ Մայրցամաքում կան 54 ճանաչված անկախ պետություններ և երկու դե ֆակտո պետություններ։<br><br>
+                    Աֆրիկայի բնակչությունը ամենաերիտասարդն է բոլոր մայրցամաքների մեջ, աֆրիկացիների 50%-ը ծնվել է 1991 թվականին կամ ավելի ուշ[3][4]: Ալժիրը տարածքով ամենամեծն է մայրցամաքում, իսկ բնակչությամբ ամենամեծը Նիգերիան է։</p>
+                <p>
+                    Այս մայրցամաքը Աֆրիկա են անվանել հին հռոմեացիները՝ տեղաբնիկ «աֆարիկ» ցեղի անունով։ Ըստ զբաղեցրած տարածքի՝ Աֆրիկան երկրագնդի երկրորդ մայրցամաքն է՝ Եվրասիայից հետո։ Դեռևս մեր թվականությունից շատ դարեր առաջ Աֆրիկայի հյուսիսային ափերն են այցելել փյունիկեցիները, հին հռոմեացիները, հին հույները։ Ոսկի, փղոսկր և թանկարժեք փայտանյութ հայթայթելու համար եգիպտական փարավոնները արշավախմբեր են ուղարկել դեպի Նեղոսի վերին հոսանքները։
+                </p>
+                <p>
+                    Աֆրիկայի աշխարհագրական դիրքը յուրահատուկ է։ Այն միակ մայրցամաքն է, որի գրեթե կենտրոնական մասով անցնում է հասարակածը: Գլխավոր միջօրեականը անցնում է նրա արևմտյան մասով։ Աֆրիկայի մեծ մասը գտնվում է արևադարձային լայնություններում։ Մայրցամաքը հյուսիսից-հարավ ձգվում է 8000 կմ., իսկ արևմուտքից-արևելք՝ 3500-ից (հարավում) 7500 կմ. (հյուսիսում)։ Նրա ծայրակետերն են. հյուսիսում՝ Էլ-Աբյադ (հս. լ. 32°20’), հարավում՝ Ասեղի (հվ. լ. 34°52’), արևմուտքում՝ Ալմադի (արմ. երկ. 17°32’), արևելքում՝ Ռաս-Հաֆուն (Հաֆուն) (արլ. երկ. 51°23’) հրվանդանները:
+                </p>
+            </div>
+        </div>
+    
+        <div class="col-12 col-sm-4 col-md-3 pr-0">
+            <div class="card_thumb_right">
+                <div class="asia_image_wrap">
+                    <div *ngIf="(africaphotos | json) == '[]'" >
+                        <img src="/assets/img/noImage.png" class="img-fluid">
+                        <button *ngIf="isLogin" (click)="AddDrop()" class="plusDrop"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                    </div>
+                    <div *ngFor="let asPhoto of africaphotos">
+                        <a *ngIf="(africaphotos | json) != '[]'" href="{{ asPhoto.url }}" data-fancybox="images" data-caption="">
+                            <img src="{{ asPhoto.url }}" class="img-fluid">
+                        </a>
+                        <button *ngIf="isLogin" (click)="onClickDeletePhoto(asPhoto)"  class="plusDrop"><i class="fa fa-pencil"></i></button>
+                    </div>
+                </div>
+                <div *ngFor="let desc of africas">
+                    <div *ngIf="!desc.name"  class="tool_tip_parent">
+                        <b>{{desc.description}} -</b>
+                        <em>{{desc.value}}</em>
+                        
+                        <a  routerLink="/geographic/world/continential/africa/edit/{{desc.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(desc)" *ngIf="isLogin"></i>  
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="col-12 uploadDrop" [ngStyle]="styleDrop"  *ngIf="(africaphotos | json) == '[]' && isLogin">
+            <file-upload-africa></file-upload-africa>
+        </div>
+        <table class="table table-sm  table-hover table-striped   table-responsive-lg w-100 d-sm-table tablecontinents mt-4">
+            <thead  class=""> 
+                <tr>
+                <th scope="col">Նկարագրություն</th>
+                <th scope="col">Անվանում</th>
+                <th scope="col">Արժեք</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let africa of africas; let i = index " class="tool_tip_parents">
+                <td [hidden]="africa.name == '' || africa.name == null">{{africa.description}}</td>
+                <td [hidden]="africa.name == '' || africa.name == null">{{africa.name}}</td>
+                <td [hidden]="africa.name == '' || africa.name == null"  class="tool_tip_parent">{{africa.value}}
+                    <span class="tool_tip badge bagde-pill badge-success">{{africa.publication | date}}</span>
+                    <a  routerLink="/geographic/world/continential/africa/edit/{{africa.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                    <i class="fa fa-trash"  (click)="onClickDelete(africa)" *ngIf="isLogin"></i>  
+                </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>  
+</div>

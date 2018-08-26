@@ -1,0 +1,418 @@
+
+
+
+.file-cta {
+    background-color: #f5f5f5;
+    color: #4a4a4a;
+}
+
+.file-cta, .file-name {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    font-size: 1rem;
+    height: 2.25em;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding-bottom: calc(.375em - 1px);
+    padding-left: calc(.625em - 1px);
+    padding-right: calc(.625em - 1px);
+    padding-top: calc(.375em - 1px);
+    position: relative;
+    vertical-align: top;
+    border-color: #dbdbdb;
+    border-radius: 3px;
+    font-size: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    white-space: nowrap;
+}
+.file-icon {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 1em;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-right: .5em;
+    width: 1em;
+}
+.file-icon .fa {
+    font-size: 14px;
+}
+.file-input {
+    height: .01em;
+    left: 0;
+    outline: 0;
+    position: absolute;
+    top: 0;
+    width: .01em;
+}
+.file-label {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+}
+.file {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.uploadedImage img{
+  max-width: 120px;
+}
+
+.editIcons i{
+    cursor: pointer;
+}
+.editIcons{
+    position: absolute;
+    right: 0;
+}
+
+.media_body{
+    width:calc(100% - 200px) 
+}
+.datePublic{
+    position: relative;
+    bottom: 0;
+    color: #fff;
+    background: #2497e3;
+    padding: 2px 5px;
+    font-size: 12px;
+    width: 85px;
+    /* float: right; */
+    margin-top: 0px;
+}
+.btnMore{
+    background: #2497e3;
+    color: #fff !important;
+    padding: 7px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    cursor: pointer;
+}
+.descItem{
+    height: 85px;
+    overflow: hidden;
+    font-size: 13px;
+    background: #fff;
+    padding: 5px 12px 0;
+    border-radius: 5px;
+}
+.itemZone {
+    background: #e9ecef;
+    padding: 15px;
+    border: 1px solid #dee2e6;
+    margin-top: 15px;
+    border-radius: 5px;
+    position: relative;
+}
+.itemZone img{
+    max-width: 100%;
+}
+.itemZone > a{
+    width: 200px;
+    padding: 0 10px;
+    display: block;
+}
+.desc{
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: 100%;
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 25px;
+    width: 100%;
+}
+.desc::-webkit-scrollbar {
+    width: 2px;
+}
+
+.desc::-webkit-scrollbar-thumb {
+    background: #343a40;
+    border-radius: 5px;
+}
+.desc::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 2px #343a40;
+    border-radius: 5px;
+}
+
+.frogeFixed:after {
+    position: fixed;
+    background: rgba(0,0,0,0.4);
+    content: "";
+    left: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    z-index: -1;
+}
+.frogeFixed {
+    z-index: 2224;
+    position: fixed;
+    top: 10vw;
+    width: 80%;
+    height: 480px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 15px;
+    background: #2497e3;
+}
+.closeButton{
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    color: #2497e3;
+    font-size: 30px;
+    background: #ffffff;
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 40px;
+    cursor: pointer;
+}
+.desc img{
+    max-width: 250px;
+    float: left;
+    margin-right: 25px;
+}
+.commonWrap {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+}
+
+.highwayTop {
+    background-color: #2497e3;
+    width: 350px;
+    padding: 10px;
+    transform: skew(-45deg);
+    background-size: contain;
+    margin-left: -50px;
+    padding-left: 100px;
+    margin-bottom: 25px;
+    bottom: 0;
+    position: absolute;
+}
+.highwayTop p {
+    transform: skew(45deg);
+    color: #fff;
+    margin-bottom: 0;
+    font-size: 13px;
+}
+.highwayTop a {
+    color: #fff;
+    position: relative;
+    text-decoration: none;
+}
+.highwayTop a:after {
+    content: "\00bb";
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    color: #ddd;
+    font-weight: 300;
+    padding: 0 10px;
+}
+.highwayTop span {
+    opacity: .8;
+}
+.topBlock{
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) .4s;
+    background-size: 100%;
+    height: 350px;
+    width: 100%;
+    position: relative;
+    margin-bottom:25px;
+}
+
+/* Add Form */
+.buttonForma{
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 2222;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    background: #2497e3;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    
+}
+.formAdded span.lnr-cross{
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 222;
+    
+}
+.formAdded div, .formAdded input[type=submit]{
+    position: relative;
+    z-index: 22;
+}
+.formAdded::before{
+    content:"";
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1;
+}
+.formAdded:after{
+    content:"";
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
+.insideForm{
+    padding: 25px;
+}
+.formAdded{
+    transition: all .4s;
+    position: fixed;
+    z-index: 222;
+    width: 650px;
+    background: #fff;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top:0px;
+    visibility:hidden;
+    z-index:-1;
+}
+/* Add Form */
+.flash-messages p{
+    margin-bottom: 0 !important
+}
+.flash-messages{
+    position: absolute;
+    right: 0;
+    width: 290px;
+    text-align: center;
+    font-size: 13px;
+    z-index: 22222;
+}
+.intoDiv{
+    padding: 5px 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+.text_center_page{
+    display: flex;
+    justify-content: center;
+}
+@media screen and (min-width: 1200px){
+   
+}
+@media screen and (max-width: 1200px) and (min-width: 991px){
+    
+}
+@media screen and (max-width: 991px){
+
+}
+@media screen and (max-width: 991px) and (min-width: 767px){
+    .formAdded{
+        width: 450px;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 576px){
+    .highwayTop {
+        width: 50%;
+    }
+    .topBlock{
+        background-size: 150%;
+    }
+    .formAdded{
+        width: 400px;
+    }
+}
+@media screen and (max-width: 576px){
+    .highwayTop {
+        width: 100%;
+        padding: 5px 0 5px 100px;
+    }
+    .topBlock{
+        background-size: 200%;
+        background-position: center !important;
+    }
+   
+    .formAdded{
+        width: 300px;
+    }
+    .media_body h5 {
+        margin-top: 15px !important;
+    }
+    .media_body {
+        width: 100%;
+        text-align: center;
+    }
+    .itemZone > a {
+        width: 100%;
+        padding: 0 10px;
+        display: block;
+        text-align: center;
+    }
+    .itemZone img {
+        max-height: 130px;
+    }
+    .desc{
+        text-align: center;
+    }
+    .desc img{
+        float: none;
+    }
+
+}

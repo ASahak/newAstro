@@ -1,0 +1,30 @@
+/* You can add global styles to this file, and also import other style files */
+.tool_tip {
+     position: absolute;
+    top: 0;
+    right: 0;
+    opacity: 0;
+    bottom: 0;
+    margin: auto;
+    height: 20px;
+}
+.tool_tip_parent i{
+    cursor: pointer;
+    position: relative;
+    z-index: 22;
+    right: 0;
+}
+.tool_tip_parents:hover .tool_tip {
+    opacity: 1
+}
+.tool_tip_parent{
+    position: relative;
+    font-size: 13px;
+    box-shadow: -1px 2px 1px -1px #ccc;
+    padding: 5px 0;
+}
+
+
+a:hover{
+    text-decoration:none
+}

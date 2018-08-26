@@ -1,0 +1,89 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form  [ngStyle]="styleForm" class="formAdded"  #formMountain="ngForm" (ngSubmit)="onChangeAddMountain(formMountain); formMountain.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>  
+            <div class="form-group">
+                <label for="ing">Անվանում</label>
+                <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="mountain.name" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Լեռնագագաթ</label>
+                <input type="text" class="form-control" id="pre" name="pic"  [(ngModel)]="mountain.pic" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Բարձրություն (մ)</label>
+                <input type="text" class="form-control" id="pre" name="high"  [(ngModel)]="mountain.high" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formMountain.valid">
+        </div>
+    </form>
+</div>
+<div class="topSectionArm">
+    <img src="/assets/img/topImageMountain.jpg" class="img-fluid" alt="">
+</div>
+    
+<div class="container">
+    <div class="highwayArm">
+        <a routerLink="/geographic/armenia">Հայաստան</a>
+        <a>Լեռներ</a>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-5 col-md-4">
+            <div class="swiper-container main_mountains">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/assets/img/mountainArm1.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/assets/img/mountainArm2.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/assets/img/mountainArm3.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/assets/img/mountainArm4.jpg" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-7 col-md-8">
+            <div class="descLakes">
+                <h3>Լեռներ</h3>
+                <p>Լեռ, հարակից հարթավայրերի նկատմամբ Երկրի մակերևույթի բարձրադիր տեղամաս, որը ռելիեֆի` համեմատաբար հարթ վայրից կտրուկ բարձրացած է: Լեռները սովորաբար ունենում են լավ արտահայտված գագաթներ, լանջեր, ստորոտներ:
+                    <br>
+                    Լեռները պատում են Ասիայի 64%-ը, Եվրոպայի 25%-ը, Հարավային Ամերիկայի 22%-ը, Ավստրալիայի 17%-ը և Աֆրիկայի 3%-ը։ Երկրի ցամաքային զանգվածի 24%-ը լեռներ են և մարդկության 10%-ը ապրում է լեռնային վայրերում[1]: Երկրի վրա լեռներն առաջացել են միլիոնավոր տարիներ առաջ, բայց այսօր էլ շարունակվում են լեռնակազմավորման շարժընթացները՝ տեղի են ունենում երկրաշարժեր, ժայթքում են հրաբուխներ և այլն: Ըստ այդմ` լեռները կարող են լինել երիտասարդ և ծեր։
+                    <br>
+                    Լեռան բարձրությունը, հաշված ստորոտից, անվանում են հարաբերական բարձրություն. այդ ցուցանիշով աշխարհում ամենաբարձրը Արարատն է (4365 մ): Ծովի մակարդակից հաշված բարձրությունը կոչվում է «բացարձակ», որով առաջին տեղում է Էվերեստը (8848 մ): Բլուրները նույնպես լեռներ են, որոնք ունեն փոքր հարաբերական բարձրություն:
+                </p>
+                
+            </div> 
+        </div>
+        <div class="col-12 mt-4">
+            <table class="table table-sm  table-hover table-striped   table-responsive-lg w-100 d-sm-table tablePools">
+                <thead  class=""> 
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Անվանում</th>
+                    <th scope="col">Լեռնագագաթ</th>
+                    <th scope="col">Բարձրություն (մ)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let mountain of mountains; let i = index" class="tool_tip_parents">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{mountain.name}}</td>
+                    <td>{{mountain.pic}}</td>
+                    <td class="tool_tip_parent">{{mountain.high}}  
+                        <span class="tool_tip badge bagde-pill badge-success">{{mountain.publication | date}}</span>
+                        <a  routerLink="/geographic/armenia/mountains/edit/{{mountain.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(mountain)" *ngIf="isLogin"></i>
+                    </td>
+                    
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

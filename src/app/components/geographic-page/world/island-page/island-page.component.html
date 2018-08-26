@@ -1,0 +1,65 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+    <form [ngStyle]="styleForm" class="formAdded"  #formModificarIslands="ngForm" (ngSubmit)="onChangeAddIslands(formModificarIslands); formModificarIslands.reset()">
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>  
+            <div class="form-group">
+                <label for="ing">Անվանում</label>
+                <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="island.name" required>
+            </div>
+            <div class="form-group">
+                <label for="cap">Մակերես</label>
+                <input type="text" class="form-control" id="cap" name="area"  [(ngModel)]="island.area"required>
+            </div>
+            <div class="form-group">
+                <label for="pop">Գտնվում է՝</label>
+                <input type="text" class="form-control" id="pop" name="in_the"  [(ngModel)]="island.in_the" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarIslands.valid">
+        </div>
+    </form>
+</div>
+<div class="container">
+  <div class="row">
+      <div class="col-12">
+        <div class="islands_wrap">
+          <h3 class="text-center">Կղզի</h3>
+          <hr>
+          <p>
+            <a href="/assets/img/island.jpg" data-fancybox="images" data-caption="" class="card_island p-3 float-none mb-4 float-sm-right">
+                <img src="/assets/img/island.jpg" class="img-fluid">
+            </a>
+            <b>Կղզի</b>, բոլոր չորս կողմերից ջրով շրջապատված ցամաքի կտոր։ Կղզիներն առաջանում են երկրակազմական պրոցեսների ընթացքում։ Կան պետություններ, որոնք կազմված են բացառապես կղզիներից (Ինդոնեզիա, Ֆիլիպիններ և այլն)։ Երկրագնդի ամենամեծ կղզին Գրենլանդիան է՝ 2.1 միլիոն կմ² տարածքով։</p>
+            <p><b class="d-block">Կղզիների առաջացումը</b>
+Հարյուրավոր տարիներ ծովի ալիքները ողողում են ափը՝ աստիճանաբար նրանից անջատելով ցամաքի մի հատված: Քանի դեռ այդ հատվածը ցամաքի մի շերտով՝ պարանոցով, միացած է մայրցամաքին, այն թերակղզի է (Արաբական, Ալյասկա, Լաբրադոր, Սկանդինավյան): Բայց երբ ջրի տակ է անցնում պարանոցը, թերակղզին վերածվում է կղզու, որտեղ կարելի է հասնել միայն լողալով կամ նավակով:
+Պատահում է նաև, որ ցամաքն աստիճանաբար իջնում է, նրա վրա գրոհում է ծովը կամ օվկիանոսը: Ջրի մակերևույթից վեր մնում են միայն լեռների գագաթները, որոնք էլ հենց դառնում են կղզիներ: Այդպես են առաջացել, օրինակ, Խաղաղ օվկիանոսում գտնվող Ալեության և Կոմանդորյան կղզիները:
+Հաճախ օվկիանոսներում կղզիներ գոյանում են այնտեղ, որտեղ թափվում են հզոր գետերը՝ իրենց հետ բերելով կավ, տիղմ կամ ավազ: Տարիների, հարյուրամյակների ընթացքում այդ ջրաբերուկները նստում են հատակին՝ առաջացնելով սկզբում ծանծաղուտ, հետո՝ նաև կղզի:</p>
+            <p>Որոշ կղզիներ աչքի են ընկնում բուսական և կենդանական աշխարհների  ինքնատիպությամբ: Դա բացատրվում է նրանով, որ դրանք վաղուց են անջատվել մայրցամաքից, և նրանց օրգանական աշխարհը զարգացել է մեկուսի: Օրինակ՝ Մադագասկար կղզում շատ են բնաշխարհիկները: Աֆրիկա մայրցամաքին բնորոշ շատ կենդանիներ Մադագասկարում չեն հանդիպում: Դրա փոխարեն կղզում բնակվում են այնպիսի կենդանիներ (լեմուրներ, միջատակեր տենրեկներ և այլն), որոնք  մայրցամաքում չեն պահպանվել:</p>
+        </div>
+      </div>
+      <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+        <table class="table table-sm  table-hover table-striped   tableCity table-responsive-lg w-100 d-sm-table">
+          <thead  class="">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Անվանում</th>
+              <th scope="col">Մակերես</th>
+              <th scope="col">Գտնվում է՝</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let island of islands; let i = index" class="tool_tip_parents">
+              <th scope="row">{{i+1}}</th>
+              <td>{{island.name}}</td>
+              <td>{{island.area}}</td>
+              <td class="tool_tip_parent">{{island.in_the}}
+                <span class="tool_tip badge bagde-pill badge-success">{{island.publication | date}}</span>
+                <a  routerLink="/geographic/world/island/edit/{{island.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(island)" *ngIf="isLogin"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+</div>

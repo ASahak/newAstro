@@ -1,0 +1,71 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+    <form  [ngStyle]="styleForm"  class="formAdded"  #formModificarSunPlanet="ngForm" (ngSubmit)="onChangeAddSunPlanet(formModificarSunPlanet); formModificarSunPlanet.reset()">
+      <div class="insideForm">
+        <span class="lnr lnr-cross" (click)="closeForm()"></span>  
+        <div class="form-group">
+             <label for="ing">Վերնագիր</label>
+             <input type="text" class="form-control" id="ing" name="title"  [(ngModel)]="sunPlanet.title" required>
+         </div>
+         <div class="form-group">
+             <label for="cap">Արժեք</label>
+             <input type="text" class="form-control" id="cap" name="value"  [(ngModel)]="sunPlanet.value"required>
+         </div> 
+         <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarSunPlanet.valid">
+        </div>
+      </form>
+  </div>
+  <div class="flash-messages">
+      <flash-messages></flash-messages>
+  </div>
+  <div class="topBlock topBlockEarth" style="background-image: url(/assets/img/topImageSun.jpg)" [ngStyle]="{'background-position': '0px ' + positionTop + 'px'}">
+    <div class="highwayTop">
+      <p>
+        <a routerLink="/astronomic">Գլխավոր</a>
+        <span>Արեգակ</span>
+      </p>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="planet_desc">
+            <a href="/assets/img/SunPlanet.jpg" data-fancybox="images" data-caption="">
+              <img src="/assets/img/SunPlanet.jpg" class="img-fluid">
+              <h4  class="nameObject">Արեգակ</h4>
+            </a>
+            <div  class="descText">
+               <p> <b>Արեգակ</b> (Արև), Արեգակնային համակարգի կենտրոնում գտնվող աստղ։ Այն համարյա կատարյալ գունդ է և կազմված է մագնիսական դաշտերով միահյուսված տաք պլազմայից: Արեգակն ունի մոտավորապես 1 392 684 կմ տրամագիծ, որը մոտավորապես 109 անգամ մեծ է երկրի տրամագծից, իսկ զանգվածը (2×1030 կգ՝ Երկրինի 330000-ապատիկը) կազմում է Արեգակնային համակարգի ընդհանուր զանգվածի մոտ 99.86%-ը։</p>
+
+                <p>Արեգակի ճառագայթումը պահպանում է Երկրի կյանքը (ֆոտոններն անհրաժեշտ են լուսասինթեզի գործընթացի սկզբնական շրջանների համար), կանխորոշում է կլիման։ 
+                Արեգակը բաղկացած է ջրածնից (զանգվածի ≈73 %-ը և ծավալի ≈92 %-ը), հելիումից (զանգվածի ≈25 %-ը և ծավալի ≈7 %-ը) և հետևյալ, չնչին քանակության քիմիական տարրերից՝ երկաթ, նիկել, թթվածին, ազոտ, սիլիցիում, ծծումբ, մագնեզիում, ածխածին, նեոն, կալցիում և քրոմ: 
+                Ըստ սպեկտրալ դասակարգման՝ Արեգակը պատկանում է G2V աստղերի տեսակին՝ («դեղին թզուկ»)։ Արեգակի մակերեսի ջերմությունը հասնում է 6000 K, դրա շնորհիվ Արեգակն արձակում է գրեթե սպիտակ լույս, սակայն ավելի ուժեղ ցրման և Երկրի մթնոլորտի կողմից կարճալիք ճառագայթների կլանման պատճառով Արևի ուղիղ լույսը մոլորակի մակերեսի մոտ ստանում է դեղին երանգ։</p>
+                
+                <p>Արեգակը կազմավորվել է 4.6 միլիարդ տարի առաջ՝ հսկայական մոլեկուլային ամպի գրավիտացիոն փլուզման հետևանքով։ Արևային լուսակը պարունակում է իոնացված և չեզոք մետաղների և նաև իոնացված ջրածինի գծեր։ 
+                Ծիր Կաթին գալակտիկայում կա G2 կարգի ավելի քան 100 միլիոն աստղ։ Ընդ որում, Ծիր Կաթինի աստղերի 85 %-ն ունեն ավելի նվազ պայծառություն, քան Արեգակը (մեծամասամբ կարմիր թզուկներ են)։ Ինչպես և գլխավոր հաջորդականության բոլոր աստղերը, Արեգակն էներգիա է արտադրում հելիումի և ջրածինի ջերմամիջուկային սինթեզի միջոցով։</p>
+                
+                <p>Արեգակը գտնվում է Ծիր Կաթինի կենտրոնից 26 000 լուսատարի հեռավորության վրա և պտտվում է նրա շուրջ, անելով մեկ պտույտը 225 - 250 միլիոն տարվա ընթացքում։ Արեգակի ուղեծրային արագությունը հավասար է 217 կմ/վ՝ այսպիսով, այն անցնում է մեկ լուսատարին 1400 երկրային տարում, իսկ մեկ աստղագիտական միավորը՝ 8 երկրային օրում: 
+                Ներկայումս, Արևը գտնվում է Ծիր Կաթինի Հայկի ձեռքի ներքին ծայրում Պերսևսի ձեռքի և Աղեղնավորի ձեռքի միջև, այսպես կոչված «Տեղային միջաստղային ամպում» - բարձր խտության գոտում, որը, իր հերթին, գտնվում է նվազ խտություն ունեցող «Տեղային պղպջակում» - ցրված բարձրաջերմ միջաստղային գազի գոտում։ 50 ամենամոտիկ աստղային համակարգերի աստղերից՝ 17 լուսային տարվա սահմաններում՝ Արեգակը հանդիսանում է չորրորդ պայծառության աստղ (նրա բացարձակ աստղային մեծությունն է +4,83m)։</p>
+            </div> 
+        </div>
+        
+      </div>
+      <div class="col-12 col-md-10 col-lg-8 mx-auto">
+          <h4 class="text-center tableHeader">Թվական տվյալներ Արեգակի մասին</h4>
+          <table class="table table-sm  table-hover table-striped   table-responsive-lg tableEarth" >
+            <tbody>
+              <tr *ngFor="let sunPlanet of sunPlanets; let i = index" class="tool_tip_parents">
+                
+                <td>{{sunPlanet.title}}</td>
+                <td class="tool_tip_parent">{{sunPlanet.value}}
+                  <span class="tool_tip badge bagde-pill badge-success"  *ngIf="isLogin">{{sunPlanet.publication | date}}</span>
+                  <a  routerLink="/astronomic/sun/edit/{{sunPlanet.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                  <i class="fa fa-trash"  (click)="onClickDelete(sunPlanet)" *ngIf="isLogin"></i>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+  </div> 
+  

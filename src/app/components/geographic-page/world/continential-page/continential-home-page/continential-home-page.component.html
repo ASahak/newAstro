@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <div class="description_asia">
+                <div class="card_thumb_right card">
+                    <div class="asia_image_wrap">
+                        <a href="/assets/img/tenor.gif" data-fancybox="images" data-caption="">
+                            <img src="/assets/img/tenor.gif" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+                <h3>Մայրցամաք</h3>
+                <hr class="img_among_hr">
+                <p class="text-muted">Մայրցամաք, երկրակեղևի խոշոր հատված է, որի մակերևույթի մեծ մասը գտնվում է համաշխարհային օվկիանոսի մակարդակից (այսինքն՝ ծովի մակարդակից) բարձր՝ ցամաքի տեսքով։ Մայրցամաքների թիվը 6-ն է։</p>
+                <p class="text-muted">Ի տարբերություն մայրցամաքների՝ աշխարհամասերը, որոնք կրկին 6-ն են, ընդգրկում են նաև մոտակա կղզիները։ Եվրասիան ընդգրկում է 2 աշխարհամաս՝ Եվրոպա և Ասիա։ Հյուսիսային և Հարավային Ամերիկաները միավորվում են Ամերիկա աշխարհամասի մեջ։ Իսկ Ավստրալիա մայրցամաքը մտնում է Ավստրալիա և Օվկիանիա աշխարհամասի մեջ։ Աֆրիկան և Անտարկտիդան հիմնականում համընկնում են (չհաշված կղզիները)։ Արտասահմանյան որոշ մասնագետներ այլ դասակարգումներ են տալիս, սակայն դրանք վիճարկելի են և ընդունելի չեն ՀՀ-ում, այդ իսկ պատճառով դրանց նկարագրությանը չենք անդրադառնում, դրանց մասին կարող եք ծանոթանալ այլալեզու վիքիներում։</p>
+                <h3>Մայրցամաքների ձևավորման էվոլյուցիա</h3>
+                <hr>
+                <p class="text-muted">Մոտ 250 մլն. տարի առաջ երկրագնդի վրա կար մեկ մայրցամաք՝ Պանգեյը, որի մակերեսը մոտավորապես հավասար էր ժամանակակից ցամաքային տարածքի մակերեսին։ Այդ գերպերմայրցամաքը ողողվում էր Պանտալասս օվկիանոսով։ Սակայն մոտ 200 մլն. տարի առաջ Պանգեյը բաժանվեց 2 նոր մայրցամաքների՝ Գոնդվանայի և Լավրազիայի, որոնց միջև առաջացավ Թետիս օվկիանոսը։ Թետիսը գտնվում էր ժամանակակից Միջերկրական, Սև, Կասպից ծովերի, Պարսից ծոցի և հարակից այլ տարածքների տեղում։ Հետագայում արդեն սկսեցին մասնատվել Գոնդվանան և Լավրազիան։ Սկզբից Գոնդվանայից անջատվեց ցամաքի մի խոշոր հատված, որն սկսեց շարժվել դեպի հարավ-արևելք։ Հետագայում այն բաժանվեց 2 ոչ հավասար մասերի՝ Անտարկտիդայի, որը շարժվեց դեպի հարավ, և Ավստրալիայի, որը շարժվեց դեպի հյուսիս։ Գոնդվանայի մյուս մասը բաժանվեց մի քանի պլատֆորմների, որոնցից ամենախոշորներն են Աֆրիկյանը և Հարավամերիկյանը, որոնք իրարից հեռանում են տարին մոտ 2 սմ։</p>
+                <p class="text-muted">
+                Լավրազիան բաժանվեց 2 պլատֆորմների՝ Հյուսիսամերիկյան և Եվրասիական։ Ի տարբերություն այլ մայրցամաքների, որոնց հիմքում ընկած է մեկ պլատֆորմ, Եվրասիան ձևավորվել է 3 պալտֆորմներից՝ Եվրասիական, Հնդկակական և Արաբական, սակայն Եվրասիական պլատֆորմն այժմ իր մեջ ընդգրկում է Արևելաեվրոպական, Սիբիրական, Չին-կորեական պլատֆորմները։ Արաբական և Եվրասիական պլատֆորմների միացման պրոցեսի արդյունքում ձևավորվեցին Հայկական լեռնաշխարհը և Կովկասը։</p>
+            </div>
+            <div class="table_asia">
+                <div class="" *ngIf="isLogin">
+                    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+                    <form [ngStyle]="styleForm" class="formAdded"  #formContinents="ngForm" (ngSubmit)="onChangeAddContinents(formContinents); formContinents.reset()" >
+                        <div class="insideForm">
+                            <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+                            <div class="form-group mt-4">
+                                <select name="name" id="continents" class="form-control" [(ngModel)]="continent.name" required>
+                                    <option value="" selected="" hidden="">Անվանում</option>
+                                    <option  *ngFor="let cont of continentsName" value="{{cont.name}}">{{cont.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="tit">Մակերես</label>
+                                <input type="text" class="form-control" id="pre" name="area"  [(ngModel)]="continent.area" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="ing">Ամենաբարձր կետ</label>
+                                <input type="text" class="form-control" id="ing" name="high_pic"  [(ngModel)]="continent.high_pic" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pre">Նվազագույն կետ</label>
+                                <input type="text" class="form-control" id="pre" name="under_pic"  [(ngModel)]="continent.under_pic" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="pre">Բնակչություն (մլն)</label>
+                                <input type="text" class="form-control" id="pre" name="population"  [(ngModel)]="continent.population" required>
+                            </div>
+                            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formContinents.valid">
+                        </div>
+                    </form>
+                </div>
+                <table class="table table-sm  table-hover table-striped   table-responsive-lg w-100 d-sm-table tablecontinents mt-4">
+                <thead  class="">   
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Անվանում</th>
+                    <th scope="col">Մակերես</th>
+                    <th scope="col">Ամենաբարձր կետ</th>
+                    <th scope="col">Նվազագույն կետ</th>
+                    <th scope="col">Բնակչություն (մլն)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let continent of continents; let i = index" class="tool_tip_parents">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{continent.name}}</td>
+                    <td>{{continent.area}}</td>
+                    <td>{{continent.high_pic}}</td>
+                    <td>{{continent.under_pic}}</td>
+                    <td class="tool_tip_parent">{{continent.population}}
+                        <span class="tool_tip badge bagde-pill badge-success">{{continent.publication | date}}</span>
+                        <a  routerLink="/geographic/world/continential/edit/{{continent.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(continent)" *ngIf="isLogin"></i>
+                    </td>
+
+                    </tr>
+                </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

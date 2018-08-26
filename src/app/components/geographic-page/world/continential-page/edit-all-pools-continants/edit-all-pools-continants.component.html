@@ -1,0 +1,69 @@
+<div class="row">
+      <div class="col-12" *ngIf="isLogin"  style="padding: 15px; background: #e2e0e0;">
+          <form #formModificarPools="ngForm" (ngSubmit)="onModificarRecetPools(formModificarPools)">
+               <div class="form-group">
+                   <label for="ing">Անվանում</label>
+                   <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="pool.name" required>
+               </div>
+               <div class="form-group">
+                   <label for="cap">Մակերես</label>
+                   <input type="text" class="form-control" id="cap" name="area"  [(ngModel)]="pool.area"required>
+               </div>
+               <div class="form-group">
+                   <label for="pop">Աղիություն</label>
+                   <input type="text" class="form-control" id="pop" name="solty"  [(ngModel)]="pool.solty" required>
+               </div>
+               <div class="form-group">
+                   <label for="ar">Առավելագույն խորություն</label>
+                   <input type="text" class="form-control" id="ar" name="deep"  [(ngModel)]="pool.deep" required>
+               </div>
+               <div class="form-group">
+                    <label>Նկար</label>
+                    <div class="changedImage" *ngIf="!isImage">
+                      <img src="{{pool.url}}" alt="" class="img-fluid">
+                    </div>
+                     <div class="file">
+                       <label class="file-label">
+                          <input class="file-input" type="file" name="url"  (change)="upload($event)" required>
+                          <span class="file-cta">
+                            <span class="file-icon">
+                              <i class="fa fa-upload"></i>
+                            </span>
+                            <span class="file-label">
+                              Update Image
+                            </span>
+                          </span>
+                        </label>
+                      </div>
+                       <div class="progress">
+                         <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                         </div>
+                       </div>
+                       <div *ngIf="downloadURL | async; let downloadSrc" class="row alert alert-info" role="alert">
+                         <div class="col-12 col-md-6 col-lg-4">
+                           File uploaded:
+                            <div class="editimgUploadedPool">
+                             <img src="{{downloadSrc}}" alt="" class="img-fluid">
+                           </div>
+                         </div>
+                       </div>
+                </div>
+               <div class="form-group">
+                   <label for="desc">Նկարագրություն</label>
+                   <textarea type="text" rows="6" class="form-control" id="desc" name="description"  [(ngModel)]="pool.description" required></textarea>
+               </div>
+               <div class="form-group">
+                   <label for="cap">Գտնվում է՝</label>
+                   <select class="form-control" name="in_area" [(ngModel)]="pool.in_area" required>
+                     <option value="asia">Ասիայում</option>
+                     <option value="europa">Եվրոպայում</option>
+                     <option value="north-america">Հս Ամերիկայում</option>
+                     <option value="south-america">Հվ Ամերիակյում</option>
+                     <option value="africa">Աֆրիկայում</option>
+                     <option value="australia">Ավստրալիայում</option>
+                   </select>
+               </div>
+               <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarPools.valid">
+           </form>
+        </div>
+      </div>

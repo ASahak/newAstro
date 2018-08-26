@@ -1,0 +1,30 @@
+
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a routerLink="/geographic/world/continential/{{river.in_area}}">{{isValueArm}}</a>
+        <a routerLink="/geographic/world/continential/{{river.in_area}}/rivers">Գետեր</a>
+        <a>{{river.name}}</a>
+    </div>
+  <div  class="row">
+    <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="card_image_more">
+          <a href="{{ river.url }}" class="states_img d-block text-center" data-fancybox="images" data-caption="">
+              <img class="mr-3" src="{{river.url}}" class="img-fluid">
+          </a>
+          <div class="desc_states">
+            <h4>{{river.name}}</h4>
+            <p><span>Երկարություն </span> {{river.long + ' կմ'}}</p>
+            <p><span>Հոսքը՝ </span> {{river.flow + ' խ.մ/վ'}}</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+        <div class="descMoreState">
+          <b class="mt-0">{{river.name}}</b>
+          <p>{{river.description}}</p>
+          
+        </div>
+    </div>
+  </div>
+</div>

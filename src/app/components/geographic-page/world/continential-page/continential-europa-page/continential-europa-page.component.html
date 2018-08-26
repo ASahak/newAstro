@@ -1,0 +1,89 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form  [ngStyle]="styleForm" class="formAdded" #formEuropa="ngForm" (ngSubmit)="onChangeAddEuropa(formEuropa); formEuropa.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="europa.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="europa.name">
+            </div>
+            <div class="form-group">
+                <label for="val">Արժեք</label>
+                <input type="text" class="form-control" id="val" name="value"  [(ngModel)]="europa.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formEuropa.valid">
+        </div>
+    </form>
+</div>
+   
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world">Գլխավոր</a>
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a>Եվրոպա</a>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-8 col-md-9 p-0 mb-4">
+            <div class="description_asia">
+                <b>Եվրոպա</b>
+                <hr>
+                <p>
+                    «Եվրոպա» հունարեն բառը նշանակում է «արևմուտք»։ Եվրոպա անունը ծագել է հին հունական դիցաբանութան հերոս, փյունիկյան թագուհի Եվրոպայի անունից, ում փախցրել էր Զևսը։ Հին հույներն այդպես էին անվանում Հունաստանից արևմուտք ընկած տարածքները։<br><br>
+                    Եվրոպան իր մեծությամբ աշխարհի երկրորդ ամենափոքր աշխարհամասն է (10,180,000 կմ2, այսինքն Երկրագնդի 2 տոկոսը)։ Միակ աշխարհամասը, որ Եվրոպայից փոքր է, Ավստրալիան է։ Բնակչությունը կազմում է 731 մլն, այսինքն աշխարհի բնակչության 11 տոկոսը։ Եվրոպայի բնակչության խտությունը աշխարհում ամենամեծերից է։ Եվրոպայի ճշգրիտ սահմանների վերաբերյալ կարծիքները տարբերվում են։ Եվրոպայի ամենամեծ երկիրն իր բնակչությամբ Ռուսաստանն է, իսկ ամենափոքրը՝ Վատիկանը։</p>
+            </div>
+        </div>
+   
+        <div class="col-12 col-sm-4 col-md-3 pr-0">
+            <div class="card_thumb_right">
+                <div class="asia_image_wrap">
+                    <div *ngIf="(europaphotos | json) == '[]'" >
+                        <img src="/assets/img/noImage.png" class="img-fluid">
+                        <button *ngIf="isLogin" (click)="AddDrop()" class="plusDrop"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                    </div>
+                    <div *ngFor="let asPhoto of europaphotos">
+                        <a *ngIf="(europaphotos | json) != '[]'" href="{{ asPhoto.url }}" data-fancybox="images" data-caption="">
+                            <img src="{{ asPhoto.url }}" class="img-fluid">
+                        </a>
+                        <button *ngIf="isLogin" (click)="onClickDeletePhoto(asPhoto)" class="plusDrop"><i class="fa fa-pencil"></i></button>
+                    </div>
+                </div>
+                <div *ngFor="let desc of europas">
+                    <div *ngIf="!desc.name"  class="tool_tip_parent">
+                        <b>{{desc.description}} -</b>
+                        <em>{{desc.value}}</em>
+                        
+                        <a  routerLink="/geographic/world/continential/europa/edit/{{desc.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(desc)" *ngIf="isLogin"></i>  
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div  class="col-12 uploadDrop" [ngStyle]="styleDrop" *ngIf="(europaphotos | json) == '[]' && isLogin">
+            <file-upload-europa></file-upload-europa>
+        </div>
+        <table class="table table-sm  table-hover table-striped   table-responsive-lg w-100 d-sm-table tablecontinents mt-4">
+            <thead  class=""> 
+            <tr>
+            <th scope="col">Նկարագրություն</th>
+            <th scope="col">Անվանում</th>
+            <th scope="col">Արժեք</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let europa of europas; let i = index " class="tool_tip_parents">
+            <td [hidden]="europa.name == '' || europa.name == null">{{europa.description}}</td>
+            <td [hidden]="europa.name == '' || europa.name == null">{{europa.name}}</td>
+            <td [hidden]="europa.name == '' || europa.name == null"  class="tool_tip_parent">{{europa.value}}
+                <span class="tool_tip badge bagde-pill badge-success">{{europa.publication | date}}</span>
+                <a  routerLink="/geographic/world/continential/europa/edit/{{europa.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(europa)" *ngIf="isLogin"></i>  
+            </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>

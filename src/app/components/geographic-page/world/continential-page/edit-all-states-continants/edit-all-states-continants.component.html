@@ -1,0 +1,102 @@
+<div class="row">
+      <div class="col-12" *ngIf="isLogin"  style="padding: 15px; background: #e2e0e0;">
+         <form #formModificarStates="ngForm" (ngSubmit)="onModificarRecetStates(formModificarStates)">
+              <div class="form-group">
+                  <label for="ing">Անվանում</label>
+                  <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="state.name" required>
+              </div>
+              <div class="form-group">
+                  <label for="cap">Մայրաքաղաք</label>
+                  <input type="text" class="form-control" id="cap" name="capital"  [(ngModel)]="state.capital"required>
+              </div>
+              <div class="form-group">
+                  <label for="pop">Բնակչություն</label>
+                  <input type="text" class="form-control" id="pop" name="population"  [(ngModel)]="state.population" required>
+              </div>
+              <div class="form-group">
+                  <label for="ar">Տարածք</label>
+                  <input type="text" class="form-control" id="ar" name="area"  [(ngModel)]="state.area" required>
+              </div>
+             <div class="form-group">
+                  <div class="d-flex flex-column flex-sm-row justify-content-between">
+                    <div>
+                      <label for="imageState">Նկար</label>
+                      <div class="changedImage" *ngIf="!isImage">
+                        <img src="{{state.url}}" alt="" class="img-fluid">
+                      </div>
+                    </div>
+                    <div>
+                      <label for="imageState">Դրոշ</label>
+                      <div class="changedImage" *ngIf="!isImageFlag">
+                        <img src="{{state.flag}}" alt="" class="img-fluid">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="file  d-flex flex-column flex-sm-row justify-content-between">
+                     <label class="file-label">
+                        <input class="file-input" type="file" name="url"  (change)="upload($event)" required>
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fa fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            Update Image
+                          </span>
+                        </span>
+                      </label>
+                      <label class="file-label">
+                        <input class="file-input" type="file" name="flag"  (change)="uploadFlag($event)" required>
+                        <span class="file-cta">
+                          <span class="file-icon">
+                            <i class="fa fa-upload"></i>
+                          </span>
+                          <span class="file-label">
+                            chooses Flag...
+                          </span>
+                        </span>
+                      </label>
+                    </div>
+                    <div  class="row">
+                        <div class="col-12 col-md-6">
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                              </div>
+                            </div>
+                            <div *ngIf="downloadURL | async; let downloadSrc" class="row alert alert-info" role="alert">
+                              <div class="col-12 col-md-6">
+                                File uploaded:
+                                <img src="{{downloadSrc}}" alt="" class="img-fluid">
+                              </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-6" >
+                            <div class="progress">
+                              <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgressFlag | async) + '%'" [attr.aria-valuenow]="(uploadProgressFlag | async)" aria-valuemin="0" aria-valuemax="100">
+                              </div>
+                            </div>
+                            <div class="UploadFlag  alert alert-info"   role="alert" *ngIf="downloadURLFlag | async; let downloadSrc" >
+                              <span class="d-block">File uploaded:</span>
+                              <img src="{{downloadSrc}}" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+              <div class="form-group">
+                  <label for="desc">Նկարագրություն</label>
+                  <textarea type="text" rows="6" class="form-control" id="desc" name="description"  [(ngModel)]="state.description" required></textarea>
+              </div>
+              <div class="form-group">
+                  <label for="cap">Գտնվում է՝</label>
+                  <select class="form-control" name="in_area" [(ngModel)]="state.in_area" required>
+                    <option value="asia">Ասիայում</option>
+                    <option value="europa">Եվրոպայում</option>
+                    <option value="north-america">Հս Ամերիկայում</option>
+                    <option value="south-america">Հվ Ամերիակյում</option>
+                    <option value="africa">Աֆրիկայում</option>
+                    <option value="australia">Ավստրալիայում</option>
+                  </select>
+              </div>
+              <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarStates.valid">
+          </form>
+        </div>
+      </div>

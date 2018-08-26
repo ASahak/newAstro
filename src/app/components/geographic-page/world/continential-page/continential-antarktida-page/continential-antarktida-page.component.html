@@ -1,0 +1,94 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+        <form [ngStyle]="styleForm" class="formAdded" #formAntarktida="ngForm" (ngSubmit)="onChangeAddAntarktida(formAntarktida); formAntarktida.reset()" >
+            <div class="insideForm">
+                <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+                <div class="form-group">
+                    <label for="ing">Նկարագրություն</label>
+                    <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="antarktida.description" required>
+                </div>
+                <div class="form-group">
+                    <label for="pre">Անվանում</label>
+                    <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="antarktida.name">
+                </div>
+                <div class="form-group">
+                    <label for="val">Արժեք</label>
+                    <input type="text" class="form-control" id="val" name="value"  [(ngModel)]="antarktida.value" required>
+                </div>
+                <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formAntarktida.valid">
+            </div>
+        </form>
+    </div>
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world">Գլխավոր</a>
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a>Անտարկտիդա</a>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-8 col-md-9 p-0 mb-4">
+            <div class="description_asia">
+                <b>Անտարկտիդա</b>
+                <hr>
+                <p>
+                    Անտարկտիդա (հուն․՝ ἀνταρκτικός, բառացի «Արկտիկայի հակադրություն»), հարավային բևեռի շուրջն ընկած մայրցամաքն է, որի մակերեսը կազմում է շուրջ 14 միլիոն կմ²։<br><br>
+                    Հարավային լայնության 60° զուգահեռականից հարավ ընկած ջրային տարածքը կղզիների և Անտարկտիդա մայրցամաքի հետ կոչվում է Անտարկտիկա աշխարհամաս։</p>
+                <p>
+                    Այն գտնվում է Հարավային կիսագնդի Անտարկտիկ շրջանում՝ հիմնականում Անտարկտիկ շրջանակի հարավային մասում. շրջապատված է Հարավային օվկիանոսով։ Տարածքը կազմում է է 14,0 միլիոն քառակուսի կիլոմետր (5,4 միլիոն քառակուսի մղոն), ուստի այն համարվում է Երկրի մակերեսի հինգերորդ ամենամեծ մայրցամաքը Եվրասիայից, Աֆրիկայից, Հյուսիսային Ամերիկայից և Հարավային Ամերիկայից հետո։ Համեմատության համար նշենք, որ Անտարկտիդան Ավստրալիայից երկու անգամ մեծ է։ Անտարկտիդայի տարածքի 98%-ը ծածկված է սառցե շերտով, որի հաստությունը կազմում է առնվազն 1 մղոն (1,6 կիլոմետր)։
+                </p>
+                <p>
+                    Անտարկտիդան համարվում է ամենացուրտ մայրցամաքը՝ ամենաուժեղ քամիներով. համեմատաբար բարձրադիր է։ Անտարկտիդան համարվում է անապատ, քանի որ առափնյա խորությունը տարեկան ավելանում է ընդամենը 200 միլիմետրով, որը տարածքի համեմատ նվազ է[1]։ Երբեմն օդի ջերմաստիճանը հասնում է −89 °C (−129 °F)[2]։ Մշտական մարդկային բնակատեղիներ չկան, սակայն տարեկան 1000-ից 5000 մարդ հետազոտության նպատակով որոշ ժամանակ հաստատվում է տարածքում տեղակայված հետազոտական կենտրոններում։ Այստեղ գոյատևում են միայն ցրտադիմացկուն օրգանիզմներ, որոնց թվում են բազմաթիվ բույսերի և կենդանիների տեսակներ (պինգվիններ, ծովացուլեր և այլն), բակտերիաներ, սնկեր, բույսեր։ Նմանատիպ բուսականությունը բնորոշ է տունդրային։
+                </p>
+            </div>
+        </div>
+   
+        <div class="col-12 col-sm-4 col-md-3 pr-0">
+            <div class="card_thumb_right">
+                <div class="asia_image_wrap">
+                    <div *ngIf="(antarktidaphotos | json) == '[]'" >
+                        <img src="/assets/img/noImage.png" class="img-fluid">
+                        <button *ngIf="isLogin"  (click)="AddDrop()" class="plusDrop"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                    </div>
+                    <div *ngFor="let asPhoto of antarktidaphotos">
+                        <a *ngIf="(antarktidaphotos | json) != '[]'" href="{{ asPhoto.url }}" data-fancybox="images" data-caption="">
+                            <img src="{{ asPhoto.url }}" class="img-fluid">
+                        </a>
+                        <button *ngIf="isLogin"  (click)="onClickDeletePhoto(asPhoto)"  class="plusDrop"><i class="fa fa-pencil"></i></button>
+                    </div>
+                </div>
+                <div *ngFor="let desc of antarktidas">
+                    <div *ngIf="!desc.name"  class="tool_tip_parent">
+                        <b>{{desc.description}} -</b>
+                        <em>{{desc.value}}</em>
+                        
+                        <a  routerLink="/geographic/world/continential/antarktida/edit/{{desc.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(desc)" *ngIf="isLogin"></i>  
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div  class="col-12 uploadDrop" [ngStyle]="styleDrop" *ngIf="(antarktidaphotos | json) == '[]' && isLogin">
+            <file-upload-antarktida></file-upload-antarktida>
+        </div>
+        <table class="table table-sm  table-hover table-striped   table-responsive-lg w-100 d-sm-table tablecontinents mt-4">
+        <thead  class=""> 
+            <tr>
+            <th scope="col">Նկարագրություն</th>
+            <th scope="col">Անվանում</th>
+            <th scope="col">Արժեք</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let antarktida of antarktidas; let i = index " class="tool_tip_parents">
+            <td [hidden]="antarktida.name == '' || antarktida.name == null">{{antarktida.description}}</td>
+            <td [hidden]="antarktida.name == '' || antarktida.name == null">{{antarktida.name}}</td>
+            <td [hidden]="antarktida.name == '' || antarktida.name == null"  class="tool_tip_parent">{{antarktida.value}}
+                <span class="tool_tip badge bagde-pill badge-success">{{antarktida.publication | date}}</span>
+                <a  routerLink="/geographic/world/continential/antarktida/edit/{{antarktida.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(antarktida)" *ngIf="isLogin"></i>  
+            </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>

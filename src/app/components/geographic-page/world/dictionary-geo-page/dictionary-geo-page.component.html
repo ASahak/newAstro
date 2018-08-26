@@ -1,0 +1,77 @@
+
+<div class="" *ngIf="isLogin">
+  <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+  <form  [ngStyle]="styleForm" class="formAdded" #formModificarDictionary="ngForm" (ngSubmit)="onChangeAddDictionary(formModificarDictionary); formModificarDictionary.reset()">
+      <div class="insideForm">
+          <span class="lnr lnr-cross" (click)="closeForm()"></span>
+          <div class="form-group">
+              <label for="ing">Անվանում</label>
+              <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="dic.name" required>
+          </div>
+          <div class="form-group">
+              <label for="imageState">Նկար</label>
+              <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                  <label class="file-label">
+                      <input class="file-input" type="file" name="url"  [(ngModel)]="dic.url"  (change)="upload($event)">
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fa fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        choses Image...
+                      </span>
+                    </span>
+                  </label>
+                </div>
+
+              <div  class="row"  [hidden]="!isImage">
+                <div class="col-12">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                  <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                    <span class="d-block">File uploaded:</span>
+                    <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="desc">Նկարագրություն</label>
+              <textarea class="form-control" id="desc" name="description" [(ngModel)]="dic.description" required></textarea>
+              
+          </div>
+          <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarDictionary.valid">
+      </div>
+  </form>
+</div> 
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1 class="text-center headerDic">Աշխարհագրական տերմինների տեղեկատու բառարան</h1>
+      <div class="searchEnginer">
+        <label for="country" #label>Փնտրել</label>
+        <input type="search" name="" id="country" class="form-control" #query (focus)='setInputFocus($event)' (focusout)='setInputFocusOut($event)'  (keyup)="search(query.value)" value="" placeholder="">
+      </div>
+    </div>
+    <div class="col-12 common_dic_parent">
+      <div *ngFor="let dic of searchClient || PreloaderData; let i = index">
+        <span class="tool_tip_parent">
+          <a  routerLink="/geographic/world/dictionary/edit/{{dic.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+          <i class="fa fa-trash"  (click)="onClickDelete(dic)" *ngIf="isLogin"></i>
+        </span>
+        <div class="name_desc_dic">
+          <b>{{dic.name}} </b>
+          <span> 
+              <a  href="{{dic.url}}" data-fancybox="images" data-caption="" class="d-block hasImage" *ngIf="dic.url != ''">
+                <img src="{{dic.url}}" alt="" class="img-fluid" >
+              </a>
+            {{dic.description}}
+          </span>
+        </div>
+      </div>
+    </div>
+    <span #isPreloaderSVG class="mx-auto"><img class="img-fluid " src="./assets/img/preloaderMore.svg"></span>
+  </div>
+</div>

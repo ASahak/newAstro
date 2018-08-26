@@ -1,0 +1,81 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+    <form  [ngStyle]="styleForm" class="formAdded" #formGuard="ngForm" (ngSubmit)="onChangeAddCity(formGuard); formGuard.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>  
+            <div class="form-group">
+                <label for="tit">Անվանում</label>
+                <input type="text" class="form-control" id="tit" name="name" [(ngModel)]="city.name" required>
+            </div>
+            <div class="form-group">
+                <select name="in_the" id="seasons" class="form-control" [(ngModel)]="city.in_the" required>
+                    <option value="" selected="" hidden="">Գտնվում է...</option>
+                    <option  *ngFor="let prov of provinces_inCity" value="{{prov.name}}">{{prov.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ing">Տարածք</label>
+                <input type="text" class="form-control" id="ing" name="area"  [(ngModel)]="city.area" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Բնակչություն</label>
+                <input type="text" class="form-control" id="pre" name="population"  [(ngModel)]="city.population" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formGuard.valid">
+        </div>
+    </form>
+</div>
+
+<div class="topSectionArm">
+    <img src="/assets/img/topArmCity.jpg" class="img-fluid" alt="">
+</div>
+<div class="highwayArm">
+    <a routerLink="/geographic/armenia">Հայաստան</a>
+    <a>Քաղաքներ</a>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <div class="backgroundCity">
+                <img src="/assets/img/cityArm.jpg" class="img-fluid" alt="">
+            </div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div class="rightSectionCity">
+                <h4>Հայաստանի Հանրապետության քաղաքները</h4>
+                <p>Հայաստանի Հանրապետության քաղաքների ցանկ Հայաստանի Հանրապետության երեք խողշոր քաղաքներն են՝ Երևան, Գյումրի և Վանաձոր, որոնց ընդհանուր բնակչությունը կազմում է 1,273,200 մարդ։ Հայաստանի բնակչության մեծամասնությունը 64,3 % ապրում են քաղաքային բնակավայրերում։</p>    
+                <p>Ըստ 2015 թվականի հուլիսի 1-ի՝ 2011 թ. մարդահամարի հիմքով կատարված հաշվառման Հայաստանի 20 ամենխոշոր քաղաքներն են, Երևան (1,071,800), Գյումրի (118,600), Վանաձոր (82,800), Վաղարշապատ (46,800), Աբովյան (44,400), Կապան (42,700), Հրազդան (41,600), Արմավիր (29,000), Դիլիջան (23,700), Արտաշատ (21,300), Իջևան (20,700), Սևան (20,600), Չարենցավան (20,500), Մասիս (20,500), Արարատ (20,400), Գորիս (20,300), Գավառ (19,900), Աշտարակ (19,100), Արթիկ (18,900), Սիսիան (14,900) մարդ</p>
+            </div>    
+        </div>
+        <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+            <h4 class="text-center tableHeader mt-4">Հայաստանի Հանրապետության քաղաքներ</h4>
+            <table class="table table-sm  table-hover table-striped   tableCity table-responsive-lg w-100 d-sm-table">
+                <thead  class=""> 
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Անվանում</th>
+                    <th scope="col">Գտնվում է...</th>
+                    <th scope="col">Տարածք</th>
+                    <th scope="col">Բնակչություն</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let city of citys; let i = index" class="tool_tip_parents">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{city.name}}</td>
+                    <td>{{city.in_the}}</td>
+                    <td>{{city.area}}</td>
+                    <td class="tool_tip_parent">{{city.population}}  
+                        <span class="tool_tip badge bagde-pill badge-success" *ngIf="isLogin">{{city.publication | date}}</span>
+                        <a  routerLink="/geographic/armenia/city/edit/{{city.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(city)" *ngIf="isLogin"></i>
+                    </td>
+                    
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,103 @@
+<section id="solar_system" [ngStyle]="{'height':heightWindow + 'px'}">
+  <div class="descPlanets" *ngIf="animPlan == true" [@fadeIn]>
+    <div [ngStyle]="{'background-image':'url(' + imagePath + ')'}" class="imgObjects"></div>
+    <h4>{{planetName}}</h4>
+    <p>Հեռավորությունը Արեգակից՝ {{farSunPath}}</p>
+    <p>Հեռավորությունը Երկրից՝ {{farEarthPath}}</p>
+    <p>Արեգակի շուրջ պտտման պարբերություն՝ {{rotSunPath}}</p>
+    <p>Առանցքի շուրջ պտտման պարբերություն՝ {{rotOsPath}}</p>
+    <p>Արբանյակների թիվը՝ {{countStogePath}}</p>
+
+  </div> 
+
+  <div class="butt_2d_3d" [ngClass]="{'transferCircle':circleSucsses == 'OK'}">
+    <span class="butt2d" [ngStyle]="{'opacity':opa2d === 'OK' ? '0' : '1' }" (click)="this.opa2d = 'OK'; this.opa3d = false; circleSucsses = false; format2D()">2D</span>
+    <span class="butt3d" [ngStyle]="{'opacity':opa3d === 'OK' ? '0' : '1' }" (click)="this.opa3d = 'OK'; this.opa2d = false; circleSucsses = 'OK'; format3D()">3D</span>
+  </div>
+  <div  id="trans"  [ngStyle]="{'height':'100%', 'z-index':'2222'}">
+    <div  style="height:100%"  [ngStyle]="{'transform':'scale(' + selectedZoom + ')'}">
+      <div class="common_system" >
+        <div id="sun">
+          <div class="sun"></div>
+        </div>
+        <div id="merc"  class="os">
+          <div class="epic">
+            <div class="object"></div>
+          </div>
+        </div>
+        <div id="venus"  class="os">
+          <div class="epic">
+            <div class="object"></div>
+          </div>
+        </div> 
+        <div id="earth"  class="os">
+          <div class="epic">
+            <div class="object"></div>
+          </div>
+        </div>
+        <div id="mars"  class="os">
+          <div class="epic">
+            <div class="object"></div>
+          </div>
+        </div>
+        <div id="jupiter"  class="os">
+            <div class="epic">
+              <div class="object"></div>
+            </div>
+        </div>
+        <div id="saturn"  class="os">
+          <div class="epic">
+            <div class="object"></div>
+          </div>
+        </div>
+        <div id="uran"  class="os">
+          <div class="epic">
+            <div class="object"></div>
+          </div>
+        </div>
+        <div id="neptun"  class="os">
+          <div class="epic">
+            <div class="object"></div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+  
+  <div class="uhrDate">
+    <div class="clock_badge">
+      <div class="play_stop">
+        <button (click)="pauseSolar($event)" [attr.disabled]="stopDis=='OK' ? true : null"><i class="fa fa-pause" aria-hidden="true"></i></button>
+        <button (click)="playSolar()" [attr.disabled]="playDis=='OK' ? true : null"><i class="fa fa-play" aria-hidden="true"></i></button>
+        <input type="range" [attr.disabled]="rangeDis=='OK' ? true : null" (change)="speedPlanets($event)"  min="-1000" max='1000' value="0" step="10" id="myRange">
+      </div> 
+      <p id="year&month">
+        <span id="year"></span>
+        <span id="month"></span>
+      </p>
+      <p id="timeSeconds">
+        <span id="clock"></span>
+      </p>
+    </div>
+      <div class="planets">
+      <a data-name="sun" [ngClass]="{'activePlanetButton': selectedIndex == 0}"  (click)="clickData($event, 0)">Արեգակ</a>
+      <a data-name="mercury" [ngClass]="{'activePlanetButton': selectedIndex == 1}"  (click)="clickData($event, 1)">Մերկուրի</a>
+      <a data-name="venus" [ngClass]="{'activePlanetButton': selectedIndex == 2}"  (click)="clickData($event, 2)">Վեներա</a>
+      <a data-name="earth" [ngClass]="{'activePlanetButton': selectedIndex == 3}"  (click)="clickData($event, 3)">Երկիր</a>
+      <a data-name="mars" [ngClass]="{'activePlanetButton': selectedIndex == 4}"  (click)="clickData($event, 4)">Մարս</a>
+      <a data-name="jupiter" [ngClass]="{'activePlanetButton': selectedIndex == 5}"  (click)="clickData($event, 5)">Յուպիտեր</a>
+      <a data-name="saturn" [ngClass]="{'activePlanetButton': selectedIndex == 6}"  (click)="clickData($event, 6)">Սատուրն</a>
+      <a data-name="uran" [ngClass]="{'activePlanetButton': selectedIndex == 7}"  (click)="clickData($event, 7)">Ուրան</a>
+      <a data-name="neptune" [ngClass]="{'activePlanetButton': selectedIndex == 8}"  (click)="clickData($event, 8)">Նեպտուն</a>
+    </div> 
+  </div>
+ 
+  <div class="zommRange" >
+    <span class="valueRangeX" [ngStyle]="{bottom:selectedRam + 40 + 'px'}" >{{time.value/10 +'X'}}</span>
+    <button (click)=" valInput = (valInput < 100) ? valInput + 10 : 100; setTime(valInput)"><span class="lnr lnr-plus-circle"></span></button>
+    <input type="range" class="rangeZumm" #time (input)="setTime(time.value)" step="10" id="time" min="0" [(ngModel)]="valInput" max="100">  
+    <button  (click)="valInput = (valInput > 0) ? valInput - 10 : 0; setTime(valInput)"><span class="lnr lnr-circle-minus"></span></button>
+    
+  </div> 
+
+</section>

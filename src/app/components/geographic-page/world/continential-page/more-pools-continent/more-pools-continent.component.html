@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a routerLink="/geographic/world/continential/{{pool.in_area}}">{{isValueArm}}</a>
+        <a routerLink="/geographic/world/continential/{{pool.in_area}}/pools">Լճեր</a>
+        <a>{{pool.name}}</a>
+    </div>
+  <div  class="row">
+    <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="card_image_more">
+          <a href="{{ pool.url }}" class="states_img d-block text-center" data-fancybox="images" data-caption="">
+              <img class="mr-3" src="{{pool.url}}" class="img-fluid">
+          </a>
+          <div class="desc_states">
+            <h4>{{pool.name}}</h4>
+            <p><span>Խորություն </span> {{pool.deep + ' մ'}}</p>
+            <p><span>Աղիություն </span> {{pool.solty  + ' ‰'}}</p>
+            <p><span>Մակերես </span> {{pool.area + ' հզ.կմ'}}</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+        <div class="descMoreState">
+          <b class="mt-0">{{pool.name}}</b>
+          <p>{{pool.description}}</p>
+        </div>
+    </div>
+  </div>
+</div>
+
+

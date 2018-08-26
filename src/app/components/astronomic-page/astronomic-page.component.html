@@ -1,0 +1,45 @@
+<a routerLink="/" class="goToMain d-none d-lg-block"><span class="lnr lnr-chevron-left"></span> Դեպի ետ</a>
+<nav class="navbar navbar-expand-lg navbar-light bgNavBar p-3">
+
+  <div class="container"> 
+    <a class=""  routerLink="/astronomic"><img src="/assets/img/logo.png" class="logo" (click)="spanTrueFunc()"></a>
+    <button (click)="clickStatus()" class="navbar-toggler lnrMenu" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="lnr"  [ngClass]="statusClass ? 'lnr-menu' : 'lnr-cross'"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <span *ngIf="spanTrue" #mapNavBar class="mapNavBar" [ngStyle]="{'top':varAssign.topSpanNavBar + 'px', 'left':varAssign.leftSpanNavBar + 'px', 'width':varAssign.widthSpanNavBar + 'px', 'height':varAssign.heightSpanNavBar + 'px'}"></span>  
+      
+      <ul class="navbar-nav ml-auto navCommon" #mapElement>
+        <li class="nav-item ">
+          <a class="nav-link"  routerLink="/astronomic/earth-planet" routerLinkActive="active-link">Երկիր</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link"  routerLink="/astronomic/sun" routerLinkActive="active-link">Արեգակ</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link"  routerLink="/astronomic/milky-way" routerLinkActive="active-link">Ծիր Կաթին</a>
+        </li>
+        <li class="nav-item " >
+          <a class="nav-link"   routerLink="/astronomic/planets/{{planets && planets[0]?.name}}/{{planets && planets[0]?.id}}" routerLinkActive="active-link">Մոլորակներ</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link"  routerLink="/astronomic/far-zone" routerLinkActive="active-link">Հեռավոր գոտիներ</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link"  routerLink="/astronomic/useful-references" routerLinkActive="active-link">Օգտակար հղումներ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" (click)="onlogOut()"  routerLink="/" *ngIf="isLogin">Դուրս գալ</a>
+        </li>
+      </ul>
+    </div>
+    <a routerLink="/" class="goToMainMobile d-block d-lg-none"><span class="lnr lnr-chevron-left"></span> Դեպի ետ</a>
+  </div>
+</nav>
+<router-outlet></router-outlet>
+<span class="lnr lnr-chevron-up fixedToup" (click)="clictTo()" [ngStyle]="styleToTop"></span>
+<footer>
+  <p class="text-center">
+    Դիզայնը և պատրաստումը Արթուր Սահակյան:
+  </p> 
+</footer>

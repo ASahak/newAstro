@@ -1,0 +1,178 @@
+#izoLine {
+    position: relative;
+    width: 90%;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    margin: auto;
+    display:flex;
+    align-items:center;
+}
+#izoLine img{
+  max-height:450px;
+  margin-bottom: 15px;
+}
+.commonSub > div{
+  padding: 15px;
+  background: #fff;
+  width: 90%;
+  margin: 15px auto;
+  font-size: 14px;
+}
+.abs_wraps p{
+  padding: 15px;
+  background: #fff;
+  width: 90%;
+  margin: 15px auto;
+  font-size: 14px;
+  height: 100px;
+  overflow-x: auto;
+}
+.abs_wraps p::-webkit-scrollbar {
+  width: 2px;
+}
+
+.abs_wraps p::-webkit-scrollbar-thumb {
+  background: #2497e3;
+  border-radius: 5px;
+}
+.abs_wraps p::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 2px #2497e3;
+  border-radius: 5px;
+}
+.izoLine1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.abs_wraps{
+  position: absolute;
+  transition:transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transform-style: preserve-3d;
+  background: red;
+  margin: auto;
+  width: 90%;
+  right: 0;
+  left: 0
+}
+.presentRotate3d{
+  display: block;
+  opacity:1;
+  padding: 0;
+  background: #2497e3;
+}
+.pastRotate3d{
+  transform-origin:left;
+  transform: translate3d(-50%, 0, 0) rotateY(-90deg) translate3d(-50%, 0, 0);
+  opacity: 0;
+  background: #2497e3;
+}
+
+.futureRotate3d{
+  transform-origin:right;
+  transform: translate3d(50%, 0, 0) rotateY(90deg) translate3d(50%, 0, 0);
+  opacity: 0;
+  background: #2497e3;
+}
+
+.progress_bar {
+    position: absolute;
+    bottom: 0px;
+    width: 90%;
+    left: 5%;
+}
+  .isp_progress{
+    height: 5px;
+    width: 0px;
+    transition:width 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+    background: yellow
+  }
+  .common_wraps {
+      position: relative;
+      width: 100%;
+  }
+  .circle_analog span{
+    font-size: 25px;
+    color: #fff;
+    cursor: pointer;
+  }
+  .circle_analog {
+    justify-content: space-around;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    transform: rotate(45deg);
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+  }
+  .active_chevron{
+    opacity: 1;
+    transform: rotate(-45deg) scale(1);
+  }
+  .disable_chevron{
+    transform: rotate(-45deg) scale(0.6);
+    opacity: .4;
+    pointer-events: none;
+  }
+
+.subChild{
+  position: absolute;
+  opacity: 0;
+  transition:transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  transform-style: preserve-3d;
+  position: absolute;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0) rotateX(90deg) translate3d(0%, 0, 0);
+
+  top: 100%;
+}
+.commonSub{
+  transition:transform-origin 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), transform 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), visibility 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985), opacity 800ms cubic-bezier(0.26, 0.86, 0.44, 0.985);
+  
+}
+.futureSub{
+  position: absolute;
+  opacity: 0;
+  transform: translate3d(0, 100%, 0) rotateX(90deg) translate3d(0%, 0, 0);
+  top: 100%;
+  width: 100%;
+  padding: 15px;
+  background: #2497e3;
+}
+.pastSub{
+  position: absolute;
+  transform: translate3d(0, -200%, 0) rotateX(90deg) translate3d(0%, 0, 0);
+  opacity: 0;
+  width: 100%;
+  padding: 15px;
+  background: #2497e3;
+}
+.presentSub{
+  position: absolute;
+  -webkit-transform: translate3d(0, 0px, 0) rotateX(0deg) translate3d(0%, 0, 0);
+  transform: translate3d(0, -50%, 0) rotateX(0deg) translate3d(0%, 0, 0);
+  top: 0;
+  opacity: 1;
+  width: 100%;
+  padding: 15px 0;
+  padding: 15px;
+  background: #2497e3;
+}
+.den_more p{
+  text-align: left;
+}
+.den_more img{
+  float:right;
+  max-width: 300px;
+}
+@media screen and (max-width:767px) {
+  .circle_analog{
+    right:30px;
+  }
+  #izoLine h1{
+    font-size: 22px;
+  }
+}

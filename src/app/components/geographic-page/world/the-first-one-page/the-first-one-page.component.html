@@ -1,0 +1,21 @@
+<div class="container mt-5">
+    <div class="row">
+
+        <div class="col-12 col-md-3">
+            <div class="content_ng_filters">
+                <ul class="continential_ul">
+                  <li class=""><a href="javascript:void(0)"  routerLinkActive="the-first-one-active">Երկրներ ըստ՝</a>
+                    <ul class="continential_sub_ul" type="none">
+                        <li class=""><a routerLink="/geographic/world/the-first-one/country/population" routerLinkActive="the-first-one-active-sub">Բնակչության</a></li>
+                        <li class=""><a routerLink="/geographic/world/the-first-one/country/area" routerLinkActive="the-first-one-active-sub">Տարածքի</a></li>
+                    </ul>
+                  </li>
+                  <li class=""><a routerLink="/geographic/world/the-first-one/mountains" routerLinkActive="the-first-one-active">Լեռներ</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-12 col-md-9">
+           <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

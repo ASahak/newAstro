@@ -1,0 +1,89 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded" #formAustralia="ngForm" (ngSubmit)="onChangeAddAustralia(formAustralia); formAustralia.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="australia.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="australia.name">
+            </div>
+            <div class="form-group">
+                <label for="val">Արժեք</label>
+                <input type="text" class="form-control" id="val" name="value"  [(ngModel)]="australia.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formAustralia.valid">
+        </div>
+    </form>
+</div>
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world">Գլխավոր</a>
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a>Ավստրալիա</a>
+    </div>
+    <div class="row">
+        
+        <div class="col-12 col-sm-8 col-md-9 p-0 mb-4">
+            <div class="description_asia">
+                <b>Ավստրալիա</b>
+                <hr>
+                <p>
+                    Ավստրալիա (անգլ.՝ Australia, պաշտոնապես Ավստրալական Միություն (անգլ.՝ Commonwealth of Australia)), երկիր, որ ներառում է Ավստրալիա մայրցամաքը, Թասմանիան և բազմաթիվ մանր կղզիներ։ Այն աշխարհի վեցերորդ երկիրն է իր զբաղեցրած տարածքով։ Հարևան երկրներն են հյուսիսում՝ Ինդոնեզիան, Արևելյան Թիմորը և Պապուա Նոր Գվինեան, հյուսիս-արևելքում՝ Սողոմոնյան կղզիները, Վանուատուն և Նոր Կալեդոնիան և հարավ-արևելքում՝ Նոր Զելանդիան:<br><br>
+                    18-րդ դարում եվրոպացիների բնակվելուց առնվազն 40,000 տարի առաջ Ավստրալիայում բնակվում էին տեղացի աբորիգենները, որոնք խոսում էին 250 հազվադեպ լեզվական խմբերի լեզուներից մեկով կամ մի քանիսով։ 1606 թվականին հոլանդացի հետախույզների կողմից Ավստրալիան հայտնաբերելուց հետո՝ 1770 թվականին, Մեծ Բրիտանիան, Ավստրալիայի արևելյան հատվածը հարկադրաբար բնակեցնելով բանտարկյալներով, 1788 թվականի հունվարի 26-ին այն անվանեց Նոր Հարավային Ուելս: Հաջորդ տասնամյակներում բնակչությունը մշտապես աճում էր, մայրցամաքը հետազոտվեց և հետագայում հիմնվեցին ևս հինգ ինքնակառավարվող թագավորական գաղութներ։</p>
+            </div>
+        </div>
+   
+    <div class="col-12 col-sm-4 col-md-3 pr-0">
+        <div class="card_thumb_right card">
+            <div class="asia_image_wrap">
+                <div *ngIf="(australiaphotos | json) == '[]'" >
+                    <img src="/assets/img/noImage.png" class="img-fluid">
+                    <button *ngIf="isLogin" (click)="AddDrop()" class="plusDrop"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                </div>
+                <div *ngFor="let asPhoto of australiaphotos">
+                    <a *ngIf="(australiaphotos | json) != '[]'" href="{{ asPhoto.url }}" data-fancybox="images" data-caption="">
+                        <img src="{{ asPhoto.url }}" class="img-fluid">
+                    </a>
+                    <button *ngIf="isLogin" (click)="onClickDeletePhoto(asPhoto)" class="plusDrop"><i class="fa fa-pencil"></i></button>
+                </div>
+            </div>
+             <div *ngFor="let desc of australias">
+                <div *ngIf="!desc.name"  class="tool_tip_parent">
+                    <b>{{desc.description}} -</b>
+                    <em>{{desc.value}}</em>
+                    
+                      <a  routerLink="/geographic/world/continential/australia/edit/{{desc.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                      <i class="fa fa-trash"  (click)="onClickDelete(desc)" *ngIf="isLogin"></i>  
+                </div>
+            </div>
+        </div>
+    </div> 
+    <div  class="col-12 uploadDrop" [ngStyle]="styleDrop" *ngIf="(australiaphotos | json) == '[]' && isLogin">
+        <file-upload-australia></file-upload-australia>
+    </div>
+    <table class="table table-sm  table-hover table-striped   table-responsive-lg w-100 d-sm-table tablecontinents mt-4">
+        <thead  class="">
+            <tr>
+            <th scope="col">Նկարագրություն</th>
+            <th scope="col">Անվանում</th>
+            <th scope="col">Արժեք</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let australia of australias; let i = index " class="tool_tip_parents">
+            <td [hidden]="australia.name == '' || australia.name == null">{{australia.description}}</td>
+            <td [hidden]="australia.name == '' || australia.name == null">{{australia.name}}</td>
+            <td [hidden]="australia.name == '' || australia.name == null"  class="tool_tip_parent">{{australia.value}}
+                <span class="tool_tip badge bagde-pill badge-success">{{australia.publication | date}}</span>
+                <a  routerLink="/geographic/world/continential/australia/edit/{{australia.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(australia)" *ngIf="isLogin"></i>  
+            </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>

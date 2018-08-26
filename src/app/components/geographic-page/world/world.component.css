@@ -1,0 +1,127 @@
+ 
+.bgNavBar{
+    background:#2497e3;
+    position: relative;
+    z-index: 23;
+}
+.logo
+{
+    max-width:150px;
+}
+.mapNavBar{
+    position:absolute;
+    background: #fff;
+    transition: all cubic-bezier(0.075, 0.82, 0.165, 1) .4s;
+    border-radius: 5px;
+}
+/* .navCommon > li a:hover{
+    background: #fff;
+    color: #2497e3;
+} */
+.navCommon > li > a{
+    z-index: 22;
+    position: relative;
+    color: #fff;
+    font-size: 14px;
+    transition: .4s;
+    padding: 10px 10px;
+    display: inline-block;
+}
+.goToMain{
+    position: absolute;
+    z-index: 2;
+    color: #fff;
+    top: 72px;
+    background: #2497e3;
+    padding: 5px;
+    font-size: 12px;
+    border-bottom-right-radius: 5px;
+    transition: .4s;
+}
+.goToMainMobile{
+    position: absolute;
+    z-index: 2;
+    color: #fff;
+    bottom: -28px;
+    background: #2497e3;
+    padding: 5px;
+    font-size: 12px;
+    border-bottom-right-radius: 5px;
+    -webkit-transition: .4s;
+    transition: .4s;
+    left: 0;
+}
+.lnrMenu span{
+    color:#fff;
+}
+.lnrMenu{
+    border-color:#fff !important;
+}
+footer p{
+    margin-bottom:0;
+    color: #fff;
+    font-size: 14px;
+}
+footer{
+    background: #2497e3;
+    padding: 15px;
+}
+.subNavBar {
+    padding: 10px 0;
+    background: #2497e3;
+}
+.subNavBar > li > a{
+    padding: 3px 10px;
+    color:#fff;
+}
+.fixedToup{
+    position: fixed;
+    bottom: 60px;
+    left: 15px;
+    background: #2497e3;
+    padding: 10px;
+    cursor: pointer;
+    color: #fff;
+    opacity: 0;
+    transition: .4s;
+    visibility: hidden;
+    z-index:223;
+}
+@media screen and (min-width: 991px){
+    
+    .subNavBar > li{
+        font-size: 14px;
+    }
+    .subNavBar {
+        right: 0;
+        padding: 10px 0;
+        background: #2497e3;
+        position: absolute;
+        visibility: hidden;
+        opacity: 0;
+        transition: .4s;
+        min-width: 200px;
+        transform: translate3d(-15px, 15px, 0);
+        z-index: 2;
+        list-style: none;
+    }
+    .navCommon > li{
+        position:relative;
+    }
+    .navCommon > li:hover .subNavBar {
+        visibility: visible;
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+        margin-top: 0px;
+        position: absolute;
+    }
+}
+@media screen and (max-width:991px){
+    .navCommon > li a{
+        display:block;
+    }
+    .subNavBar {
+        display:none;
+        list-style:none;
+    }
+}

@@ -1,0 +1,31 @@
+
+  <div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world/citys">Քաղաքներ</a>
+        <a>{{inContinentArea}}</a>
+        <a>{{wcity.in_the}}</a>
+        <a>{{wcity.name}}</a>
+    </div>
+  <div  class="row">
+    <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="card_image_more">
+          <a href="{{ wcity.url }}" class="states_img d-block text-center" data-fancybox="images" data-caption="">
+              <img class="mr-3" src="{{wcity.url}}" class="img-fluid">
+          </a>
+          <div class="desc_states">
+            <h4>{{wcity.name}}</h4>
+            <p><span>Գտնվում է՝ </span> {{wcity.in_the}}</p>
+            <p><span>Բնակչություն </span> {{wcity.population  + ' մլն'}}</p>
+            <p><span>Տարածք </span> {{wcity.area + ' հզ.կմ'}}</p>
+            <p><span>Խտություն </span>{{wcity.density  + ' մարդ/կմ'}}</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+        <div class="descMoreState">
+          <b class="mt-0">{{wcity.name}}</b>
+          <p>{{wcity.description}}</p>
+        </div>
+    </div>
+  </div>
+</div>

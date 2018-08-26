@@ -1,0 +1,15 @@
+
+<div class="col-12 col-sm-8 mx-auto" *ngIf="isLogin"  style="padding: 15px; background: #e2e0e0;">
+
+    <form #formModificarFirstPopulation="ngForm" (ngSubmit)="onModificarRecetFirstPopulation(formModificarFirstPopulation); formModificarFirstPopulation.reset()" >
+      <div class="form-group">
+        <label for="tit">Երկրներ</label>
+        <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="frtpop.name" required>
+      </div>
+      <div class="form-group">
+        <label for="tit">Բնակչություն</label>
+        <input type="text" class="form-control" id="pre" name="population"  [(ngModel)]="frtpop.population" required>
+      </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Պահպանել"  [disabled]="!formModificarFirstPopulation.valid">
+    </form>
+</div>

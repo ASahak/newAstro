@@ -1,0 +1,23 @@
+
+<div  class="col-12 col-sm-8 mx-auto" *ngIf="isLogin" style="padding: 15px; background: #e2e0e0;">
+
+    <form #formModificarAglomeration="ngForm" (ngSubmit)="onModificarRecetAglomeration(formModificarAglomeration); formModificarAglomeration.reset()" >
+      <div class="form-group">
+          <label for="ing">Անվանում</label>
+          <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="aglomeration.name" required>
+      </div>
+      <div class="form-group">
+          <label for="cap">Պետություն</label>
+          <input type="text" class="form-control" id="cap" name="country"  [(ngModel)]="aglomeration.country"required>
+      </div>
+      <div class="form-group">
+        <label for="pop1">Բնակչություն</label>
+        <input type="text" class="form-control" id="pop1" name="population"  [(ngModel)]="aglomeration.population" required>
+      </div>
+      <div class="form-group">
+          <label for="pop">Ներառում է՝</label>
+          <input type="text" class="form-control" id="pop" name="includes"  [(ngModel)]="aglomeration.includes" required>
+      </div>
+      <input type="submit" class="btn btn-block btn-primary" value="Պահպանել"  [disabled]="!formModificarAglomeration.valid">
+    </form>
+</div>

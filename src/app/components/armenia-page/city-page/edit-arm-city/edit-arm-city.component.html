@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-10 col-md-8 mx-auto mt-4 mb-4 formEdit" *ngIf="isLogin">
+        <form #formModificar="ngForm" (ngSubmit)="onModificarRecet(formModificar)">
+            
+            <div class="form-group">
+                <label for="tit">Անվանում</label>
+                <input type="text" class="form-control" id="tit" name="name" [(ngModel)]="city.name" required>
+            </div>
+            <div class="form-group">
+                <select name="in_the" id="seasons" class="form-control" [(ngModel)]="city.in_the" required>
+                    <option value="" selected="" hidden="">Գտնվում է...</option>
+                    <option  *ngFor="let prov of provinces" value="{{prov.name}}">{{prov.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ing">Տարածք</label>
+                <input type="text" class="form-control" id="ing" name="area"  [(ngModel)]="city.area" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Բնակչություն</label>
+                <input type="text" class="form-control" id="pre" name="population"  [(ngModel)]="city.population" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificar.valid">
+        </form>
+    </div>
+</div>

@@ -1,0 +1,97 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+    <form [ngStyle]="styleForm" class="formAdded" #formProvince="ngForm" (ngSubmit)="onChangeAddProvince(formProvince); formProvince.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>  
+            <div class="form-group">
+                <label for="tit">Անվանում</label>
+                <select name="name" id="seasons" class="form-control" [(ngModel)]="province.name" required>
+                    <option  *ngFor="let provinc of Provinces_obj" value="{{provinc.name}}">{{provinc.name}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <select name="center" id="seasons" class="form-control" [(ngModel)]="province.center" required>
+                    <option value="" selected="" hidden="">Մարզկենտրոն...</option>
+                    <option  *ngFor="let provinc of Provinces_obj" value="{{provinc.center}}">{{provinc.center}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="ing">Տարածք</label>
+                <input type="text" class="form-control" id="ing" name="area"  [(ngModel)]="province.area" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Բնակչություն</label>
+                <input type="text" class="form-control" id="pre" name="population"  [(ngModel)]="province.population" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Խտություն</label>
+                <input type="text" class="form-control" id="pre" name="density"  [(ngModel)]="province.density" required>
+            </div>
+            <div class="form-group">
+                <label for="desc">Նկարագրություն</label>
+                <textarea rows="5" class="form-control" id="desc" name="description"  [(ngModel)]="province.description" required></textarea>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formProvince.valid">
+        </div>
+    </form>
+</div>
+<div class="container"> 
+    <div class="highwayArm">
+        <a routerLink="/geographic/armenia">Հայաստան</a>
+        <a>Մարզեր</a>
+    </div>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-5">
+            <div>
+                <a href="assets/img/provinceMap.gif" data-fancybox="images" data-caption="" class="d-block">
+                    <img src="assets/img/provinceMap.gif" class="img-fluid" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-7">
+            <div class="descProvinces">
+                <h3>Հայաստանի Հանրապետության վարչատարածքային բաժանում</h3>
+                <hr>
+                <p>Հայաստանի վարչատարածքային միավորներն են մարզերը և համայնքները: Վարչատարածքային բաժանումը, Կառավարության ներկայացմամբ, սահմանվում է օրենքով։ Համայնքը կարող է ընդգրկել մեկ կամ ավելի թվով բնակավայրեր։</p>
+
+                <p>Կառավարությունը մարզերում իր տարածքային քաղաքականությունն իրագործում է մարզպետների միջոցով։ Մարզպետներին նշանակում և ազատում է Կառավարությունը։ Մարզպետները համակարգում են պետական կառավարման մարմինների տարածքային ստորաբաժանումների գործունեությունը, բացառությամբ օրենքով սահմանված դեպքերի։</p>
+
+                <p>Երևանում տարածքային կառավարման առանձնահատկությունները սահմանվում են օրենքով։</p>
+
+                <p>Մարզերում իրականացվում է պետական կառավարում, իսկ համայնքներում՝ տեղական ինքնակառավարում՝ Հայաստանի սահմանադրությամբ սահմանված կարգով։</p>
+            </div>
+            
+        </div>
+        <div class="col-12 col-lg-10 col-xl-8 mx-auto">
+            <h4 class="text-center tableHeader mt-4">Հայաստանի Հանրապետության մարզերը</h4>
+            <table class="table table-sm  table-hover table-striped   tableCity table-responsive-lg w-100 d-md-table">
+                <!-- <table class="table table-sm  table-hover table-striped   table-responsive-xl"> -->
+                <thead  class="thead-dark"> 
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Անվանում</th>
+                    <th scope="col">Գտնվում է...</th>
+                    <th scope="col">Տարածք</th>
+                    <th scope="col">Բնակչություն</th>
+                    <th scope="col">Խտություն</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let province of provinces; let i = index" class="tool_tip_parents">
+                    <th scope="row">{{i+1}}</th>
+                    <td>{{province.name}}</td>
+                <td>{{province.center}}</td>
+                    <td>{{province.area}}</td>
+                    <td>{{province.population}}</td>
+                    <td class="tool_tip_parent">{{province.density}}  
+                        <span class="tool_tip badge bagde-pill badge-success">{{province.publication | date}}</span>
+                        <a  routerLink="/geographic/armenia/province/edit/{{province.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(province)" *ngIf="isLogin"></i>
+                    </td>
+                    
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

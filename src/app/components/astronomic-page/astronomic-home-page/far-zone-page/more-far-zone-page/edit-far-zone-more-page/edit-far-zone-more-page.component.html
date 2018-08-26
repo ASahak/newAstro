@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="row">
+       <div class="col-12 col-sm-10 col-md-8 mx-auto mt-4 mb-4 formEdit" *ngIf="isLogin">
+        <form #formModificarFarZoneMore="ngForm" (ngSubmit)="onModificarRecetFarZoneMore(formModificarFarZoneMore); formModificarFarZoneMore.reset()">
+            <div class="form-group">
+                <label for="tyype">Տեսակը</label>
+                <select class="form-control" name="type" [(ngModel)]="farZoneMore.type" required>
+                <option *ngFor="let typ of farZones" [value]="typ.name">{{typ.name}}</option>
+                </select>
+            </div> 
+            <div class="form-group" >
+                <label for="name">Անվանում</label>
+                <input type="text" class="form-control" id="name" name="name"  [(ngModel)]="farZoneMore.name" required>
+            </div>
+            <div class="form-group">
+            <label for="periheli">Պերիհելի</label>
+            <input type="text" class="form-control" id="periheli" name="periheli"  [(ngModel)]="farZoneMore.periheli" required>
+        </div>
+        <div class="form-group" >
+            <label for="apoheli">Ապոհելի</label>
+            <input type="text" class="form-control" id="apoheli" name="apoheli"  [(ngModel)]="farZoneMore.apoheli" required>
+        </div>
+        <div class="form-group" >
+            <label for="rotSun">Արեգակի շուրջ պտտ. պրբ.</label>
+            <input type="text" class="form-control" id="rotSun" name="rotSun"  [(ngModel)]="farZoneMore.rotSun" required>
+        </div>
+        <div class="form-group" >
+            <label for="discover">Հայտնաբերող</label>
+            <input type="text" class="form-control" id="discover" name="discover"  [(ngModel)]="farZoneMore.discover" required>
+        </div>
+        <div class="form-group" >
+            <label for="stooge">Արբանյակ</label>
+            <input type="text" class="form-control" id="stooge" name="stooge"  [(ngModel)]="farZoneMore.stooge" required>
+        </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarFarZoneMore.valid">
+        </form>
+    </div>
+  </div>

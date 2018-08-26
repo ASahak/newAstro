@@ -1,0 +1,125 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded"  #formModificarStates="ngForm" (ngSubmit)="onChangeAddStates(formModificarStates); formModificarStates.reset()">
+      <div class="insideForm">
+          <span class="lnr lnr-cross" (click)="closeForm()"></span>
+          <div class="form-group">
+              <label for="ing">Անվանում</label>
+              <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="state.name" required>
+          </div>
+          <div class="form-group">
+              <label for="cap">Մայրաքաղաք</label>
+              <input type="text" class="form-control" id="cap" name="capital"  [(ngModel)]="state.capital"required>
+          </div>
+          <div class="form-group">
+              <label for="pop">Բնակչություն</label>
+              <input type="text" class="form-control" id="pop" name="population"  [(ngModel)]="state.population" required>
+          </div>
+          <div class="form-group">
+              <label for="ar">Տարածք</label>
+              <input type="text" class="form-control" id="ar" name="area"  [(ngModel)]="state.area" required>
+          </div>
+          <div class="form-group">
+              <label for="imageState">Նկար</label>
+              <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                  <label class="file-label">
+                      <input class="file-input" type="file" name="url"  [(ngModel)]="state.url"  (change)="upload($event)" required>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fa fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        choses Image...
+                      </span>
+                    </span>
+                  </label>
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="flag"  [(ngModel)]="state.flag"  (change)="uploadFlag($event)" required>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fa fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        chooses Flag...
+                      </span>
+                    </span>
+                  </label>
+                </div>
+
+              <div  class="row" [hidden]="!isImage">
+                <div class="col-12 col-md-6">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                  <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                    <span class="d-block">File uploaded:</span>
+                    <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                  </div>
+                </div>
+                <div class="col-12 col-md-6"  [hidden]="!isImage">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgressFlag | async) + '%'" [attr.aria-valuenow]="(uploadProgressFlag | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                  <div class="UploadFlag  alert alert-info"   role="alert" *ngIf="downloadURLFlag | async; let downloadSrc" >
+                    <span class="d-block">File uploaded:</span>
+                    <img src="{{downloadSrc}}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="desc">Նկարագրություն</label>
+              <textarea type="text" rows="6" class="form-control" id="desc" name="description"  [(ngModel)]="state.description" required></textarea>
+          </div>
+          <div class="form-group">
+              <label for="cap">Գտնվում է՝</label>
+              <select class="form-control" name="in_area" [(ngModel)]="state.in_area" required>
+                <option value="asia">Ասիայում</option>
+                <option value="europa">Եվրոպայում</option>
+                <option value="north-america">Հս Ամերիկայում</option>
+                <option value="south-america">Հվ Ամերիկայում</option>
+                <option value="africa">Աֆրիկայում</option>
+                <option value="australia">Ավստրալիայում</option>
+              </select>
+          </div>
+          <div class="form-group" *ngIf="state.in_area!= ''">
+            <label for="code">Կոդը՝</label>
+            <select class="form-control" name="code" [(ngModel)]="state.code" required>
+              <option *ngFor="let typ of PubCode[state.in_area] | keys" [value]="typ">{{typ}}</option>
+            </select>
+        </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarStates.valid">
+      </div>
+    </form>
+  </div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-3">
+          <div class="searchEnginer">
+            <label for="country" #label>Փնտրել երկիրը</label>
+            <input type="search" name="" id="country" class="form-control" #query (focus)='setInputFocus($event)' (focusout)='setInputFocusOut($event)'  (keyup)="search(query.value)" value="" placeholder="">
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" *ngFor="let state of searchClient || states; let i = index " [hidden]="state.in_area !== isValue" [@fadeIn]>
+          <div class="common_country tool_tip_parent d-block">
+            <span class="icons_country">
+              <a  routerLink="/geographic/world/continential/{{isValue}}/state/edit/{{state.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+              <i class="fa fa-trash"  (click)="onClickDelete(state)" *ngIf="isLogin"></i>
+            </span>
+            <a class="states_img d-block text-center"  routerLink="/geographic/world/continential/{{isValue}}/state/more/{{state.id}}">
+              <img src="{{state.url}}" alt="" class="img-fluid">
+            </a>
+            <div class="desc_states">
+              <h4>{{state.name}}</h4>
+              <p>Պետական դրոշ <img src="{{state.flag}}" alt="" class="img-fluid flag_badgesState"> </p>
+              <p><span>Մայրաքաղաք </span> {{state.capital}}</p>
+              <p><span>Բնակչություն </span> {{state.population}}</p>
+              <p><span>Տարածք </span> {{state.area}}</p>
+              <p><span>Տարածքային կոդ` </span>{{state.code}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,128 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded"  #formModificarPools="ngForm" (ngSubmit)="onChangeAddPools(formModificarPools); formModificarPools.reset()">
+      <div class="insideForm">
+          <span class="lnr lnr-cross" (click)="closeForm()"></span>    
+          <div class="form-group">
+              <label for="ing">Անվանում</label>
+              <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="pool.name" required>
+          </div>
+          <div class="form-group">
+              <label for="cap">Մակերես</label>
+              <input type="text" class="form-control" id="cap" name="area"  [(ngModel)]="pool.area"required>
+          </div>
+          <div class="form-group">
+              <label for="pop">Աղիություն</label>
+              <input type="text" class="form-control" id="pop" name="solty"  [(ngModel)]="pool.solty" required>
+          </div>
+          <div class="form-group">
+              <label for="ar">Առավելագույն խորություն</label>
+              <input type="text" class="form-control" id="ar" name="deep"  [(ngModel)]="pool.deep" required>
+          </div>
+          <div class="form-group">
+              <label for="imageState">Նկար</label>
+              <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                  <label class="file-label">
+                      <input class="file-input" type="file" name="url"  [(ngModel)]="pool.url"  (change)="upload($event)" required>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fa fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        choses Image...
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              <div  class="row" [hidden]="!isImage">
+                <div class="col-12">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                  <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                    <span class="d-block">File uploaded:</span>
+                    <div class="editimgUploadedPool">
+                      <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="desc">Նկարագրություն</label>
+              <textarea type="text" rows="6" class="form-control" id="desc" name="description"  [(ngModel)]="pool.description" required></textarea>
+          </div>
+          <div class="form-group">
+              <label for="cap">Գտնվում է՝</label>
+              <select class="form-control" name="in_area" [(ngModel)]="pool.in_area" required>
+                <option value="asia">Ասիայում</option>
+                <option value="europa">Եվրոպայում</option>
+                <option value="north-america">Հս Ամերիկայում</option>
+                <option value="south-america">Հվ Ամերիակյում</option>
+                <option value="africa">Աֆրիկայում</option>
+                <option value="australia">Ավստրալիայում</option>
+              </select>
+          </div>
+          <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarPools.valid">
+        </div>
+    </form>
+  </div>
+
+
+  <div class="container">
+      <div class="row">
+          <div class="col-12 mb-3">
+            <div class="desc_categ_cont">
+                <h1>Լիճ</h1>
+                <hr>
+                <div class="card_thumb_right">
+                    <div class="asia_image_wrap">
+                        <a href="/assets/img/pool.jpg" data-fancybox="images" data-caption="">
+                            <img src="/assets/img/pool.jpg" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+                <p>Լիճ, երկրի մակերևույթի ջրով լցված գոգավորություն, որը կապված չէ օվկիանոսի հետ։ Լճերի համապարփակ հետազոտություններով զբաղվում է լիմնոլոգիան կամ լճագիտությունը։ Լճերը երկրի մակերևույթի վրա զբաղեցնում են գումարային 2.7 միլիոն քառ. կմ կամ ցամաքի 1.8 տոկոսը։ Խոշոր լճերին հաճախ անվանում են ծովեր (օր.՝ Կասպից ծով կամ լիճ, Արալյան ծով կամ լիճ, Մեռյալ ծով կամ լիճ)։
+                </p>
+                <p>
+                  Երկրագնդի ամենամեծ լիճը Կասպից ծովն է, իսկ ամենախորը՝ Բայկալը (առավելագույն խորությունը 1620 մ է)։</p>
+                <h4>  Լճերի դասակարգումներ</h4>
+                <hr>
+                <h5> Ըստ գոգավորությունների Լճերը կարելի է դասակարգել ըստ նրանց գոգահովիտների առաջացման պատմության։</h5>
+                <ul >
+                  <li>  Հրաբխային լիճ Կոստա Ռիկայում։</li>
+                  <li>Ամբարտակային կամ պատվարային լճերը գոյացել են ամբարտակման կամ գետահունի մասնակի արգելափակման հետևանքով։ Գետահունը կարող է փակվել, երբ հանքային ապարները փլուզվում են կամ թափվում գետահովիտը։ Ամբարտակային լճի օրինակ է Սարեզյան լիճը։</li>
+                  <li>Մնացորդային լճերն իրենցից ներկայացնում են ծովերի մնացորդներ։ Այդպիսին են Կասպից և Արալյան լճերը։</li>
+                  <li>Հրաբխային կամ խառնարանային լճերի լճափոսերը գտնվում են հանգած հրաբխային խառնարաններում։ Այդպիսի լճեր շատ կան Ճավա կղզում, Կուրիլյան կղզիներում, Կամչատկայում։</li>
+                  <li>Կան լճեր, որոնց գոգահովիտները առաջացել են լեռնագոյացման պրոցեսների ժամանակ։ Օրինակ, շերտաշարժի գոգահովիտում է գտնվում Բայկալ լիճը։</li>
+                  <li>Հնահուն լճերը գետերի ողողատներում հանդիպող համեմատաբար ոչ մեծ լճեր են, որոնք իրենցից ներկայացնում են նախկին գետահուների մնացորդներ։</li>
+
+                </ul>
+
+
+            </div>
+            <div class="searchEnginer mt-4">
+                <label for="country" #label>Փնտրել</label>
+                <input type="search" name=""id="country" class="form-control" #query (focus)='setInputFocus($event)' (focusout)='setInputFocusOut($event)' #query  (keyup)="search(query.value)" value="">
+            </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" *ngFor="let pool of searchClient || pools; let i = index " [hidden]="pool.in_area !== isValue" [@fadeIn]>
+            <div class="common_country tool_tip_parent d-block">
+              <span class="icons_country">
+                <a  routerLink="/geographic/world/continential/{{isValue}}/pools/edit/{{pool.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(pool)" *ngIf="isLogin"></i>
+              </span>
+              <a class="pools_img d-block text-center"  routerLink="/geographic/world/continential/{{isValue}}/pools/more/{{pool.id}}">
+                <img src="{{pool.url}}" alt="" class="img-fluid">
+              </a>
+              <div class="pools">
+                <h4>{{pool.name}}</h4>
+                <p><span>Տարածք </span>{{pool.area + ' հզ.կմ'}}</p>
+                <p><span>Խորություն </span>{{pool.deep  + ' մ'}}</p>
+                <p><span> Աղիությունը</span>{{pool.solty  + ' ‰'}}</p>
+              </div>
+            </div>
+        </div>
+      </div>
+</div>

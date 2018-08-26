@@ -1,0 +1,23 @@
+
+<div class="col-12 col-sm-8 mx-auto" *ngIf="isLogin" style="padding: 15px; background: #e2e0e0;">
+
+    <form #formModificarDependent="ngForm" (ngSubmit)="onModificarRecetDependent(formModificarDependent); formModificarDependent.reset()" >
+      <div class="form-group">
+          <label for="ing">Անվանում</label>
+          <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="dependent.name" required>
+      </div>
+      <div class="form-group">
+          <label for="cap">Մայրաքաղաք</label>
+          <input type="text" class="form-control" id="cap" name="capital"  [(ngModel)]="dependent.capital"required>
+      </div>
+      <div class="form-group">
+          <label for="pop">Տարածք</label>
+          <input type="text" class="form-control" id="pop" name="area"  [(ngModel)]="dependent.area" required>
+      </div>
+      <div class="form-group">
+          <label for="pop">Բնակչություն</label>
+          <input type="text" class="form-control" id="pop" name="population"  [(ngModel)]="dependent.population" required>
+      </div>
+      <input type="submit" class="btn btn-block btn-primary" value="Պահպանել"  [disabled]="!formModificarDependent.valid">
+    </form>
+</div>

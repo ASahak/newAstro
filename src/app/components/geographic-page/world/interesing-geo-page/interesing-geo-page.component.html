@@ -1,0 +1,36 @@
+
+<div class="" *ngIf="isLogin">
+  <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+    <form  [ngStyle]="styleForm" class="formAdded" #formModificarInteresing="ngForm" (ngSubmit)="onChangeAddInteresing(formModificarInteresing); formModificarInteresing.reset()">
+      <div class="insideForm">
+        <span class="lnr lnr-cross" (click)="closeForm()"></span>
+        <div class="form-group">
+            <label for="desc">Նկարագրություն</label>
+            <textarea class="form-control" id="desc" name="description" [(ngModel)]="int.description" required></textarea>
+        </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarInteresing.valid">
+      </div>
+    </form>
+  </div> 
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center headerDic">Հետաքրքիր է իմանալ</h1>
+      </div>
+      <div class="col-12 ">
+        <ul type="none">
+          <li *ngFor="let int of PreloaderData; let i = index" class="name_desc_dic">
+            <span class="editSpan">
+              <a  routerLink="/geographic/world/interesing/edit/{{int.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+              <i class="fa fa-trash"  (click)="onClickDelete(int)" *ngIf="isLogin"></i>
+            </span>  
+              <div class="name_desc_int">
+                <span> {{int.description}}</span>
+              </div>
+          </li>
+          
+        </ul>
+        <span  class="text-center w-100 d-block"><img #isPreloaderSVG class="img-fluid mx-auto" src="./assets/img/preloaderMore.svg"></span>
+      </div>
+    </div>
+  </div>

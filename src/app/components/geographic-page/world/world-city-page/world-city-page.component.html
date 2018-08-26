@@ -1,0 +1,122 @@
+
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+    <form [ngStyle]="styleForm" class="formAdded"  #formModificarWorldCity="ngForm" (ngSubmit)="onChangeAddWorldCity(formModificarWorldCity); formModificarWorldCity.reset()">
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>
+            <div class="form-group">
+                <label for="ing">Քաղաք</label>
+                <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="wcity.name" required>
+            </div>
+            <div class="form-group">
+                <label for="cap">Գտնվում է՝</label>
+                <input type="text" class="form-control" id="cap" name="in_the"  [(ngModel)]="wcity.in_the"required>
+            </div>
+            <div class="form-group">
+                <label for="pop">Բնակչություն</label>
+                <input type="text" class="form-control" id="pop" name="population"  [(ngModel)]="wcity.population" required>
+            </div>
+            <div class="form-group">
+                <label for="ar">Տարածք</label>
+                <input type="text" class="form-control" id="ar" name="area"  [(ngModel)]="wcity.area" required>
+            </div>
+            <div class="form-group">
+                <label for="den">Խտություն</label>
+                <input type="text" class="form-control" id="den" name="density"  [(ngModel)]="wcity.density" required>
+            </div>
+            <div class="form-group">
+                <label for="imageState">Նկար</label>
+                <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                    <label class="file-label">
+                        <input class="file-input" type="file" name="url"  [(ngModel)]="wcity.url"  (change)="upload($event)" required>
+                      <span class="file-cta">
+                        <span class="file-icon">
+                          <i class="fa fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                          choses Image...
+                        </span>
+                      </span>
+                    </label>
+                  </div>
+
+                <div  class="row" [hidden]="!isImage">
+                  <div class="col-12">
+                    <div class="progress">
+                      <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                      </div>
+                    </div>
+                    <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                      <span class="d-block">File uploaded:</span>
+                      <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="desc">Նկարագրություն</label>
+                <textarea type="text" rows="6" class="form-control" id="desc" name="description"  [(ngModel)]="wcity.description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cap">Աշխարհամաս</label>
+                <select class="form-control" name="in_continent" [(ngModel)]="wcity.in_continent" required>
+                  <option value="asia">Ասիա</option>
+                  <option value="europa">Եվրոպա</option>
+                  <option value="north-america">Հս Ամերիկա</option>
+                  <option value="south-america">Հվ Ամերիկա</option>
+                  <option value="africa">Աֆրիկա</option>
+                  <option value="australia">Ավստրալիա</option>
+                </select>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarWorldCity.valid">
+        </div>
+    </form>
+</div> 
+
+<div class="container mt-5">
+  <div class="row">
+      <div class="col-12 col-md-3">
+          <div class="content_ng_filters">
+              <h4>Քաղաքներ</h4>  
+              <ul class="world_city_ul " #mapClickUl>
+                <li class="" style="background:#2497e391"><a style="color:#fff" (click)="filterContinent($event, 'all')">Բոլորը</a></li>
+                <li class=""><a (click)="filterContinent($event, 'asia')">Ասիա</a></li>
+                <li class=""><a (click)="filterContinent($event, 'europa')" >Եվրոպա</a></li>
+                <li class=""><a (click)="filterContinent($event, 'north-america')" >Հս. Ամերիկա</a></li>
+                <li class=""><a (click)="filterContinent($event, 'south-america')">Հվ. Ամերիկա</a></li>
+                <li class=""><a (click)="filterContinent($event, 'africa')">Աֆրիկա</a></li>
+                <li class=""><a (click)="filterContinent($event, 'australia')">Ավստրալիա</a></li>
+              </ul>
+          </div>
+      </div>
+      
+      <div class="col-12 col-md-9">
+        <div class="row">
+            <div class="col-12 mb-3">
+              <div class="searchEnginer">
+                <label for="country" #label>Փնտրել</label>
+                <input type="search" name="" id="country" class="form-control" #query (focus)='setInputFocus($event)' (focusout)='setInputFocusOut($event)'  (keyup)="search(query.value)" value="" placeholder="">
+              </div>
+            </div>
+            <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" *ngFor="let wcity of searchClient || wcitys; let i = index " [hidden]=" isCount == false && wcity.in_continent !== isValue" [@fadeIn]>
+                <div class="common_country tool_tip_parent d-block">
+                  <span class="icons_country">
+                    <a  routerLink="/geographic/world/citys/edit/{{wcity.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                    <i class="fa fa-trash"  (click)="onClickDelete(wcity)" *ngIf="isLogin"></i>
+                  </span>
+                  <a class="wcitys_img  d-block text-center"  routerLink="/geographic/world/citys/more/{{wcity.id}}">
+                    <img src="{{wcity.url}}" alt="" class="img-fluid">
+                  </a>
+                  <div class="desc_wcitys">
+                    <h4>{{wcity.name}}</h4>
+                    <p><span>Գտնվում է՝</span>{{wcity.in_the}}</p>
+                    <p><span>Բնակչություն </span> {{wcity.population + ' մլն'}}</p>
+                    <p><span>Տարածք </span>{{wcity.area + ' հզ.կմ'}}</p>
+                    <p><span>Խտություն </span>{{wcity.density + ' մարդ/կմ'}}</p>
+                  </div>
+                </div>
+              </div>
+        </div>
+      </div>
+  </div>
+</div>

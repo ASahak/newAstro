@@ -1,0 +1,123 @@
+<div class="row">
+    <div class="col-12" *ngIf="isLogin && isAsia" style="padding: 15px; background: #e2e0e0;"> 
+            <form  #formModificarAsia="ngForm" (ngSubmit)="onModificarRecetAsia(formModificarAsia)">
+                <div class="form-group">
+                    <label for="ing">Նկարագրություն</label>
+                    <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="asia.description" required>
+                </div>
+                <div class="form-group">
+                    <label for="pre">Անվանում</label>
+                    <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="asia.name" [disabled]="asia.name ==''">
+                </div>
+                <div class="form-group">
+                    <label for="pre">Արժեք</label>
+                    <input type="text" class="form-control" id="pre" name="value"  [(ngModel)]="asia.value" required>
+                </div>
+                <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarAsia.valid">
+            </form>
+    </div>
+    <div class="col-12" *ngIf="isLogin && isEuropa"  style="padding: 15px; background: #e2e0e0;"> 
+        <form  #formModificarEuropa="ngForm" (ngSubmit)="onModificarRecetEuropa(formModificarEuropa)">
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="europa.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="europa.name" [disabled]="europa.name ==''">
+            </div>
+            <div class="form-group">
+                <label for="pre">Արժեք</label>
+                <input type="text" class="form-control" id="pre" name="value"  [(ngModel)]="europa.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarEuropa.valid">
+        </form>
+    </div>
+    <div class="col-12" *ngIf="isLogin && isAfrica"  style="padding: 15px; background: #e2e0e0;"> 
+        <form  #formModificarAfrica="ngForm" (ngSubmit)="onModificarRecetAfrica(formModificarAfrica)">
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="africa.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="africa.name" [disabled]="africa.name ==''">
+            </div>
+            <div class="form-group">
+                <label for="pre">Արժեք</label>
+                <input type="text" class="form-control" id="pre" name="value"  [(ngModel)]="africa.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarAfrica.valid">
+        </form>
+    </div>
+    <div class="col-12" *ngIf="isLogin && isAustralia"  style="padding: 15px; background: #e2e0e0;"> 
+        <form  #formModificarAustralia="ngForm" (ngSubmit)="onModificarRecetAustralia(formModificarAustralia)">
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="australia.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="australia.name" [disabled]="australia.name ==''">
+            </div>
+            <div class="form-group">
+                <label for="pre">Արժեք</label>
+                <input type="text" class="form-control" id="pre" name="value"  [(ngModel)]="australia.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarAustralia.valid">
+        </form>
+    </div>
+    <div class="col-12" *ngIf="isLogin && isAntarktida"  style="padding: 15px; background: #e2e0e0;"> 
+        <form  #formModificarAntarktida="ngForm" (ngSubmit)="onModificarRecetAntarktida(formModificarAntarktida)">
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="antarktida.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="antarktida.name" [disabled]="antarktida.name ==''">
+            </div>
+            <div class="form-group">
+                <label for="pre">Արժեք</label>
+                <input type="text" class="form-control" id="pre" name="value"  [(ngModel)]="antarktida.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarAntarktida.valid">
+        </form>
+    </div>
+
+    <div class="col-12" *ngIf="isLogin && isNorthAmerica"  style="padding: 15px; background: #e2e0e0;"> 
+        <form  #formModificarNorthAmerica="ngForm" (ngSubmit)="onModificarRecetNorthAmerica(formModificarNorthAmerica)">
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="northamerica.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="northamerica.name" [disabled]="northamerica.name ==''">
+            </div>
+            <div class="form-group">
+                <label for="pre">Արժեք</label>
+                <input type="text" class="form-control" id="pre" name="value"  [(ngModel)]="northamerica.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarNorthAmerica.valid">
+        </form>
+    </div>
+
+    <div class="col-12" *ngIf="isLogin && isSouthAmerica"  style="padding: 15px; background: #e2e0e0;"> 
+        <form  #formModificarSouthAmerica="ngForm" (ngSubmit)="onModificarRecetSouthAmerica(formModificarSouthAmerica)">
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="southamerica.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="southamerica.name" [disabled]="southamerica.name ==''">
+            </div>
+            <div class="form-group">
+                <label for="pre">Արժեք</label>
+                <input type="text" class="form-control" id="pre" name="value"  [(ngModel)]="southamerica.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarSouthAmerica.valid">
+        </form>
+    </div>
+</div>

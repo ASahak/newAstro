@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-10 col-md-8 mx-auto mt-4 mb-4 formEdit" *ngIf="isLogin">
+            <form #formModificarRivers="ngForm" (ngSubmit)="onModificarRecetRivers(formModificarRivers)">
+                
+                <div class="form-group">
+                    <label for="tit">Անվանում</label>
+                    <input type="text" class="form-control" id="tit" name="name" [(ngModel)]="river.name" required>
+                </div>
+                <div class="form-group">
+                    <label for="tit">Թափվում է...</label>
+                    <input type="text" class="form-control" id="pre" name="in_falls"  [(ngModel)]="river.in_falls" required>
+                </div>
+                <div class="form-group">
+                    <label for="ing">Ընդ. Երկարություն</label>
+                    <input type="text" class="form-control" id="ing" name="long"  [(ngModel)]="river.long" required>
+                </div>
+                <div class="form-group">
+                    <label for="pre">Երկարությունը (ՀՀ տարածքում)</label>
+                    <input type="text" class="form-control" id="pre" name="longArm"  [(ngModel)]="river.longArm" required>
+                </div>
+                <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarRivers.valid">
+            </form>
+        </div>
+    </div>
+</div>

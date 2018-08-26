@@ -1,0 +1,64 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12 col-lg-5">
+      <div class="descDependents">
+        <h1>Կախյալ տարածքներ</h1>
+        <hr>
+        <p>Կախյալ տարածքները տերիտորիա են, որոնք չունեն լիակատար անկախություն, սակայն նրանք չեն մտնում վերահսկիչ պետության պաշտոնական տարածքի մեջ։ Կախյալ տարածքները նաև անվանվում են գաղութներ։ Կախյալ տարածքների օրինակներ են Գրենլանդիան, Նիդերլանդների Անտիլյան կղզիները, Ամերիկյան Վիրջինյան կղզիները, Ակրոտիրի և Դեկելիան և շատ այլ տարածքներ։</p>
+      </div>
+    </div>
+    <div class="col-12 col-lg-7">
+      <div class="mt-3">
+        <table class="table table-sm  table-hover table-striped  table-responsive-lg w-100 d-sm-table tablePools">
+          <thead  class="">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Անվանում</th>
+              <th scope="col">Մայրաքաղաք</th>
+              <th scope="col">Տարածք</th>
+              <th scope="col">Բնակչություն</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let dependent of dependents; let i = index" class="tool_tip_parents">
+              <th scope="row">{{i+1}}</th>
+              <td>{{dependent.name}}</td>
+              <td>{{dependent.capital}}</td>
+              <td>{{dependent.area}}</td>
+              <td class="tool_tip_parent">{{dependent.population}}
+                <span class="tool_tip badge bagde-pill badge-success">{{dependent.publication | date}}</span>
+                <a  routerLink="/geographic/world/dependent-areas/edit/{{dependent.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(dependent)" *ngIf="isLogin"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="" *ngIf="isLogin">
+  <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+  <form [ngStyle]="styleForm" class="formAdded"  #formModificarDependent="ngForm" (ngSubmit)="onChangeAddDependent(formModificarDependent); formModificarDependent.reset()">
+      <div class="insideForm">
+          <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+          <div class="form-group">
+              <label for="ing">Անվանում</label>
+              <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="dependent.name" required>
+          </div>
+          <div class="form-group">
+              <label for="cap">Մայրաքաղաք</label>
+              <input type="text" class="form-control" id="cap" name="capital"  [(ngModel)]="dependent.capital"required>
+          </div>
+          <div class="form-group">
+              <label for="pop1">Տարածք</label>
+              <input type="text" class="form-control" id="pop1" name="area"  [(ngModel)]="dependent.area" required>
+          </div>
+          <div class="form-group">
+              <label for="pop">Բնակչություն</label>
+              <input type="text" class="form-control" id="pop" name="population"  [(ngModel)]="dependent.population" required>
+          </div>
+          <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarDependent.valid">
+        </div>
+   </form>
+</div>

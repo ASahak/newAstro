@@ -1,0 +1,72 @@
+.continentPage{
+    margin-top:27px;
+     padding: 0 90px
+}
+.content_ng_filters h4{
+    padding: 10px 10px;
+    background: #2497e3;
+    font-weight: 400;
+    color: #fff;
+    font-size: 20px;
+}
+
+
+.ocean_ul > li > a{
+    display: flex;
+    padding: 5px;
+    align-items: center;
+    justify-content: space-between;
+}
+.ocean_sub_ul{
+   height: 0;
+   transition:.4s;
+   overflow: hidden;
+   padding-left: 10px;
+    border-left: 1px solid #dee2e6;
+    margin-left: 15px;
+    font-size: 13px;
+}
+.ocean_ul > li:last-child .ocean_sub_ul, .ocean_ul > li:last-child > a > span{
+    display: none;
+}
+.ocean_ul > li {
+    box-shadow: 0px 1px 3px -2px #333;
+    
+}
+.ocean_ul > li:last-child {
+    box-shadow: none;
+}
+.ocean-active, .ocean-activee{
+    color: #fff;
+    background: #2497e3;
+}
+.ocean-active-sub{
+    color: white;
+    background: #2497e3b3;
+    display:block;
+}
+.ocean_ul {
+    list-style: none;
+    padding: 10px;
+    border: 1px solid #2497e3;
+}
+@media screen and (max-width:991px)  and (min-width:767px) {
+    .continentPage{
+        margin-top:30px;
+        padding: 0 20px
+    }   
+}
+@media screen and (max-width:767px) {
+    .content_ng_filters h4{
+        font-size:18px;
+    }
+    .continentPage{
+        margin-top:30px;
+        padding: 0 15px
+    }   
+}
+@media screen and (max-width:576px) {
+    .content_ng_filters{
+        margin-top:15px;
+    }
+}

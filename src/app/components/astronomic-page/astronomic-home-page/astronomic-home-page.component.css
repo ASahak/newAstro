@@ -1,0 +1,593 @@
+#solar_system{
+    background-image: url('/assets/img/astronomy_bg.jpg');
+    
+    position: relative;
+    background-size: cover;
+    width: 100%;
+    overflow: hidden;
+}
+
+#sun{
+    width: 6vw;
+    height: 6vw;
+    transform-style: preserve-3d;
+    margin: auto;
+    position: absolute;
+    z-index:22;
+    left: 0;
+    right: 0;
+    border-radius:50%;
+    transform-style: preserve-3d;
+    /* animation: sun infinite linear; */
+}
+
+.sun{
+    position: absolute;
+    height: 6vw;
+    width: 6vw;
+    left: 0;
+    top: 0;
+    background-image: url(/assets/img/sun.png);
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    background-size: 100px;
+    background-position: center;
+    -webkit-transition: .4s;
+    transition: .4s;
+    right: 0;
+    margin: auto;
+    bottom: 0;
+    
+    border-radius: 50%;
+    box-shadow:0px 0px 8px 1px #f32d00;
+}
+.transformCommon .sun{
+    transform: rotateX(-75deg);
+}
+
+.common_system {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: .4s;
+}
+.transformCommon{
+    transform: rotateX(75deg);
+
+}
+
+
+#merc.os {
+    width: 8vw;
+    height: 8vw;
+    animation: merc infinite linear;
+    z-index: 29;
+}
+#merc .object{
+    transform: rotateX(90deg);
+    left: 0px;
+    right: 0;
+    margin: auto;
+    top: -1px;
+    width: 3px;
+    height: 3px;
+    transform-style: preserve-3d;
+    background-image: url(/assets/img/merc.png);
+    background-size: cover;
+    position: absolute;
+}
+
+#venus.os {
+    width: 10vw;
+    height: 10vw;
+    animation: venus infinite linear;
+    z-index: 28;
+}
+#venus .object{
+    transform: rotateX(90deg);
+    left: 0px;
+    right: 0;
+    margin: auto;
+    top: -2px;
+    width: 5px;
+    height: 5px;
+    transform-style: preserve-3d;
+    background-image: url(/assets/img/venus.png);
+    background-size: cover;
+    position: absolute;
+}
+
+
+#earth.os {
+    width: 13vw;
+    height: 13vw;
+    animation: earth infinite linear;
+    z-index: 27;
+}
+#earth .object{
+    transform: rotateX(90deg);
+    left: 0px;
+    right: 0;
+    margin: auto;
+    top: -3px;
+    width: 7px;
+    height: 7px;
+    transform-style: preserve-3d;
+    background-image: url(/assets/img/earth.png);
+    background-size: cover;
+    position: absolute;
+}
+#mars.os {
+    width: 15vw;
+    height: 15vw;
+    animation: mars infinite linear;
+    z-index: 26;
+}
+#mars .object{
+    transform: rotateX(90deg);
+    left: 0px;
+    right: 0;
+    margin: auto;
+    top: -2px;
+    width: 5px;
+    height: 5px;
+    transform-style: preserve-3d;
+    background-image: url(/assets/img/mars.png);
+    background-size: cover;
+    position: absolute;
+}
+
+#jupiter.os {
+    width: 27vw;
+    height: 27vw;
+    animation: jupiter infinite linear;
+    z-index: 25;
+}
+#jupiter .object{
+    transform: rotateX(90deg);
+      left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+    top: -10px;
+    width: 20px;
+    height: 20px;
+    transform-style: preserve-3d;
+    background-image: url(/assets/img/jupiter.png);
+    background-size: cover;
+}
+#saturn.os {
+    width: 35vw;
+    height: 35vw;
+    animation: saturn infinite linear;
+    z-index: 24;
+}
+#saturn .object{
+    transform: rotateX(90deg);
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+    top: -15px;
+    width: 30px;
+    height: 30px;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+    background-image: url(/assets/img/satur.png);
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#uran.os {
+    width: 40vw;
+    height: 40vw;
+    animation: uran infinite linear;
+    z-index: 23;
+}
+#uran .object{
+    transform: rotateX(90deg);
+      left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+    top: -7px;
+    width: 14px;
+    height: 14px;
+    transform-style: preserve-3d;
+    background-image: url(/assets/img/uran.png);
+    background-size: cover;
+}
+#neptun.os {
+    width: 50vw;
+    height: 50vw;
+    animation: neptun infinite linear;
+    z-index: 22;
+}
+#neptun .object{
+    transform: rotateX(90deg);
+    left: 0;
+    right: 0;
+    position: absolute;
+    margin: auto;
+    top: -6px;
+    width: 12px;
+    height: 12px;
+    transform-style: preserve-3d;
+    background-image: url(/assets/img/neptune.png);
+    background-size: cover;
+}
+.transformCommon .object{
+    transform: rotateX(0deg) !important;
+
+}
+.epic{
+    animation-name: invert;
+    position: absolute;
+    transform-style: preserve-3d;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top: 0px;
+}
+
+.object{
+    background-size: 100%;
+    border-radius: 50%;
+}
+.os {
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    border: 1px solid rgba(255,255,255,.4);
+    border-radius: 50%;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    transform-style: preserve-3d
+}
+
+
+
+.play_stop {
+    display: flex;
+    position: absolute;
+    top: -40px;
+    left: 0;
+    width: 100%;
+}
+.play_stop button{
+    border: none;
+    background: #2497e3;
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    outline: none;
+    -webkit-transition: .4s;
+    transition: .4s;
+    margin: 0 3px;
+}
+.uhrDate {
+    width: 100%;
+    bottom: 0;
+    position: absolute;
+    display: flex;
+    align-items: flex-end;
+}
+.clock_badge p{
+    margin-bottom: 0;
+}
+.clock_badge{
+    width: 200px;
+    padding: 10px 0;
+    margin-bottom: 15px;
+    background: #2497e3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #fff;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+
+}
+/* 2d 3d button */
+.butt_2d_3d span{
+    cursor: pointer;
+}
+.transferCircle:after{
+    right: 5px !important;
+    transition: .4s;
+    left: 55px !important;
+}
+.butt_2d_3d:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: auto;
+    bottom: 0;
+    margin: auto;
+    left: 3px;
+    width: 22px;
+    height: 22px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    background: #2497e3;
+    transition: .4s;
+}
+.butt2d{
+    opacity: 0;
+}
+.butt_2d_3d {
+    transition: .4s;
+    background: #e9ecef;
+    position: absolute;
+    right: 30px;
+    top: 20px;
+    border: 1px solid #fff;
+    width: 80px;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-around;
+    z-index:22;
+}
+/* 2d 3d button */
+
+/* zoom Range */
+.zommRange button{
+    border: none;
+    background: #2497e3;
+    color: #fff;
+    border-radius: 2px;
+    cursor: pointer;
+    outline: none;
+    transition: .4s;
+}
+.zommRange:active .valueRangeX {
+    opacity: 1;
+}
+.valueRangeX {
+    left: 20px;
+    width: 35px;
+    height: 30px;
+    background: #fff;
+    color: #000;
+    position: absolute;
+    /* top: 0; */
+    bottom: 40px;
+    margin: auto;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 50%;
+    padding: 5px;
+    text-align: center;
+    opacity: 0;
+    transition: .4s;
+}
+.zommRange {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 200px;
+    justify-content: space-between;
+}
+input.rangeZumm {
+    transform: rotate(-90deg);
+}
+
+
+
+.rangeZumm, #myRange {
+    -webkit-appearance: none;
+    background: none;
+  }
+  .rangeZumm:focus, #myRange:focus {
+    outline: none;
+  }
+  .rangeZumm::-webkit-slider-runnable-track, #myRange::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #000000;
+    background: #2497E3;
+    border-radius: 1px;
+    border: 0px solid #000000;
+  }
+  .rangeZumm::-webkit-slider-thumb, #myRange::-webkit-slider-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #A1D0FF;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -7px;
+  }
+  .rangeZumm:focus::-webkit-slider-runnable-track, #myRange:focus::-webkit-slider-runnable-track {
+    background: #2497E3;
+  }
+  .rangeZumm::-moz-range-track, #myRange::-moz-range-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    box-shadow: 0px 0px 0px #000000;
+    background: #2497E3;
+    border-radius: 1px;
+    border: 0px solid #000000;
+  }
+  .rangeZumm::-moz-range-thumb, #myRange::-moz-range-thumb {
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #A1D0FF;
+    cursor: pointer;
+  }
+  .rangeZumm::-ms-track, #myRange::-ms-track {
+    width: 100%;
+    height: 5px;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  .rangeZumm::-ms-fill-lower, #myRange::-ms-fill-lower {
+    background: #2497E3;
+    border: 0px solid #000000;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px #000000;
+  }
+  .rangeZumm::-ms-#myRangefill-upper, ::-ms-fill-upper {
+    background: #2497E3;
+    border: 0px solid #000000;
+    border-radius: 2px;
+    box-shadow: 0px 0px 0px #000000;
+  }
+  .rangeZumm#myRange::-ms-thumb, ::-ms-thumb {
+    margin-top: 1px;
+    box-shadow: 0px 0px 0px #000000;
+    border: 1px solid #2497E3;
+    height: 18px;
+    width: 18px;
+    border-radius: 25px;
+    background: #A1D0FF;
+    cursor: pointer;
+  }
+  .rangeZumm:focus::-ms-fill-lower, #myRange:focus::-ms-fill-lower {
+    background: #2497E3;
+  }
+  .rangeZumm:focus::-ms-fill-upper, #myRange:focus::-ms-fill-upper {
+    background: #2497E3;
+  }
+/* zoom Range */
+
+/* Planets Info */
+.descPlanets {
+    position: absolute;
+    color: #fff;
+    font-size: 13px;
+    padding: 10px 0 0 10px;
+}
+  .imgObjects{
+    width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	background-size: 200px;
+	box-shadow: inset 16px 0 40px 6px rgb(0, 0, 0),
+		inset -3px 0 6px 2px rgba(255, 255, 255, 0.2);
+	animation-name: sun;
+	animation-duration: 6s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+  }
+  .planets{
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    padding: 15px;
+}
+.planets > a {
+    display: block;
+    color: #fff !important;
+    cursor: pointer;
+}
+  .planets a{
+      transition: .4s;
+      border: 1px solid transparent;
+      padding: 5px 10px;   
+  }
+  .activePlanetButton{
+      transform: translateY(-5px);
+    border: 1px solid #fff !important;
+    padding: 5px 10px;     
+    background: #2497e3;
+    border-radius: 6px; 
+  }
+@keyframes sun {
+    from{background-position-x: 0px}
+    to{background-position-x: 200px}
+}
+/* Planets Info */
+
+@media screen and (max-width:991px) and (min-width:767px){
+    .planets > a {
+        font-size: 12px;
+    }
+}
+
+@media screen and (max-width:767px) and (min-width:576px){
+    .planets {
+         flex-wrap: wrap   
+    }
+    .planets > a {
+        font-size: 12px;
+    }
+}
+@media screen and (max-width:576px){
+    #merc .object{
+        width: 2px;
+        height: 2px;
+        top: 0;
+    }
+    #venus .object{
+        width: 3px;
+        height: 3px;
+        top: -1px;
+    }
+    #earth .object{
+        width: 5px;
+        height: 5px;
+        top: -2px;
+    }
+    #mars .object{
+        width: 3px;
+        height: 3px;
+        top: -1px;
+    }
+    #jupiter .object{
+        width: 10px;
+        height: 10px;
+        top: -5px;
+    }
+    #saturn .object{
+        width: 20px;
+        height: 20px;
+        top: -7px;
+    }
+    #uran .object{
+        width: 8px;
+        height: 8px;
+        top: -4px;
+    }
+    #neptun .object{
+        width: 7px;
+        height: 7px;
+        top: -3px;
+    }
+    .uhrDate {
+        flex-direction: column-reverse;
+    }
+    .clock_badge{
+        width: 100%
+    }
+    .planets > a{
+        font-size: 12px;
+    }
+    .play_stop{
+        justify-content: center;
+    }
+    .planets{
+        width: 100%;
+        flex-wrap: wrap
+    }
+    .descPlanets{
+        font-size: 10px;
+    }
+}

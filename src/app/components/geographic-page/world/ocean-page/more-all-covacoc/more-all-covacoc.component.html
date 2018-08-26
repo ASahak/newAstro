@@ -1,0 +1,23 @@
+
+<div  class="row">
+    <div class="col-12 col-sm-5 col-lg-4">
+        <div class="card_image_more">
+          <a href="{{ seecoc.url }}" class="states_img d-block text-center" data-fancybox="images" data-caption="">
+              <img class="mr-3" src="{{seecoc.url}}" class="img-fluid">
+          </a>
+          <div class="desc_states">
+            <h4>{{seecoc.name}}</h4>
+            <p><span>Մակերես </span> {{seecoc.area + ' հզ.կմ'}}</p>
+            <p><span>Միջ. խորություն</span> {{seecoc.deep + ' մ'}}</p>
+            <p><span>Առավել. խորություն</span> {{seecoc.veryDeep + ' մ'}}</p>
+            <p><span>Աղիություն</span> {{seecoc.solty + ' ‰'}}</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-7 col-lg-8">
+        <div class="descMoreState">
+          <b class="mt-0">{{seecoc.name}}</b>
+          <p>{{seecoc.description}}</p>
+        </div>
+    </div>
+  </div>

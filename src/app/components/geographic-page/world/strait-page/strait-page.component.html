@@ -1,0 +1,118 @@
+<div class="" *ngIf="isLogin">
+  <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span>  
+    <form  [ngStyle]="styleForm" class="formAdded" #formStrait="ngForm" (ngSubmit)="onChangeAddStrait(formStrait); formStrait.reset()" >
+        <div class="insideForm">
+          <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+          <div class="form-group">
+            <label for="tit">Անվանում</label>
+            <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="strait.name" required>
+          </div>
+          <div class="form-group">
+              <label for="tit">Երկարություն</label>
+              <input type="text" class="form-control" id="pre" name="long"  [(ngModel)]="strait.long" required>
+          </div>
+          <div class="form-group">
+              <label for="ing">Նվազագույն լայնություն</label>
+              <input type="text" class="form-control" id="ing" name="width"  [(ngModel)]="strait.width" required>
+          </div>
+          <div class="form-group">
+              <label for="pre">Նվազագույն խորություն</label>
+              <input type="text" class="form-control" id="pre" name="minDeep"  [(ngModel)]="strait.minDeep" required>
+          </div>
+          <div class="form-group">
+              <label for="pre">Միացնում է՝</label>
+              <input type="text" class="form-control" id="pre" name="bindToFrom"  [(ngModel)]="strait.bindToFrom" required>
+          </div>
+          <div class="form-group">
+              <label for="pre">Նկարագրություն</label>
+              <textarea rows="10" class="form-control" id="pre" name="description"  [(ngModel)]="strait.description" required></textarea>
+          </div>
+          <div class="form-group">
+              <label for="imageState">Նկար</label>
+              <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                  <label class="file-label">
+                    <input class="file-input" type="file" name="url"  [(ngModel)]="strait.url"  (change)="upload($event)" required>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fa fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        choses Image...
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              <div  class="row" [hidden]="!isImage">
+                <div class="col-12">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                  <div class="uploadedImage alert alert-info" role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                    <span class="d-block">File uploaded:</span>
+                    <div class="editimgUploadedPool">
+                      <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formStrait.valid">
+        </div>
+    </form>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col">
+
+      <div class="desc_strait">
+        <h1 class="text-center">Նեղուց</h1>
+        <hr>
+        <div class="card_thumb_right">
+            <div class="asia_image_wrap mb-4">
+                <a href="/assets/img/strait.jpg" data-fancybox="images" data-caption="">
+                    <img src="/assets/img/strait.jpg" class="img-fluid">
+                </a>
+            </div>
+        </div>
+        <p>Նեղուց, ջրային համեմատաբար նեղ տարածություն, անջատում է ցամաքի տարբեր մասեր և միացնում ջրային ավազաններ կամ դրանց մասերը։ Նեղուցների առավելագույն մեծություններն են՝ երկարությունը մոտ 1670 կմ (Մոզամբիկի նեղուց), լայնությունը՝ 950 կմ (Դրեյկի նեղուց), խորությունը՝ 5840 կմ (Դրեյկի նեղուց)։</p>
+      </div>
+
+      <table class="table table-sm  table-hover table-striped  table-responsive-lg w-100 d-sm-table tablePools">
+          <thead  class="">
+          <tr class="">
+            <th>Անվանում</th>
+            <th>Երկարություն (մ)</th>
+            <th>Նվ. լայնություն (մ)</th>
+            <th>Նվ. խորություն (մ)</th>
+            <th>Միացնում է՝</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let strait of straits; let i = index" class="tool_tip_parents" [hidden]="strait.in_area !== isValue">
+            <td><a href="javascript:void(0)" (click)="moreStraight(strait)">{{strait.name}}</a></td>
+            <td>{{strait.long}}</td>
+            <td>{{strait.width}}</td>
+            <td>{{strait.minDeep}}</td>
+            <td class="tool_tip_parent">{{strait.bindToFrom}}
+                <span class="tool_tip badge bagde-pill badge-success">{{strait.publication | date}}</span>
+                <a  routerLink="/geographic/world/strait/edit/{{strait.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(strait)" *ngIf="isLogin"></i>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="moreStraightDiv" *ngIf="isMore" [@scale]>
+    <span class="lnr lnr-cross closeButton" (click)="closeModal()"></span>
+    <div class="commonWrap">
+      <div class="desc">
+        <img [src]="objFixed.url" alt="" class="img-fluid">
+        <h3>{{objFixed.name}}</h3>
+        <p>{{objFixed.desc}}</p>
+      </div>
+    </div>
+  </div>

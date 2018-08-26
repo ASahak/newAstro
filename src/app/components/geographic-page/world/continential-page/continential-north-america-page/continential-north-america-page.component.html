@@ -1,0 +1,94 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded"  #formNorthAmerica="ngForm" (ngSubmit)="onChangeAddNorthAmerica(formNorthAmerica); formNorthAmerica.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="northamerica.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="northamerica.name">
+            </div>
+            <div class="form-group">
+                <label for="val">Արժեք</label>
+                <input type="text" class="form-control" id="val" name="value"  [(ngModel)]="northamerica.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formNorthAmerica.valid">
+        </div>
+    </form>
+</div>
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world">Գլխավոր</a>
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a>Հյուսիսային Ամերիկա</a>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-8 col-md-9 p-0 mb-4">
+            <div class="description_asia">
+                <b>Հյուսիսային Ամերիկա</b>
+                <hr>
+                <p>
+                    Հյուսիսային Ամերիկա (անգլերեն՝ North America, ֆրանսերեն՝ Amérique du Nord, իսպաներեն՝ América del Norte), աշխարհի 6 մայրցամաքներից մեկն է։ Մեծությամբ երրորդ մայրցամաքն է՝ 24,2 մլն. կմ²։<br><br>
+                    Հյուսիսային Ամերիկային է պատկանում երկրի ամենամեծ կղզին՝ Գրելանդիան,որին անվանում են «Կանաչ երկիր»։ Ամենամեծ քարանձավը՝ Ֆլինտ-Մամոնտի քարանձավը , աշխարհում առաջին ազգային պարկը՝ Ելլոսթունյան ազգային պարկը։Այն բացվել է 1872 թվականին</p>
+                <p>
+                    Հյուսիսային Ամերիկան ամբողջովին գտնվում է արևմտյան և հյուսիսային կիսագնդերում։ Նրա հարավային մասը, կղզիների հետ միասին կոչվում է Կենտրոնական Ամերիկա։ Պանամայի նեղ պարանոցով միանում է Հարավային Ամերիկային։ 20-րդ դարի սկզբին այստեղ փորվել է Պանամայի նավարկելի ջրանցքը։ Հյուսիս-արևմուտքում Բերինգի նեղուցով (85 կմ) Հյուսիսային Ամերիկան բաժանվում է Եվրասիայից։
+                    <br><br>
+                    Հյուսիսային Ամերիկան տիեզերքից
+                    Հյուսիսային Ամերիկայի ծայրակետերն են. հյուսիսում՝ Մերչիսոն (Բութիա թերակղզում, հս. լ. 71°50’), հարավում՝ Մարյատո (հս. լ. 7°05’), արևմուտքում՝ Արքայազն Ուելսի (արմ. երկ. 168°), արևելքում՝ Սենտ-Չարլզի (Լաբրադոր թերակղզում, 55°40’) հրվանդանները։
+                </p>
+            </div>
+        </div>
+   
+        <div class="col-12 col-sm-4 col-md-3 pr-0">
+            <div class="card_thumb_right">
+                <div class="asia_image_wrap">
+                    <div *ngIf="(northamericaphotos | json) == '[]'" >
+                        <img src="/assets/img/noImage.png" class="img-fluid">
+                        <button *ngIf="isLogin" (click)="AddDrop()" class="plusDrop"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                    </div>
+                    <div *ngFor="let asPhoto of northamericaphotos">
+                        <a *ngIf="(northamericaphotos | json) != '[]'" href="{{ asPhoto.url }}" data-fancybox="images" data-caption="">
+                            <img src="{{ asPhoto.url }}" class="img-fluid">
+                        </a>
+                        <button *ngIf="isLogin" (click)="onClickDeletePhoto(asPhoto)" class="plusDrop"><i class="fa fa-pencil"></i></button>
+                    </div>
+                </div>
+                <div *ngFor="let desc of northamericas">
+                    <div *ngIf="!desc.name"  class="tool_tip_parent">
+                        <b>{{desc.description}} -</b>
+                        <em>{{desc.value}}</em>
+                        
+                        <a  routerLink="/geographic/world/continential/north-america/edit/{{desc.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(desc)" *ngIf="isLogin"></i>  
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="col-12 uploadDrop" [ngStyle]="styleDrop" *ngIf="(northamericaphotos | json) == '[]' && isLogin">
+            <file-upload-northamerica></file-upload-northamerica>
+        </div>
+        <table class="table table-sm  table-hover table-striped   table-responsive-lg w-100 d-sm-table tablecontinents mt-4">
+            <thead  class=""> 
+            <tr>
+            <th scope="col">Նկարագրություն</th>
+            <th scope="col">Անվանում</th>
+            <th scope="col">Արժեք</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let northamerica of northamericas; let i = index " class="tool_tip_parents">
+            <td [hidden]="northamerica.name == '' || northamerica.name == null">{{northamerica.description}}</td>
+            <td [hidden]="northamerica.name == '' || northamerica.name == null">{{northamerica.name}}</td>
+            <td [hidden]="northamerica.name == '' || northamerica.name == null"  class="tool_tip_parent">{{northamerica.value}}
+                <span class="tool_tip badge bagde-pill badge-success">{{northamerica.publication | date}}</span>
+                <a  routerLink="/geographic/world/continential/north-america/edit/{{northamerica.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(northamerica)" *ngIf="isLogin"></i>  
+            </td>
+            </tr>
+        </tbody>
+        </table>
+    </div>
+</div>

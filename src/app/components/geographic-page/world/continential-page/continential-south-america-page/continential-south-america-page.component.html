@@ -1,0 +1,95 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded" #formSouthAmerica="ngForm" (ngSubmit)="onChangeAddSouthAmerica(formSouthAmerica); formSouthAmerica.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+            <div class="form-group">
+                <label for="ing">Նկարագրություն</label>
+                <input type="text" class="form-control" id="ing" name="description"  [(ngModel)]="southamerica.description" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Անվանում</label>
+                <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="southamerica.name">
+            </div>
+            <div class="form-group">
+                <label for="val">Արժեք</label>
+                <input type="text" class="form-control" id="val" name="value"  [(ngModel)]="southamerica.value" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formSouthAmerica.valid">
+        </div>
+    </form>
+</div>
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world">Գլխավոր</a>
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a>Հարավային Ամերիկա</a>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-8 col-md-9 p-0 mb-4">
+            <div class="description_asia">
+                <b>Հարավային Ամերիկա</b>
+                <hr>
+                <p>
+                Հարավային Ամերիկա (իսպ.՝ América del Sur, Sudamérica, Suramérica, անգլ.՝ South America, ֆր.՝ Amérique du Sud), աշխարհի 6 մայրցամաքներից մեկն է։ Մեծությամբ չորրորդ մայրցամաքն է՝ 17.8 միլիոն կմ²։<br><br>
+                    Հարավային Ամերիկան ընկած է արևմտյան կիսագնդում, իսկ հասարակածն անցնում է նրա հյուսիսային մասով։</p>
+                <p>
+                    Ծայրակետերն են. հարավում՝ Ֆրոուերդ (Մագելանի նեղուցում, հվ. լ. 53° 54’, իսկ ամենահարավային՝ Հոռնն է Հրո երկիր կղզում, հարավային լայնություն 55° 59’), հյուսիսում՝ Գալինաս (հս. լ. 12° 28’), արևելքում՝ Կաբու-Բրանկու (արմ. երկ. 34° 47’), արևմուտքում՝ Պարինյաս (արմ. երկ. 81° 20’) հրվանդանները։
+
+                    Մայրցամաքի առավելագույն լայնությունը 5000 կմ է, իսկ երկարությունը՝ 7000 կմ։
+                    <br><br>
+                    Հարավային Ամերիկայում ջրագրական ցանցը զարգացած է։ Կլիմայական պայմանները և ռելիեֆը նպաստում են մեծ և ջրառատ գետերի առաջացմանը։ Ծայր արևմուտքով ձգվող Անդեր լեռնաշղթան ջրբաժան է հանդիսանում Ատլանտյան և Խաղաղ օվկիանոսների ավազանների միջև։ Այդ պատճառով դեպի Ատլանտյան օվկիանոս հոսող գետերը երկար ու ջրառատ են, իսկ դեպի Խաղաղ օվկիանոս հոսողները՝ կարճ ու սակավաջուր։
+                </p>
+            </div>
+        </div>
+   
+        <div class="col-12 col-sm-4 col-md-3 pr-0">
+            <div class="card_thumb_right">
+                <div class="asia_image_wrap">
+                    <div *ngIf="(southamericaphotos | json) == '[]'" >
+                        <img src="/assets/img/noImage.png" class="img-fluid">
+                        <button *ngIf="isLogin" (click)="AddDrop()" class="plusDrop"><i class="fa fa-plus-square" aria-hidden="true"></i></button>
+                    </div>
+                    <div *ngFor="let asPhoto of southamericaphotos">
+                        <a *ngIf="(southamericaphotos | json) != '[]'" href="{{ asPhoto.url }}" data-fancybox="images" data-caption="">
+                            <img src="{{ asPhoto.url }}" class="img-fluid">
+                        </a>
+                        <button *ngIf="isLogin" (click)="onClickDeletePhoto(asPhoto)" class="plusDrop"><i class="fa fa-pencil"></i></button>
+                    </div>
+                </div>
+                <div *ngFor="let desc of southamericas">
+                    <div *ngIf="!desc.name"  class="tool_tip_parent">
+                        <b>{{desc.description}} -</b>
+                        <em>{{desc.value}}</em>
+                        
+                        <a  routerLink="/geographic/world/continential/south-america/edit/{{desc.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                        <i class="fa fa-trash"  (click)="onClickDelete(desc)" *ngIf="isLogin"></i>  
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="col-12 uploadDrop" [ngStyle]="styleDrop" *ngIf="(southamericaphotos | json) == '[]' && isLogin">
+            <file-upload-southamerica></file-upload-southamerica>
+        </div>
+        <table class="table table-sm  table-hover table-striped   table-responsive-lg w-100 d-sm-table tablecontinents mt-4">
+            <thead  class=""> 
+                <tr>
+                <th scope="col">Նկարագրություն</th>
+                <th scope="col">Անվանում</th>
+                <th scope="col">Արժեք</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let southamerica of southamericas; let i = index " class="tool_tip_parents">
+                <td [hidden]="southamerica.name == '' || southamerica.name == null">{{southamerica.description}}</td>
+                <td [hidden]="southamerica.name == '' || southamerica.name == null">{{southamerica.name}}</td>
+                <td [hidden]="southamerica.name == '' || southamerica.name == null"  class="tool_tip_parent">{{southamerica.value}}
+                    <span class="tool_tip badge bagde-pill badge-success">{{southamerica.publication | date}}</span>
+                    <a  routerLink="/geographic/world/continential/south-america/edit/{{southamerica.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                    <i class="fa fa-trash"  (click)="onClickDelete(southamerica)" *ngIf="isLogin"></i>  
+                </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

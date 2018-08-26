@@ -1,0 +1,120 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded"  #formSeeCoc="ngForm" (ngSubmit)="onChangeAddOceanSeeCoc(formSeeCoc); formSeeCoc.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>
+            <div class="form-group">
+            <label for="tit">Անվանում</label>
+            <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="seecoc.name" required>
+            </div>
+            <div class="form-group">
+                <label for="tit">Մակերես</label>
+                <input type="text" class="form-control" id="pre" name="area"  [(ngModel)]="seecoc.area" required>
+            </div>
+            <div class="form-group">
+                <label for="ing">Միջին խորություն</label>
+                <input type="text" class="form-control" id="ing" name="deep"  [(ngModel)]="seecoc.deep" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Առավելագույն խորություն</label>
+                <input type="text" class="form-control" id="pre" name="veryDeep"  [(ngModel)]="seecoc.veryDeep" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Աղիություն</label>
+                <input type="text" class="form-control" id="pre" name="solty"  [(ngModel)]="seecoc.solty" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Նկարագրություն</label>
+                <textarea rows="10" class="form-control" id="pre" name="description"  [(ngModel)]="seecoc.description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cap">Հանդիսանում է (****)-ի ծովածոցերը</label>
+                <select class="form-control" name="in_area" [(ngModel)]="seecoc.in_area" required>
+                <option value="xaxax">Խաղաղ Օվկիանոսի</option>
+                <option value="india">Հնդկական Օվկիանոսի</option>
+                <option value="atlantic">Ատլանտյան Օվկիանոսի</option>
+                <option value="north-ice">Հս. սառուցյալ Օվկիանոսի</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="imageState">Նկար</label>
+                <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                    <label class="file-label">
+                    <input class="file-input" type="file" name="url"  [(ngModel)]="seecoc.url"  (change)="upload($event)" required>
+                    <span class="file-cta">
+                        <span class="file-icon">
+                        <i class="fa fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                        choses Image...
+                        </span>
+                    </span>
+                    </label>
+                </div>
+                <div  class="row" [hidden]="!isImage">
+                <div class="col-12">
+                    <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    </div>
+                    <div class="uploadedImage alert alert-info" role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                    <span class="d-block">File uploaded:</span>
+                    <div class="editimgUploadedPool">
+                        <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formSeeCoc.valid">
+        </div>
+    </form>
+</div>
+
+<div class="row">
+
+    <div class="col-12">
+        <div class="description_asia">
+            <div class="card_thumb_right  mb-4">
+                <div class="asia_image_wrap mt-4">
+                    <a href="/assets/img/coc2.png" class="text-center d-block" data-fancybox="images" data-caption="">
+                        <img src="/assets/img/coc2.png" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+            <h3>Ծոց</h3>
+            <hr class="img_among_hr">
+            <p class="">
+              Ծոց, օվկիանոսի, ծովի կամ լճի՝ ցամաքի մեջ մտած մաս։ Ծոցը հիմնական ջրավազանի հետ պահպանում է ազատ ջրափոխանակություն և ջրաբանական ու ջրաքիմիական հատկանիշներով նրանից չի տարբերվում։ Խոշորներից են Ալյասկայի, Բենգալյան, Մեծ Ավստրալիական ծոցերը։</p>
+            <p>Օվկիանոսի որոշ մասեր ավանդաբար ծոցեր են անվանվում, չնայած իրենց ջրաբանական առանձնահատկություններով տիպիկ ծովեր են (Մեքսիկական, Հուդզոնի, Պարսից ծոցերը և այլն)։</p>
+            
+        </div>
+        <div class="table_asia mt-4">
+            <table class="table table-sm  table-hover table-striped  table-responsive-lg w-100 d-sm-table tablePools">
+                <thead  class="">   
+                <tr>
+                  <th scope="col">Անվանում</th>
+                  <th scope="col">Մակերես</th>
+                  <th scope="col">Միջ. խորություն</th>
+                  <th scope="col">Առավել. խորություն</th>
+                  <th scope="col">Մակ. ջերմաստիճան</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let seecoc of seescoc; let i = index" class="tool_tip_parents" [hidden]="seecoc.in_area !== isValue">
+                  <td><a  routerLink="/geographic/world/ocean/{{OceanArm}}/ծովածոցեր/more/{{seecoc.id}}">{{seecoc.name}}</a></td>
+                  <td>{{seecoc.area  + ' հզ.կմ'}}</td>
+                  <td>{{seecoc.deep + ' մ'}}</td>
+                  <td>{{seecoc.veryDeep  + ' մ'}}</td>
+                  <td class="tool_tip_parent">{{seecoc.solty  + ' ‰'}}
+                      <span class="tool_tip badge bagde-pill badge-success">{{seecoc.publication | date}}</span>
+                      <a  routerLink="/geographic/world/ocean/{{OceanArm}}/ծովածոցեր/edit/{{seecoc.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                      <i class="fa fa-trash"  (click)="onClickDelete(seecoc)" *ngIf="isLogin"></i>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>

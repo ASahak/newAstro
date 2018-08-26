@@ -1,0 +1,101 @@
+<div class="container">
+    <div class="row">
+     <div class="col-12 col-sm-10 col-md-8 mx-auto mt-4 mb-4 formEdit" *ngIf="isLogin">
+    <form #formModificarPlanets="ngForm" (ngSubmit)="onModificarRecetPlanets(formModificarPlanets, planets); formModificarPlanets.reset()">
+        <div class="form-group" >
+            <label for="name">Անվանում</label>
+            <input type="text" class="form-control" id="name" name="name"  [(ngModel)]="planet.name" required>
+        </div>
+        <div class="form-group">
+            <label for="diameter">Հասրակածային տրամագիծ</label>
+            <input type="text" class="form-control" id="diameter" name="diameter"  [(ngModel)]="planet.diameter"required>
+        </div>
+        <div class="form-group">
+          <label for="weight">Զանգված</label>
+          <input type="text" class="form-control" id="weight" name="weight"  [(ngModel)]="planet.weight"required>
+        </div>
+        <div class="form-group">
+          <label for="periheli">Պերիհելի</label>
+          <input type="text" class="form-control" id="periheli" name="periheli"  [(ngModel)]="planet.periheli"required>
+      </div>
+      <div class="form-group">
+          <label for="apoheli">Ապոհելի</label>
+          <input type="text" class="form-control" id="apoheli" name="apoheli"  [(ngModel)]="planet.apoheli"required>
+      </div>
+      <div class="form-group">
+          <label for="bigAnomalia">Մեծ Կիսաառանցք</label>
+          <input type="text" class="form-control" id="bigAnomalia" name="bigAnomalia"  [(ngModel)]="planet.bigAnomalia"required>
+      </div>
+        <div class="form-group">
+            <label for="farEarth">Հեռավորությունը Երկրից</label>
+            <input type="text" class="form-control" id="farEarth" name="farEarth"  [(ngModel)]="planet.farEarth"required>
+        </div>
+        <div class="form-group">
+          <label for="rotOs">Առանցքի շուրջ պտտման պարբերությունը</label>
+          <input type="text" class="form-control" id="rotOs" name="rotOs"  [(ngModel)]="planet.rotOs"required>
+        </div>
+        <div class="form-group">
+            <label for="temperature">Մակերևույթի ջերմաստիճանը</label>
+            <input type="text" class="form-control" id="temperature" name="temperature"  [(ngModel)]="planet.temperature" required>
+        </div>
+        <div class="form-group">
+            <label for="stoogeCount">Արբանյակների թիվը</label>
+            <input type="text" class="form-control" id="stoogeCount" name="stoogeCount"  [(ngModel)]="planet.stoogeCount"required>
+        </div>
+        <div class="form-group">
+          <label for="discoverYear">Հայտնաբերման տարեթիվը</label>
+          <input type="text" class="form-control" id="discoverYear" name="discoverYear"  [(ngModel)]="planet.discoverYear"required>
+        </div>
+        <div class="form-group" *ngIf="planet.type == 'smallPlanet' || planet.type == 'anotherAplicante'">
+            <label for="inSort">Դասակարգումը</label>
+            <select class="form-control" name="inSort" [(ngModel)]="planet.inSort" required>
+              <option *ngFor="let sorting of sortingArray" [value]="sorting.value">{{sorting.name}}</option>
+            </select>
+        </div>
+    
+        <div class="form-group">
+          <label for="speed">Արագություն</label>
+          <input type="text" class="form-control" id="speed" name="speed"  [(ngModel)]="planet.speed"required>
+        </div>
+        <div class="form-group">
+            <label for="imageState">Նկար</label>
+            <div class="changedImage" *ngIf="!isImage">
+                <img src="{{planet.image}}" alt="" class="img-fluid">
+              </div>
+              <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                <label class="file-label">
+                    <input class="file-input" type="file" name="url" (change)="upload($event)">
+                  <span class="file-cta">
+                    <span class="file-icon">
+                      <i class="fa fa-upload"></i>
+                    </span>
+                    <span class="file-label">
+                      choses Image...
+                    </span>
+                  </span>
+                </label>
+              </div>
+  
+              <div  class="row">
+                <div class="col-12">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                  <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                    <span class="d-block">File uploaded:</span>
+                    <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                  </div>
+                </div>
+              </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Նկարագրություն</label>
+            <textarea  class="form-control" id="description" name="description" rows="7" [(ngModel)]="planet.description"required></textarea>
+        </div>
+       
+         <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarPlanets.valid">
+     </form>
+  </div>
+  </div>
+  </div>

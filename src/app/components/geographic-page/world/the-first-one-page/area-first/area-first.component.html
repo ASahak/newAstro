@@ -1,0 +1,55 @@
+
+<div class="row">
+  <div class="col-12">
+    <div class="descArea">
+
+      <h1>Աշխարհի պետություններն ըստ տարածքի</h1>
+      <hr>
+      <p>
+        <a href="/assets/img/frtarea.png" data-fancybox="images" data-caption="" class=" d-block text-center p-3 float-none w-25 mb-4 float-sm-right">
+            <img src="/assets/img/frtarea.png" class="img-fluid">
+        </a>
+        Աշխարհի պետություններն ըստ տարածքի. այս ցանկը գլխավորապես ՄԱԿ-ի 2004 թվականի տվյալների վրա է հիմնված[1]։ Ներկայացված են աշխարհի բոլոր անկախ պետությունները և կախյալ պետությունները (շեղատառ)։ Անդրծովյան երկրամասերը ներառված են միայն այն դեպքում. երբ մայր երկրի տարածքային ամբողջականության մաս են կազմում։</p>
+    </div>
+    <div class="">
+      <table class="table table-sm  table-hover table-striped  table-responsive-lg w-100 d-sm-table tablePools">
+        <thead  class="">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Երկիր</th>
+            <th scope="col">Տարածք</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let frtarea of frtareas; let i = index" class="tool_tip_parents" >
+            <td>{{i+1}}</td>
+            <td>{{frtarea.name}}</td>
+            <td class="tool_tip_parent">{{frtarea.area}}
+                <span class="tool_tip badge bagde-pill badge-success">{{frtarea.publication | date}}</span>
+                <a  routerLink="/geographic/world/the-first-one/country/area/edit/{{frtarea.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(frtarea)" *ngIf="isLogin"></i>
+            </td>
+
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="" *ngIf="isLogin">
+  <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+  <form [ngStyle]="styleForm" class="formAdded"  #formFrtArea="ngForm" (ngSubmit)="onChangeAddFirstArea(formFrtArea); formFrtArea.reset()" >
+    <div class="insideForm">
+      <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+      <div class="form-group">
+        <label for="tit">Երկրներ</label>
+        <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="frtarea.name" required>
+      </div>
+      <div class="form-group">
+        <label for="tit">Տարածք</label>
+        <input type="text" class="form-control" id="pre" name="area"  [(ngModel)]="frtarea.area" required>
+      </div>
+      <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formFrtArea.valid">
+    </div>
+  </form>
+</div>

@@ -1,0 +1,16 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-10 col-md-8 mx-auto mt-4 mb-4 "  style="padding: 15px; background: #e2e0e0;"  *ngIf="isLogin">
+            <form #formModificarInteresing="ngForm" (ngSubmit)="onModificarRecetInteresing(formModificarInteresing); formModificarInteresing.reset()">
+                
+                <div class="form-group">
+                    <label for="desc">Նկարագրություն</label>
+                    <textarea class="form-control" id="desc" name="description" [(ngModel)]="int.description" required></textarea>
+                    
+                </div>
+                <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarInteresing.valid">
+            </form>
+        </div> 
+    </div>
+</div>

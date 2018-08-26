@@ -1,0 +1,54 @@
+<a routerLink="/" class="goToMain d-none d-lg-block"><span class="lnr lnr-chevron-left"></span> Դեպի ետ</a>
+<nav class="navbar navbar-expand-lg navbar-light bgNavBar p-3">
+
+  <div class="container"> 
+    <a class=""  routerLink="/geographic/world"><img src="/assets/img/logo.png" class="logo" (click)="spanTrueFunc()"></a>
+    <button (click)="clickStatus()" class="navbar-toggler lnrMenu" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="lnr"  [ngClass]="statusClass ? 'lnr-menu' : 'lnr-cross'"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <span *ngIf="spanTrue" #mapNavBar class="mapNavBar" [ngStyle]="{'top':varAssign.topSpanNavBar + 'px', 'left':varAssign.leftSpanNavBar + 'px', 'width':varAssign.widthSpanNavBar + 'px', 'height':varAssign.heightSpanNavBar + 'px'}"></span>  
+      
+        <ul class="navbar-nav ml-auto navCommon" #mapElement>
+          <li class="nav-item ">
+              <a class="nav-link"  routerLink="/geographic/world/continential" routerLinkActive="active-link">Մայրցամաքներ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  routerLink="/geographic/world/island" routerLinkActive="active-link">Կղզիներ</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link"  routerLink="/geographic/world/ocean" routerLinkActive="active-link">Օվկիանոսներ</a>
+            </li>
+              <li class="nav-item">
+              <a class="nav-link"  routerLink="/geographic/world/strait" routerLinkActive="active-link">Նեղուցներ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link"  routerLink="/geographic/world/citys" routerLinkActive="active-link">Քաղաքներ</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLinkActive="active-link">Ավելին <i class="fa fa-caret-down"></i> </a>
+              <ul class="subNavBar">
+                <li><a class="nav-link"  routerLink="/geographic/world/the-first-one/country/population" >Առաջինները</a></li>
+                <li><a class="nav-link"  routerLink="/geographic/world/dependent-areas" >Կախյալ Տարածքներ</a></li>
+                <li><a class="nav-link"  routerLink="/geographic/world/aglomeration" >Ագլոմերացիա</a></li>
+                <li><a class="nav-link"  routerLink="/geographic/world/resulation" >Բանաձև</a></li>
+                <li><a class="nav-link"  routerLink="/geographic/world/dictionary" >Տեղեկատու բառարան</a></li>
+                <li><a class="nav-link"  routerLink="/geographic/world/interesing" >Հետաքրքիր է իմանալ</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" (click)="onlogOut()"  routerLink="/" *ngIf="isLogin">Դուրս գալ</a>
+            </li>
+        </ul>
+    </div>
+    <a routerLink="/" class="goToMainMobile d-block d-lg-none"><span class="lnr lnr-chevron-left"></span> Դեպի ետ</a>
+  </div>
+</nav>
+
+<router-outlet></router-outlet>
+<span class="lnr lnr-chevron-up fixedToup" (click)="clictTo()" [ngStyle]="styleToTop"></span>
+<footer>
+  <p class="text-center">
+    Դիզայնը և պատրաստումը Արթուր Սահակյան:
+  </p> 
+</footer>

@@ -1,0 +1,14 @@
+<div class="col-12 col-sm-8 mx-auto" *ngIf="isLogin"  style="padding: 15px; background: #e2e0e0;">
+
+    <form #formModificarFirstArea="ngForm" (ngSubmit)="onModificarRecetFirstArea(formModificarFirstArea); formModificarFirstArea.reset()" >
+      <div class="form-group">
+        <label for="tit">Երկրներ</label>
+        <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="frtarea.name" required>
+      </div>
+      <div class="form-group">
+        <label for="tit">Տարածք</label>
+        <input type="text" class="form-control" id="pre" name="area"  [(ngModel)]="frtarea.area" required>
+      </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Պահպանել"  [disabled]="!formModificarFirstArea.valid">
+    </form>
+</div>

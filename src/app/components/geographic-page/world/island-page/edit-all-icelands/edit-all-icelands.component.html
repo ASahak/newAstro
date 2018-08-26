@@ -1,0 +1,18 @@
+
+<div class="col-12 col-sm-8 mx-auto" *ngIf="isLogin">
+    <form #formModificarIslands="ngForm" (ngSubmit)="onModificarRecetIslands(formModificarIslands)">
+        <div class="form-group">
+             <label for="tit">Անվանում</label>
+            <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="island.name" required>
+        </div>
+        <div class="form-group">
+            <label for="tit">Մակերես</label>
+            <input type="text" class="form-control" id="pre" name="area"  [(ngModel)]="island.area" required>
+        </div>
+        <div class="form-group">
+            <label for="ing">Գտնվում է՝</label>
+            <input type="text" class="form-control" id="ing" name="in_the"  [(ngModel)]="island.in_the" required>
+        </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarIslands.valid">
+    </form>
+</div>

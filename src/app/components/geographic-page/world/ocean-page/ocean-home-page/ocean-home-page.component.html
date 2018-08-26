@@ -1,0 +1,124 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded" #formOcean="ngForm" (ngSubmit)="onChangeAddOcean(formOcean); formOcean.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+            <div class="form-group">
+            <label for="tit">Անվանում</label>
+            <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="ocean.name" required>
+            </div>
+            <div class="form-group">
+                <label for="tit">Մակերես</label>
+                <input type="text" class="form-control" id="pre" name="area"  [(ngModel)]="ocean.area" required>
+            </div>
+            <div class="form-group">
+                <label for="ing">Միջին խորություն</label>
+                <input type="text" class="form-control" id="ing" name="deep"  [(ngModel)]="ocean.deep" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Ամենախորը փողրակը</label>
+                <input type="text" class="form-control" id="pre" name="veryDeep"  [(ngModel)]="ocean.veryDeep" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Մակերևույթային ջերմաստիճան</label>
+                <input type="text" class="form-control" id="pre" name="temperature"  [(ngModel)]="ocean.temperature" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Նկարագրություն</label>
+                <textarea rows="10" class="form-control" id="pre" name="description"  [(ngModel)]="ocean.description" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imageState">Նկար</label>
+                <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                    <label class="file-label">
+                    <input class="file-input" type="file" name="url"  [(ngModel)]="ocean.url"  (change)="upload($event)" required>
+                    <span class="file-cta">
+                        <span class="file-icon">
+                        <i class="fa fa-upload"></i>
+                        </span>
+                        <span class="file-label">
+                        choses Image...
+                        </span>
+                    </span>
+                    </label>
+                </div>
+                <div  class="row" [hidden]="!isImage">
+                <div class="col-12">
+                    <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                    </div>
+                    <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                    <span class="d-block">File uploaded:</span>
+                    <div class="editimgUploadedPool">
+                        <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formOcean.valid">
+        </div>
+    </form>
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="description_asia">
+            <div class="card_thumb_right">
+                <div class="asia_image_wrap">
+                    <a href="/assets/img/ocean.jpg"  class="d-block text-center" data-fancybox="images" data-caption="">
+                        <img src="/assets/img/ocean.jpg" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+            <h3>Օվկիանոս</h3>
+            <hr class="img_among_hr">
+            <p class="">Օվկիանոս (հունարեն՝ Ωκεανός, Օկեա՛նոս), աղի ջրի ահռելի զանգված, ջրոլորտի հիմնական բաղադրիչը։ Երկրագնդի մակերևույթի մոտ 70%–ը (մոտ 361 միլիոն կմ²) ծածկված է օվկիանոսով՝ ջրային անընդհատ զանգվածով, որը պայմանականորեն տարաբաժանվում է մի քանի հիմնական օվկիանոսների և ավելի փոքր ծովերի։ Այս մակերեսի կեսից ավելին ունի 3.000 մետրից ավել խորություն։ Օվկիանոսային միջին աղիությունը կազմում է մոտ 3,5%, և գրեթե ամբողջ ծովաջրի աղիությունը ընկած է 3,1% և 3,8%–ի միջև։</p>
+            <p class="">Արտերկրային օվկիանոսները կարող է բաղկացած լինեն քիմիական տարրերի և միացությունների լայն ցանկից։ Արտերկրային մակերեևույթի միակ հաստատված կայուն լուծույթով խոշոր մարմինները Տիտանի լճերն են, չնայած փաստեր կան արեգակնային համակարգում այլ օվկիանոսների գոյության մասին։ Տեսականորեն ենթադրվում է, որ իրենց երկրաբանական պատմության սկզբում Մարսն ու Վեներան ունեցել են խոշոր օվկիանոսներ։ Մարսի օվկիանոսային վարկածը ենթադրում է, որ Մարսի մակերևույթի մոտ երրորդ մասը մի ժամանակ ծածկված է եղել ջրով, չնայած Մարսի ջուրը այնքան էլ օվկիանոսային չէր և հնարավոր է գոլորշիացած լինի։ Այնպիսի միացություններ, ինչպիսիք աղերն են և ամիակը խառնված ջրին հայտնի են որպես ջրի սառցակալման ջերմաստիճանը իջեցնող, ինչը հնարավորություն է տալիս ջրային ռեսուրսներին մեծ քանակությամբ գոյություն ունենալ արտերկրային տարածքներում ծովի ջրի կամ սառույցի տեսքով։</p>
+            <b class="mb-3 d-inline-block">Գոտիներ և խորություններ</b>
+            <div class="card_thumb_right">
+                <div class="asia_image_wrap">
+                    <a href="/assets/img/ocean-division.png" class="d-block text-center" data-fancybox="images" data-caption="">
+                        <img src="/assets/img/ocean-division.png" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+
+            <p>Օվկիանոսագետները բաժանում են օվկիանոսը մի քանի գոտիների կախված ֆիզիկական և կենսաբանական պայմաններից։ Պելագիկ գոտին ներառում է բոլոր բաց օվկիանոսային տարածքները, և կարող է բաժանվել իր հերթին ըստ խորության և լույսի թափանցման։ Ֆոտիկ գոտին ընկած է օվկիանոսի մակերևույթից մինչև 200 մետր խորությամբ տարածքը։ Այս գոտում այն տարածքն է, որտեղ կարող է տեղի ունենալ ֆոտոսինթեզ, և հետևաբար այն ունի ամենամեծ կենսաբազմազանությունը։ Քանի որ բույսերին անհրաժեշտ է ֆոտոսինթեզ, այս մակարդակից ներքև գտնվող կյանքի տեսակները ստիպված են սնվել կամ վերևից սուզվող նյութերով (տես ծավային ձյուն), կամ գտնել այլ էներգիայի աղբյուրներ, հիդրոթերմալ գազանցքները այսպիսի էներգիայի հիմնական աղբյուրներն են ափոթիկ գոտում (խորությունը 200 մետրից ներքև)։ Ֆոտիկ գոտու պելագիկ մասը անվանում են էպիպելագիկ: Ափոթիկ գոտու պելագիկ մասը կարող է բաժանվել շրջանների, որոնք ուղղահայաց իրար վրա են դասավորված ըստ ջերմաստիճանի։ Մեզոպելագիկը ամենավերին շրջանն է։ Նրա ներքևի սահմանն է հանդիսանում ջերմային թռիչքի շերտը 12 °C ջերմաստիճանով, որը արևադարձային գոտիներում սովորաբար ընկած է 700-1000 մ խորության վրա։ Հաջորդը բաթիպելագիկ շրջանն է՝ 10-4 °C միջակայքում, խորությունը սովորաբար լինում է 700-1000 մ։ Աբիսալ դաշտի վերևում է գտնվում Աբիսալպելագիկ շրջանը, որի ներքևի սահմանը ընկած է 6000 մ խորության վրա։ Վերջին շրջանը պարունակում է խորը իջվածքներ, և անվանվում է հադալպելագիկ շրջան։ Այն տարածվում է 6000-11000 մ միջակայքում և հանդիսանում է օվկիանոսի ամենախոր գոտին։
+            </p>
+            <p>Պելագիկ ափոթիկ գոտիների հետ միասին կան նաև բենթիկ ափոթիկ գոտիներ։ Դրանք համապատասխանում են խորքային ծովի երեք ամենախորը գոտիներին։ Բենթիալ գոտին ծածկում է մայրցամաքային լանջը մինչև 4000 մ խորությունը։ Աբիսալ գոտին ծածկում է աբիսալ դաշտերը 4000 - 6000 մետր միջակայքում։ Դրանից ներքև ընկած է հադալ գոտին, որը համապատասխանում է հադալպելագիկ շրջանին և գտնվում է օվկիանոսային իջվածքներում։
+            </p>
+            <p>
+                Պելագիկ գոտին նաև կարող է բաժանվել ենթաշրջանների, ներիտիկ գոտի և օվկիանիկ գոտի: Ներիտիկ գոտին ներառում է ջրային զանգվածները, որոնք ընկած են մայրցամաքային շելֆերի վրա, իսկ օվկիանիկ գոտին ներառում է ամբողջ մնացած բաց ջրերը։ Ի հակադրություն, ծովափնյա գոտին ընդգրկում է մակընթացության ցածր և բարձր սահմանների միջև ընկած շրջանը և իրենից ներկայացնում ծովային և ցամաքային տարածքների միջև անցումային շրջանը։ Այն հայտնի է նաև որպես միջմակընթացային գոտի։</p>
+            </div>
+        <div class="table_asia">
+            <table class="table table-sm  table-hover table-striped  table-responsive-lg w-100 d-sm-table tablePools">
+              <thead  class="">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Անվանում</th>
+                  <th scope="col">Մակերես</th>
+                  <th scope="col">Միջ. խորություն</th>
+                  <th scope="col">Ամենախոր փողրակ</th>
+                  <th scope="col">Մակ. ջերմաստիճան</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ocean of oceans; let i = index" class="tool_tip_parents">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{ocean.name}}</td>
+                  <td>{{ocean.area  + ' մլն կմ'}}</td>
+                  <td>{{ocean.deep  + ' մ'}}</td>
+                  <td>{{ocean.veryDeep  + ' մ'}}</td>
+                  <td class="tool_tip_parent">{{ocean.temperature  + '° C'}}
+                      <span class="tool_tip badge bagde-pill badge-success">{{ocean.publication | date}}</span>
+                      <a  routerLink="/geographic/world/ocean/edit/{{ocean.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                      <i class="fa fa-trash"  (click)="onClickDelete(ocean)" *ngIf="isLogin"></i>
+                  </td>
+
+                </tr>
+              </tbody>
+            </table>
+        </div>
+    </div>
+</div>

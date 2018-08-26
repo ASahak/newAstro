@@ -1,0 +1,290 @@
+
+
+
+.file-cta {
+    background-color: #f5f5f5;
+    color: #4a4a4a;
+}
+
+.file-cta, .file-name {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    font-size: 1rem;
+    height: 2.25em;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    line-height: 1.5;
+    padding-bottom: calc(.375em - 1px);
+    padding-left: calc(.625em - 1px);
+    padding-right: calc(.625em - 1px);
+    padding-top: calc(.375em - 1px);
+    position: relative;
+    vertical-align: top;
+    border-color: #dbdbdb;
+    border-radius: 3px;
+    font-size: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    white-space: nowrap;
+}
+.file-icon {
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    height: 1em;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin-right: .5em;
+    width: 1em;
+}
+.file-icon .fa {
+    font-size: 14px;
+}
+.file-input {
+    height: .01em;
+    left: 0;
+    outline: 0;
+    position: absolute;
+    top: 0;
+    width: .01em;
+}
+.file-label {
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    cursor: pointer;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    overflow: hidden;
+    position: relative;
+}
+.file {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-box-align: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    position: relative;
+}
+
+.icons_country a{
+  color: #fff !important;
+}
+.icons_country{
+  position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    color: #fff !important;
+    font-size: 23px;
+    cursor: pointer;
+    padding: 0 5px;
+    background: rgba(0,0,0,0.4);
+    left: 0;
+    z-index: 2;
+}
+.flag_badgesState{
+  max-width: 30px;
+}
+
+
+
+/* Add Form */
+.buttonForma{
+    position: fixed;
+    right: 0;
+    top: 50%;
+    z-index: 2222;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #fff;
+    background: #2497e3;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    cursor: pointer;
+    font-size: 22px;
+    
+}
+.formAdded span.lnr-cross{
+    cursor: pointer;
+    font-size: 24px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 222;
+    
+}
+.formAdded div, .formAdded input[type=submit]{
+    position: relative;
+    z-index: 22;
+}
+.formAdded::before{
+    content:"";
+    position: absolute;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 1;
+}
+.formAdded:after{
+    content:"";
+    position: fixed;
+    left: 0;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: -1;
+}
+.insideForm{
+    padding: 25px;
+    height: 560px;
+    overflow-x: auto;
+}
+.formAdded{
+    transition: all .4s;
+    position: fixed;
+    z-index: 222;
+    width: 650px;
+    background: #fff;
+    left: 0;
+    right: 0;
+    margin: auto;
+    top:0px;
+    visibility:hidden;
+    z-index:-1;
+}
+/* Add Form */
+.tablecontinents thead th{
+    background-color: #2497e3;
+    border-color: #2497e3;
+    color:#fff !important;
+}
+.tablecontinents th, .tablecontinents td{
+    font-size:14px;
+    font-weight: 400;
+}
+.plusDrop{
+    background: none;
+    border: 1px solid #555;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.searchEnginer{
+    position: relative;
+}
+.searchEnginer label{
+    position: absolute;
+    top: 7px;
+    left: 25px;
+    font-size: 15px;
+    transition:.4s;
+    color: rgba(0,0,0,.5);
+}
+.common_country {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin-bottom: 25px;
+}
+.desc_states {
+    padding: 7px 5px 0;
+}
+.states_img:after{
+    content: '\f0c1';
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 25px;
+    font-family: FontAwesome;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: rotateY(-230deg) scale(0.5);
+    transition: all 0.5s;
+}
+.states_img:hover:after {
+    opacity: 1;
+    transform: rotateY(0deg) scale(1);
+    z-index: 12;
+}
+.states_img{
+    position: relative;
+}
+.desc_states p{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
+    padding: 3px 0px;
+    box-shadow: 0px 4px 2px -3px #ccc;
+}
+.desc_states p:last-child{
+    box-shadow: none;
+}
+.desc_states h4{
+    font-size: 20px
+}
+
+@media screen and (min-width: 1200px){
+   
+}
+@media screen and (max-width: 1200px) and (min-width: 991px){
+    
+}
+@media screen and (max-width: 991px){
+    
+}
+@media screen and (max-width: 991px) and (min-width: 767px){
+    .formAdded{
+        width: 450px;
+    }
+}
+@media screen and (max-width: 767px) and (min-width: 576px){
+  
+    .formAdded{
+        width: 400px;
+    }
+}
+@media screen and (max-width: 576px){
+ 
+    .formAdded{
+        width: 300px;
+    }
+}

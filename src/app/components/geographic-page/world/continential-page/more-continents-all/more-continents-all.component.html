@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="highwayContinent">
+        <a routerLink="/geographic/world/continential">Մայրցամաքներ</a>
+        <a routerLink="/geographic/world/continential/{{state.in_area}}">{{isValueArm}}</a>
+        <a routerLink="/geographic/world/continential/{{state.in_area}}/state">Պետություններ</a>
+        <a>{{state.name}}</a>
+    </div>
+  <div  class="row">
+    <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+        <div class="card_image_more">
+          <a href="{{ state.url }}" class="states_img d-block text-center" data-fancybox="images" data-caption="">
+              <img class="mr-3" src="{{state.url}}" class="img-fluid">
+          </a>
+          <div class="desc_states">
+            <h4>{{state.name}}</h4>
+            <p>Պետական դրոշ <img src="{{state.flag}}" alt="" class="img-fluid flag_badgesState"> </p>
+            <p><span>Մայրաքաղաք </span> {{state.capital}}</p>
+            <p><span>Բնակչություն </span> {{state.population}}</p>
+            <p><span>Տարածք </span> {{state.area}}</p>
+            <p><span>Տարածքային կոդ` </span>{{state.code}}</p>
+          </div>
+        </div>
+    </div>
+    <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+        <div class="descMoreState">
+          <b class="mt-0">{{state.name}}</b>
+          <p>{{state.description}}</p>
+        </div>
+    </div>
+  </div>
+</div>

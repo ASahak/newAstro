@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12 col-sm-10 col-md-8 mx-auto mt-4 mb-4 formEdit" *ngIf="isLogin">
+        <form #formModificarPools="ngForm" (ngSubmit)="onModificarRecetPools(formModificarPools)" >
+            
+            <div class="form-group">
+                <label for="tit">Անվանում</label>
+                <input type="text" class="form-control" id="tit" name="name" [(ngModel)]="pool.name" required>
+            </div>
+            <div class="form-group">
+                <label for="tit">Գտնվում է...</label>
+                <input type="text" class="form-control" id="pre" name="in_the"  [(ngModel)]="pool.in_the" required>
+            </div>
+            <div class="form-group">
+                <label for="ing">Բարձրություն (ծովի մակարդակից)</label>
+                <input type="text" class="form-control" id="ing" name="height"  [(ngModel)]="pool.height" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Մակերես (կմ<sup>2</sup>)</label>
+                <input type="text" class="form-control" id="pre" name="area"  [(ngModel)]="pool.area" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarPools.valid">
+        </form>
+    </div>
+</div>

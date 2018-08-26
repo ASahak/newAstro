@@ -1,0 +1,119 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded"  #formModificarMountains="ngForm" (ngSubmit)="onChangeAddMountains(formModificarMountains); formModificarMountains.reset()">
+      <div class="insideForm">
+          <span class="lnr lnr-cross" (click)="closeForm()"></span> 
+          <div class="form-group">
+              <label for="ing">Լեռնաշղթան կամ գտնվելու վայրը</label>
+              <input type="text" class="form-control" id="ing" name="ridge"  [(ngModel)]="mountain.ridge" required>
+          </div>
+          <div class="form-group">
+              <label for="cap">Լեռնագագաթ</label>
+              <input type="text" class="form-control" id="cap" name="pic"  [(ngModel)]="mountain.pic"required>
+          </div>
+          <div class="form-group">
+              <label for="pop">Բարձրություն</label>
+              <input type="text" class="form-control" id="pop" name="high"  [(ngModel)]="mountain.high" required>
+          </div>
+          <div class="form-group">
+              <label for="imageState">Նկար</label>
+              <div class="file d-flex flex-column flex-sm-row justify-content-between">
+                  <label class="file-label">
+                      <input class="file-input" type="file" name="url"  [(ngModel)]="mountain.url"  (change)="upload($event)" required>
+                    <span class="file-cta">
+                      <span class="file-icon">
+                        <i class="fa fa-upload"></i>
+                      </span>
+                      <span class="file-label">
+                        choses Image...
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              <div  class="row" [hidden]="!isImage">
+                <div class="col-12">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                    </div>
+                  </div>
+                  <div class="uploadedImage alert alert-info"   role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                    <span class="d-block">File uploaded:</span>
+                    <div class="editimgUploadedPool">
+                      <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                    </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label for="desc">Նկարագրություն</label>
+              <textarea type="text" rows="6" class="form-control" id="desc" name="description"  [(ngModel)]="mountain.description" required></textarea>
+          </div>
+          <div class="form-group">
+              <label for="cap">Գտնվում է՝</label>
+              <select class="form-control" name="in_area" [(ngModel)]="mountain.in_area" required>
+                <option value="asia">Ասիայում</option>
+                <option value="europa">Եվրոպայում</option>
+                <option value="north-america">Հս Ամերիկայում</option>
+                <option value="south-america">Հվ Ամերիակյում</option>
+                <option value="africa">Աֆրիկայում</option>
+                <option value="antarktida">Անտարկտիդա</option>
+                <option value="australia">Ավստրալիայում</option>
+              </select>
+          </div>
+          <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formModificarMountains.valid">
+        </div>
+    </form>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-3">
+          <div class="desc_categ_cont">
+            <h1>Լեռ</h1>
+            <hr>
+            <div class="card_thumb_right">
+                <div class="asia_image_wrap">
+                    <a href="/assets/img/mountain.jpg" data-fancybox="images" data-caption="">
+                        <img src="/assets/img/mountain.jpg" class="img-fluid">
+                    </a>
+                </div>
+            </div>
+            <p>Լեռ, հարակից հարթավայրերի նկատմամբ Երկրի մակերևույթի բարձրադիր տեղամաս, որը ռելիեֆի` համեմատաբար հարթ վայրից կտրուկ բարձրացած է: Լեռները սովորաբար ունենում են լավ արտահայտված գագաթներ, լանջեր, ստորոտներ:</p>
+
+            <p>Լեռները պատում են Ասիայի 64%-ը, Եվրոպայի 25%-ը, Հարավային Ամերիկայի 22%-ը, Ավստրալիայի 17%-ը և Աֆրիկայի 3%-ը։ Երկրի ցամաքային զանգվածի 24%-ը լեռներ են և մարդկության 10%-ը ապրում է լեռնային վայրերում[1]: Երկրի վրա լեռներն առաջացել են միլիոնավոր տարիներ առաջ, բայց այսօր էլ շարունակվում են լեռնակազմավորման շարժընթացները՝ տեղի են ունենում երկրաշարժեր, ժայթքում են հրաբուխներ և այլն: Ըստ այդմ` լեռները կարող են լինել երիտասարդ և ծեր։</p>
+
+            <p>Լեռան բարձրությունը, հաշված ստորոտից, անվանում են հարաբերական բարձրություն. այդ ցուցանիշով աշխարհում ամենաբարձրը Արարատն է (4365 մ): Ծովի մակարդակից հաշված բարձրությունը կոչվում է «բացարձակ», որով առաջին տեղում է Էվերեստը (8848 մ): Բլուրները նույնպես լեռներ են, որոնք ունեն փոքր </p>
+            <h4>Տեսակներ</h4>
+            <p>Ըստ բարձրության` լեռները լինում են ցածր (500-1000 մ), միջին (1000-2500 մ) և բարձր (2500 մ և ավելի):</p>
+
+            <p>Երկիր մոլորակի ամենաբարձր և հզոր լեռնային համակարգը Հիմալայներն է (թարգմանաբար նշանակում է «երկրի տանիք»)` Նեպալի,Հնդկաստանի և Չինաստանի սահմանին: Երկարությունը 2400 կմ է, լայնությունը՝ 180–350 կմ, տարածությունը՝ մոտ 650 000 կմ2: Այն ունի ձյունով և սառցեդաշտերով ծածկված 11 գագաթ` ավելի քան 8000 մ բարձրությամբ, և դրանց մեջ է Երկրի ամենաբարձր գագաթը՝ Էվերեստը (Ջոմոլունգմա 8848 մ):</p>
+
+            <p>Եվրոպայի ամենաբարձր լեռնային համակարգը Ալպերն է` Շվեյցարիայի տարածքում և Ֆրանսիայի, Իտալիայի, Ավստրիայի ու Գերմանիայի սահմանին: Այն Միջերկրական ծովից 1200 կմ երկարությամբ աղեղնաձև ձգվում է մինչև Միջինդանուբյան դաշտավայր: Առավելագույն բարձրությունը 4807 մ է (Մոնբլան լեռ):</p>
+
+            <p>Երկրագնդի ամենաբարձր մեկուսի լեռնազանգվածը Մաունա-Լոա հրաբուխն է Խաղաղ օվկիանոսի Հավայի կղզում, որի բարձրությունը ծովի մակերևույթից՝ 4170 է, իսկ օվկիանոսի հատակից` 9350 մ:</p>
+
+            <p>Ըստ բարձրության` օդի ջերմաստիճանը յուրաքանչյուր 1 կմ-ում իջնում է 5–6օC-ով, ավելանում է տեղումների քանակը, ամպամածությունը և այլն: Կլիմայական պայմանների փոփոխությունը, որն առաջանում է սրա հետևանքով, կոչվում է վերընթաց գոտիականություն: Բարձրլեռնային երկրներում տարածված կործանարար և աղետալի երևույթներից են սողանքները, ձնահյուսերը:</p>
+          </div>
+          <div class="searchEnginer mt-4">
+              <label for="country" #label>Փնտրել</label>
+              <input type="search" name=""id="country" class="form-control" #query (focus)='setInputFocus($event)' (focusout)='setInputFocusOut($event)' #query  (keyup)="search(query.value)" value="">
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4 col-lg-4 col-xl-3" *ngFor="let mountain of searchClient || mountains; let i = index " [hidden]="mountain.in_area !== isValue" [@fadeIn]>
+            <div class="common_country tool_tip_parent d-block">
+              <span class="icons_country">
+                <a  routerLink="/geographic/world/continential/{{isValue}}/mountains/edit/{{mountain.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                <i class="fa fa-trash"  (click)="onClickDelete(mountain)" *ngIf="isLogin"></i>
+              </span>
+              <a class="mountains_img d-block text-center"  routerLink="/geographic/world/continential/{{isValue}}/mountains/more/{{mountain.id}}">
+                <img src="{{mountain.url}}" alt="" class="img-fluid">
+              </a>
+              <div class="mountains">
+                <h4>{{mountain.pic}}</h4>
+                <p><span>Լեռնաշղթան </span>{{mountain.ridge}}</p>
+                <p><span>Բարձրություն </span>{{mountain.high + ' մ'}}</p>
+              </div>
+          </div>
+        </div>
+    </div>
+</div>

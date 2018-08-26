@@ -1,0 +1,25 @@
+
+<div class="container">
+    <div  class="row">
+      <div class="col-12 col-sm-5 col-md-4 col-lg-3">
+          <div class="card_image_more">
+            <a href="{{ ocean.url }}" class="states_img d-block text-center" data-fancybox="images" data-caption="">
+                <img class="mr-3" src="{{ocean.url}}" class="img-fluid">
+            </a>
+            <div class="desc_states">
+              <h4>{{ocean.name}}</h4>
+              <p><span>Մակերես </span> {{ocean.area + ' մլն կմ'}}</p>
+              <p><span>Միջ. խորություն</span> {{ocean.deep + ' մ'}}</p>
+              <p><span>Ամենախոր փողրակ</span> {{ocean.veryDeep + ' մ'}}</p>
+              <p><span>Մակ. ջերմաստիճան</span> {{ocean.temperature + '° C'}}</p>
+            </div>
+          </div>
+      </div>
+      <div class="col-12 col-sm-7 col-md-8 col-lg-9">
+          <div class="descMoreState">
+            <b class="mt-0">{{ocean.name}}</b>
+            <p>{{ocean.description}}</p>
+          </div>
+      </div>
+    </div>
+  </div>

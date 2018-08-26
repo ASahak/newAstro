@@ -1,0 +1,35 @@
+<div class="col-12 col-sm-8 mx-auto" *ngIf="isLogin">
+    
+    <form  #formModificarProvince="ngForm" (ngSubmit)="onModificarRecetProvince(formModificarProvince)">
+        
+        <div class="form-group">
+            <label for="tit">Անվանում</label>
+            <select name="name" id="seasons" class="form-control" [(ngModel)]="province.name" required>
+                <option  *ngFor="let provinc of Provinces_obj" value="{{provinc.name}}">{{provinc.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select name="center" id="seasons" class="form-control" [(ngModel)]="province.center" required>
+                <option value="" selected="" hidden="">Մարզկենտրոն...</option>
+                <option  *ngFor="let provinc of Provinces_obj" value="{{provinc.center}}">{{provinc.center}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="ing">Տարածք</label>
+            <input type="text" class="form-control" id="ing" name="area"  [(ngModel)]="province.area" required>
+        </div>
+        <div class="form-group">
+            <label for="pre">Բնակչություն</label>
+            <input type="text" class="form-control" id="pre" name="population"  [(ngModel)]="province.population" required>
+        </div>
+        <div class="form-group">
+            <label for="pre">Խտություն</label>
+            <input type="text" class="form-control" id="pre" name="density"  [(ngModel)]="province.density" required>
+        </div>
+        <div class="form-group">
+            <label for="desc">Նկարագրություն</label>
+            <textarea rows="7" class="form-control" id="desc" name="description"  [(ngModel)]="province.description" required></textarea>
+        </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarProvince.valid">
+    </form>
+</div>

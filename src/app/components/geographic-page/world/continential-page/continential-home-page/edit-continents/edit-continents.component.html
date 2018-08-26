@@ -1,0 +1,28 @@
+
+<div class="col-12 col-sm-8 mx-auto" *ngIf="isLogin">
+    <form #formModificarContinents="ngForm" (ngSubmit)="onModificarRecetContinents(formModificarContinents)">
+        <div class="form-group">
+             <label for="tit">Անվանում</label>
+             <select name="name" id="continents" class="form-control" [(ngModel)]="continent.name" required>
+                <option  *ngFor="let cont of continentsName" value="{{cont.name}}">{{cont.name}}</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="tit">Մակերես</label>
+            <input type="text" class="form-control" id="pre" name="area"  [(ngModel)]="continent.area" required>
+        </div>
+        <div class="form-group">
+            <label for="ing">Ամենաբարձր կետ</label>
+            <input type="text" class="form-control" id="ing" name="high_pic"  [(ngModel)]="continent.high_pic" required>
+        </div>
+        <div class="form-group">
+            <label for="pre">Նվազագույն կետ</label>
+            <input type="text" class="form-control" id="pre" name="under_pic"  [(ngModel)]="continent.under_pic" required>
+        </div>
+        <div class="form-group">
+            <label for="pre">Բնակչություն (մլն)</label>
+            <input type="text" class="form-control" id="pre" name="population"  [(ngModel)]="continent.population" required>
+        </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Պահպանել" [disabled]="!formModificarContinents.valid">
+    </form>
+</div>

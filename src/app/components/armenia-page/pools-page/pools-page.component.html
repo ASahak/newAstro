@@ -1,0 +1,97 @@
+<div class="" *ngIf="isLogin">
+    <span class="lnr lnr-file-add buttonForma" (click)="AddForm()"></span> 
+    <form [ngStyle]="styleForm" class="formAdded"  #formPools="ngForm" (ngSubmit)="onChangeAddPools(formPools); formPools.reset()" >
+        <div class="insideForm">
+            <span class="lnr lnr-cross" (click)="closeForm()"></span>  
+            <div class="form-group">
+                <label for="tit">Անվանում</label>
+                <input type="text" class="form-control" id="tit" name="name" [(ngModel)]="pool.name" required>
+            </div>
+            <div class="form-group">
+                <label for="tit">Գտնվում է...</label>
+                <input type="text" class="form-control" id="pre" name="in_the"  [(ngModel)]="pool.in_the" required>
+            </div>
+            <div class="form-group">
+                <label for="ing">Բարձրություն (ծովի մակարդակից)</label>
+                <input type="text" class="form-control" id="ing" name="height"  [(ngModel)]="pool.height" required>
+            </div>
+            <div class="form-group">
+                <label for="pre">Մակերես (կմ<sup>2</sup>)</label>
+                <input type="text" class="form-control" id="pre" name="area"  [(ngModel)]="pool.area" required>
+            </div>
+            <input type="submit" class="btn btn-block btn-primary" value="Ավելացնել" [disabled]="!formPools.valid">
+        </div>
+    </form>
+</div>
+<div class="topSectionArm">
+    <img src="/assets/img/topArmLake.jpg" class="img-fluid" alt="">
+</div>
+
+<div class="container">
+    <div class="highwayArm">
+        <a routerLink="/geographic/armenia">Հայաստան</a>
+        <a>Լճեր</a>
+    </div>
+    <div class="row">
+        <div class="col-12 col-sm-5 col-md-4">
+            <div class="swiper-container main_lakes">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <img src="/assets/img/lake1.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/assets/img/lake2.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/assets/img/lake3.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/assets/img/lake4.jpg" class="img-fluid" alt="">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="/assets/img/lake5.jpg" class="img-fluid" alt="">
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-7 col-md-8">
+            <div class="descLakes">
+                <h3>Լճեր</h3>
+                <p>Լիճ, երկրի մակերևույթի ջրով լցված գոգավորություն, որը կապված չէ օվկիանոսի հետ։ Լճերի համապարփակ հետազոտություններով զբաղվում է լիմնոլոգիան կամ լճագիտությունը։ Լճերը երկրի մակերևույթի վրա զբաղեցնում են գումարային 2.7 միլիոն քառ. կմ կամ ցամաքի 1.8 տոկոսը։ Խոշոր լճերին հաճախ անվանում են ծովեր (օր.՝ Կասպից ծով կամ լիճ, Արալյան ծով կամ լիճ, Մեռյալ ծով կամ լիճ)։
+                    <br>
+                    Երկրագնդի ամենամեծ լիճը Կասպից ծովն է, իսկ ամենախորը՝ Բայկալը (առավելագույն խորությունը 1620 մ է)։
+                    <br>
+                    Յուրաքանչյուր ջրավազան ունի գույն, որը տարբերվում է ջրավազանի ջրի գույնից: Ջրավազանի գույնը դիտում են լճափից, այն հիմնականում կապված է օդերևութաբանական պայմաններից: Պարզկա եղանակի դեպքում լճի գույնը կապույտ է լինում, ամպամած եղանակի դեպքում` մոխրագույն և այլն: Հեռվից դիտելիս լճի գույնը ավելի բաց է լինում, քան լճափի մոտ, որովհետև այնտեղից ավելի շատ բեկված ճառագայթներ են գալիս, իսկ լճափի մոտ լճի մակերույթին ուղղահայաց կամ մոտ անկյան տակ ընկած ճառագայթների մեծ մասը կլանվում է ջրի կողմից, հետևաբար` լճի գույնը որոշելու համար այն պետք է դիտել վերևից: Լճերի ջրի գույները լինում են` կապույտ, կանաչավուն, դեղնավուն, շագանակագույն, կարմրավուն և այլն: Որոշ լճեր գարնանը «ծաղկում են» այսինքն` նրանց մեջ ապրող բուսական օրգանիզմները ծաղկում են, ընդունելով տարբեր երանգներ: Երբեմն այդպիսի լճերը արձակում են նույնիսկ կարմիր գույն:
+                </p>
+                
+            </div> 
+        </div>
+        <div class="col-12 mt-4">
+            <table class="table table-sm  table-hover table-striped   table-responsive-lg w-100 d-sm-table tablePools">
+                <thead  class=""> 
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Անվանում</th>
+                    <th scope="col">Գտնվում է...</th>
+                    <th scope="col">Բարձրություն (ծովի մակարդակից)</th>
+                    <th scope="col">Մակերես (կմ<sup>2</sup>)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let pool of pools; let i = index" class="tool_tip_parents">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{pool.name}}</td>
+                        <td>{{pool.in_the}}</td>
+                        <td>{{pool.height}}</td>
+                        <td class="tool_tip_parent">{{pool.area}}  
+                            <span class="tool_tip badge bagde-pill badge-success">{{pool.publication | date}}</span>
+                            <a  routerLink="/geographic/armenia/pools/edit/{{pool.id}}"><i class="fa fa-pencil-square-o" *ngIf="isLogin"></i></a>
+                            <i class="fa fa-trash"  (click)="onClickDelete(pool)" *ngIf="isLogin"></i>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

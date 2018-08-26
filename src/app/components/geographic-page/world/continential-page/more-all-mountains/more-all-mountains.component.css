@@ -1,0 +1,171 @@
+
+
+.icons_country a{
+color: #fff !important;
+}
+.icons_country{
+position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: #fff !important;
+  font-size: 23px;
+  cursor: pointer;
+  padding: 0 5px;
+  background: rgba(0,0,0,0.4);
+  left: 0;
+  z-index: 2;
+}
+.flag_badgesState{
+  max-width: 30px;
+}
+
+
+.card_image_more {
+  border: 1px solid #ccc;
+  padding: 5px;
+  margin-bottom: 25px;
+}
+.desc_states {
+  padding: 7px 5px 0;
+}
+.states_img:after{
+  content: '\f06e';
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 25px;
+  font-family: FontAwesome;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: rotateY(-230deg) scale(0.5);
+  transition: all 0.5s;
+}
+.states_img:hover:after {
+  opacity: 1;
+  transform: rotateY(0deg) scale(1);
+  z-index: 12;
+}
+.states_img{
+  position: relative;
+}
+.highwayContinent {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 35px;
+  margin-bottom: 15px;
+}
+.highwayContinent a:after {
+  content: '';
+  position: absolute;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  top: 3.4px;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  transform: rotate(45deg);
+  background: linear-gradient(to right top, transparent 50%, #fff 0);
+  z-index: 2;
+}
+.highwayContinent a {
+  border: 1px solid #ccc;
+  padding: 7px 5px 7px 26px;
+  font-size: 13px;
+  border-right: none;
+  display: block;
+  height: 29px;
+  position: relative;
+  color: #333333e8;
+  line-height: 14px;
+}
+.highwayContinent a:first-child {
+  font-weight: 600;
+  padding: 7px 14px !important;
+}
+.asia_image_wrap {
+  border-bottom: 1px solid #dee2e6;
+  padding-bottom: 10px;
+}
+.desc_states p{
+  font-size:13px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 3px 0px;
+  box-shadow: 0px 4px 2px -3px #ccc;
+}
+.desc_states p:last-child{
+  box-shadow: none;
+}
+.desc_states h4{
+  font-size: 20px
+}
+.descMoreState b{
+  margin-bottom: 25px;
+  position: relative;
+  font-size: 21px;
+  display: block;
+  text-align: center;
+}
+.descMoreState b:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  background: #2497e3;
+  height: 1px;
+  bottom: -10px;
+  width: 120px;
+}
+.descMoreState b:after {
+  content: "\f28e";
+  position: absolute;
+  bottom: -15px;
+  font-family: 'FontAwesome';
+  left: 0;
+  right: 0;
+  color: #2497e3;
+  width: 20px;
+  font-size: 14px;
+  margin: auto;
+  background: #f0f1f2;
+  height: 15px;
+  text-align: center;
+}
+.descMoreState p{
+  font-size: 14px;
+}
+@media screen and (min-width: 1200px){
+ 
+}
+@media screen and (max-width: 1200px) and (min-width: 991px){
+  
+}
+@media screen and (max-width: 991px){
+  
+}
+@media screen and (max-width: 991px) and (min-width: 767px){
+ 
+}
+@media screen and (max-width:767px) {
+  .card_image_more img{
+    max-width: 100%;
+  }
+ 
+}
+@media screen and (max-width: 767px) and (min-width: 576px){
+
+}
+@media screen and (max-width: 576px){
+
+}
+

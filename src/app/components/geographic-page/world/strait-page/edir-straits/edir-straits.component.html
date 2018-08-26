@@ -1,0 +1,65 @@
+
+<div class="col-12 col-sm-8 mx-auto mt-3 mb-3" style="padding: 15px; background: #e2e0e0;" *ngIf="isLogin">
+
+    <form #formModificarOceanSeeCoc="ngForm" (ngSubmit)="onModificarRecetStrait(formModificarOceanSeeCoc); formModificarOceanSeeCoc.reset()" >
+      <div class="form-group">
+        <label for="tit">Անվանում</label>
+        <input type="text" class="form-control" id="pre" name="name"  [(ngModel)]="strait.name" required>
+      </div>
+      <div class="form-group">
+          <label for="tit">Երկարություն</label>
+          <input type="text" class="form-control" id="pre" name="long"  [(ngModel)]="strait.long" required>
+      </div>
+      <div class="form-group">
+          <label for="ing">Նվազագույն լայնություն</label>
+          <input type="text" class="form-control" id="ing" name="width"  [(ngModel)]="strait.width" required>
+      </div>
+      <div class="form-group">
+          <label for="pre">Նվազագույն խորություն</label>
+          <input type="text" class="form-control" id="pre" name="minDeep"  [(ngModel)]="strait.minDeep" required>
+      </div>
+      <div class="form-group">
+          <label for="pre">Միացնում է՝</label>
+          <input type="text" class="form-control" id="pre" name="bindToFrom"  [(ngModel)]="strait.bindToFrom" required>
+      </div>
+      <div class="form-group">
+          <label for="pre">Նկարագրություն</label>
+          <textarea rows="10" class="form-control" id="pre" name="description"  [(ngModel)]="strait.description" required></textarea>
+      </div>
+      <div class="form-group">
+          <label for="imageState">Նկար</label>
+          <div class="changedImage" *ngIf="!isImage">
+            <img src="{{strait.url}}" alt="" class="img-fluid">
+          </div>
+           <div class="file d-flex flex-column flex-sm-row justify-content-between">
+              <label class="file-label">
+                <input class="file-input" type="file" name="url"  (change)="upload($event)" required>
+                <span class="file-cta">
+                  <span class="file-icon">
+                    <i class="fa fa-upload"></i>
+                  </span>
+                  <span class="file-label">
+                    choses Image...
+                  </span>
+                </span>
+              </label>
+            </div>
+           <div  class="row">
+             <div class="col-12">
+               <div class="progress">
+                 <div class="progress-bar progress-bar-striped bg-success" role="progressbar" [style.width]="(uploadProgress | async) + '%'" [attr.aria-valuenow]="(uploadProgress | async)" aria-valuemin="0" aria-valuemax="100">
+                 </div>
+               </div>
+               <div class="uploadedImage alert alert-info" role="alert" *ngIf="downloadURL | async; let downloadSrc">
+                 <span class="d-block">File uploaded:</span>
+                 <div class="editimgUploadedPool">
+                   <img  src="{{downloadSrc}}" alt="" class="img-fluid">
+                 </div>
+               </div>
+             </div>
+           </div>
+      </div>
+        <input type="submit" class="btn btn-block btn-primary" value="Պահպանել"  [disabled]="!formModificarOceanSeeCoc.valid">
+    </form>
+</div>
+

@@ -1,0 +1,17 @@
+<div class="col-12 col-sm-8 mx-auto" *ngIf="isLogin"> 
+    <form #formModificarMountains="ngForm" (ngSubmit)="onModificarRecetMountains(formModificarMountains)">
+        <div class="form-group">
+            <label for="ing">Անվանում</label>
+            <input type="text" class="form-control" id="ing" name="name"  [(ngModel)]="mountain.name" required>
+        </div>
+        <div class="form-group">
+            <label for="pre">Լեռնագագաթ</label>
+            <input type="text" class="form-control" id="pre" name="pic"  [(ngModel)]="mountain.pic" required>
+        </div>
+        <div class="form-group">
+            <label for="pre">Բարձրություն (մ)</label>
+            <input type="text" class="form-control" id="pre" name="high"  [(ngModel)]="mountain.high" required>
+        </div>
+        <input type="submit" class="btn btn-block btn-primary"  value="Պահպանել" [disabled]="!formModificarMountains.valid">
+    </form>
+</div>
